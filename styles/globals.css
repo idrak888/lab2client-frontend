@@ -1,3 +1,6 @@
+body {
+    overflow-x: hidden;
+}
 .navbar {
     background-color: #102D5D;
 }
@@ -5,8 +8,12 @@
     max-width: 1200px;
     padding: 10px;
 }
+.FooterWrapper {
+    width: 100vw;
+}
 .footer {
     background-color: #071429;
+    max-width: 100vw;
 }
 .footer-content {
     color: #eeeeee;

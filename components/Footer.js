@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Footer() {
     return (
-        <>
+        <div className='FooterWrapper'>
             <footer className="footer text-light py-5">
                 <div className="container">
                     <div className="row">
@@ -34,6 +34,6 @@ export default function Footer() {
                     <p>&copy; 2023 Lab2Client. All rights reserved.</p>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
