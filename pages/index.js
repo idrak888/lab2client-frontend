@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import Hero from '@/components/Hero';
+import HomeCard from '@/components/HomeCard';
 
 export default function Home() {
   return (
@@ -23,24 +24,10 @@ export default function Home() {
                     <h2 className="text-center mb-4">Trusted by hundreds of Institutions</h2>
                     <div className="row">
                         <div className="col-md-6">
-                            <div style={{border: 0}} className="card mb-4">
-                                <img src="/labphoto1.jpeg" className="card-img-top" alt="Image 1"/>
-                                <div style={{padding: 15}} className="card-body">
-                                    <h5 className="card-title">Find Available Labs</h5>
-                                    <p className="card-text">Easily search and discover labs that meet your specific research
-                                        needs.</p>
-                                </div>
-                            </div>
+                            <HomeCard image="/labphoto1.jpeg" title="Find Available Labs" description="Easily search and discover labs that meet your specific research needs."/>
                         </div>
                         <div className="col-md-6">
-                            <div style={{border: 0}} className="card mb-4">
-                                <img src="/labphoto2.jpeg" className="card-img-top" alt="Image 2"/>
-                                <div style={{padding: 15}} className="card-body">
-                                    <h5 className="card-title">Offer Lab Space</h5>
-                                    <p className="card-text">Lab PIs can sign up and offer their lab space to other
-                                        researchers, generating revenue.</p>
-                                </div>
-                            </div>
+                            <HomeCard image="/labphoto2.jpeg" title="Offer Lab Space" description="Lab PIs can sign up and offer their lab space to other researchers, generating revenue."/>
                         </div>
                     </div>
                 </div>
