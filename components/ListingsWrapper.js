@@ -7,7 +7,7 @@ export default function ListingsWrapper({ data }) {
 		<div className={styles.listings}>
 			{data.map(listing => {
 				return (
-					<Link href="/" className={styles.card}>
+					<Link href={{ pathname: '/view', query: { email: listing.identification.email_identification } }} className={styles.card}>
 						<div className='row' style={{display: "flex", alignItems: "center"}}>
 							<div className='col-sm-4'>
 								<img style={{width: "100%", maxWidth: 250, padding: 10}} src={listing.research["LOGOS"]}/>

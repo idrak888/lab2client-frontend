@@ -21,7 +21,6 @@ export default function Listings({ query }) {
     useEffect(() => {
         fetch("https://lab2client.herokuapp.com/getall").then(response => response.json())
         .then(data => {
-            console.log(data);
             setData(data);
         });
     },[]);
