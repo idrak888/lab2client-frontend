@@ -1,33 +1,22 @@
 import { loadStripe } from "@stripe/stripe-js"
 
-
-
-
-export async function checkout({devices})
+export async function checkout({lineItems})
 {
-    let stripePromise=null
+    let stripePromise = null
 
-    const getStripe= () => {
-        if (!stripePromise){
-            stripePromise= loadStripe(process.env.NEXT_PUBLIC_API_KEY)
-        }
+	const getStripe = () => {
+		if(!stripePromise) {
+			stripePromise = loadStripe(process.env.NEXT_PUBLIC_API_KEY)
+		}
+		return stripePromise
+	}
 
-        return stripePromise
-    }
+	const stripe = await getStripe()
 
-    const stripe= getStripe()
-    
-    console.log(stripe)
-    
-    
-    // stripe.redirectToCheckout({
-    //     mode:'payment',
-    //     devices,
-    //     successUrl: `${window.location.origin}?session_id={CHECK_OUT_SESSION_ID}`,
-    //     cancelurl: window.location.origin
-
-
-    // })
-  
-
+    await stripe.redirectToCheckout({
+		mode: 'payment',
+		lineItems,
+		successUrl: `${window.location.origin}?session_id={CHECKOUT_SESSION_ID}`,
+		cancelUrl: window.location.href
+	})
 }

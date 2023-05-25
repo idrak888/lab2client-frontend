@@ -9,7 +9,11 @@ const FixedBottom = ({ data }) => {
     <footer className={`${styles.FixedBottom} navbar navbar-dark fixed-bottom`}>
       <div className="container">
         <strong style={{color: "white"}}>{data ? data.identification.research_facillity : "loading"}</strong>
-        <button onClick={(()=>checkout({devices: [{price: "price_1NAiTKEg2vlCH9pN9k9bYfbw"}]}))}>Place Order</button>
+        <button className={`btn ${styles.btn}`} onClick={(() => checkout({
+          lineItems: [
+            { price: "price_1NB2oJL5vejuzwJ3rFrAXtpZ", quantity: 1 }
+          ]
+        }))}>Place an Order</button>
       </div>
     </footer>
   );
