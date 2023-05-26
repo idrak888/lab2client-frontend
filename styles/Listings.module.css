@@ -51,6 +51,7 @@
     color: white;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
 }
 .btn:hover {
     background-color: #1a6a6c;
