@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from '../styles/Listings.module.css';
 import Link from 'next/link';
-import { checkout } from '@/pages/payment';
 
 const FixedBottom = ({ data }) => {
   return (
