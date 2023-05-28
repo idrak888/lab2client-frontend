@@ -39,12 +39,12 @@ body {
     margin: 0 10px;
     font-size: 20px;
 }
-svg {
+.loader {
     width: 3.25em;
     transform-origin: center;
     animation: rotate4 2s linear infinite;
 }
-circle {
+.loader circle {
     fill: none;
     stroke: hsl(214, 97%, 59%);
     stroke-width: 2;
@@ -53,6 +53,7 @@ circle {
     stroke-linecap: round;
     animation: dash4 1.5s ease-in-out infinite;
 }
+
 @keyframes rotate4 {
     100% {
         transform: rotate(360deg);
