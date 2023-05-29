@@ -13,7 +13,7 @@ export default function Hero() {
                 <div className={`${styles.container} container`}>
                     <div className={`${styles.alignCenter} row`}>
                         <div className={`col-md-7`}>
-                            <h1 className={`${styles.h1}`}>Connecting Researchers with Lab Space and Expertise</h1>
+                            <h1 className={`${styles.h1}`}>Bridging the Gap between Researchers and Essential Lab Resources</h1>
                             <p>Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities.</p>
                             <div className="d-flex">
                                 <input 
