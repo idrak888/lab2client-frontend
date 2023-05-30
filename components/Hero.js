@@ -23,7 +23,7 @@ export default function Hero() {
                                     className={`${styles.input} form-control me-2`} 
                                     placeholder="Find equipment and resources"
                                 />
-                                <Link className={`${styles.btn} btn`} href={searchKeys.trim() != "" ? { pathname: '/listings', query: { search: searchKeys } } : "#"}><span className={styles.text}>Search</span> <i className="bi bi-arrow-right" style={{marginLeft: 3, marginRight: 3}}></i></Link>
+                                <a className={`${styles.btn} btn`} href={searchKeys.trim() != "" ? `/listings?search=${searchKeys}` : "#"}><span className={styles.text}>Find Labs</span> <i className="bi bi-arrow-right" style={{marginLeft: 3, marginRight: 3}}></i></a>
                             </div>
                         </div>
                         <div className={`col-md-5`}>
