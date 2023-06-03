@@ -1,18 +1,29 @@
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import styles from '@/styles/Home.module.css';
 import Hero from '@/components/Hero';
 import HomeCard from '@/components/HomeCard';
 import emailjs from '@emailjs/browser';
 
 export default function Home() {
+    let [btnText, setBtnText] = useState("Send Message");
+
     const handleSubmit = e => {
         e.preventDefault();
-        emailjs.sendForm('service_lpvotxr', 'template_r98ns7q', e.target, 'mfkRcU_Qi3LuYFzKW').then(() => {
-            window.alert("Message received!");
-            window.location.reload();
-        }).catch(e => {
-            window.alert("Error sending message");
-        });
+        const name = document.getElementById("name").value;
+        const message = document.getElementById("message").value;
+
+        if (name.trim() !== "" && message.trim() !== "") {
+            setBtnText("Sending...");
+            emailjs.sendForm('service_lpvotxr', 'template_r98ns7q', e.target, 'mfkRcU_Qi3LuYFzKW').then(() => {
+                window.alert("Message received!");
+                window.location.reload();
+                setBtnText("Send Message");
+            }).catch(e => {
+                window.alert("Error sending message");
+                setBtnText("Send Message");
+            });
+        }   
     }
 
     return (
@@ -47,7 +58,7 @@ export default function Home() {
         </section>
         
         {/* contact us section */}
-        <section className="py-5">
+        <section className="py-5" id="contact">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8 offset-lg-2">
@@ -73,7 +84,7 @@ export default function Home() {
                                             placeholder="Enter your message"></textarea>
                                     </div>
                                     <div className="text-center">
-                                        <button type="submit" className="btn btn-primary">Send Message</button>
+                                        <button type="submit" className="btn btn-primary">{btnText}</button>
                                     </div>
                                 </form>
                             </div>
