@@ -49,7 +49,7 @@ export default function Home() {
                                 <HomeCard image="/labphoto1.jpeg" title="Find Available Labs" description="Easily search and discover labs that meet your specific research needs."/>
                             </div>
                             <div className="col-md-6">
-                                <HomeCard image="/labphoto2.jpeg" title="Offer Lab Space" description="Lab PIs can sign up and offer their lab space to other researchers, generating revenue."/>
+                                <a href='/auth/register'><HomeCard image="/labphoto2.jpeg" title="Offer Lab Space" description="Lab PIs can sign up and offer their lab space to other researchers, generating revenue."/></a>
                             </div>
                         </div>
                     </div>

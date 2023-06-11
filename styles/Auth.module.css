@@ -1,0 +1,66 @@
+.container {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #294b80;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="tel"],
+.formGroup textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formGroup textarea {
+    height: 100px;
+}
+
+.btn {
+    display: flex;
+    background-color: #3D898B;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+    padding: 12px 16px;
+    min-width: 150px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.removeButton {
+    margin-left: 10px;
+}
+
+.formTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.formTable th,
+.formTable td {
+    padding: 8px;
+}
+
+.formTable th {
+    text-align: left;
+    font-weight: bold;
+}

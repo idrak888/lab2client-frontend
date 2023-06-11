@@ -22,13 +22,10 @@ export default function Navbar() {
             <li className="nav-item">
               <a className="nav-link" href="/#contact">Contact</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/faq">FAQ</a>
-            </li>
           </ul>
-          <form className="d-flex">
-            <button className="btn btn-outline-light">Get Started</button>
-          </form>
+          <div className="d-flex">
+            <a href='/auth/register'><button className="btn btn-outline-light">Get Started</button></a>
+          </div>
         </div>
       </div>
     </nav>
