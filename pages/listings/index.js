@@ -18,7 +18,7 @@ export default function Listings({ query }) {
     }
 
     useEffect(() => {
-        fetch(`https://lab2client.herokuapp.com/word/${query.search}`).then(response => response.json())
+        fetch(`https://lab2client.herokuapp.com/search_word/${query.search}`).then(response => response.json())
         .then(data => {
             setData(data);
             setSearchKeys(query.search);

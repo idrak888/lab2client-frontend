@@ -13,6 +13,7 @@
     "@stripe/stripe-js": "^1.53.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "firebase": "^8.0.1",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -64,3 +64,194 @@
     text-align: left;
     font-weight: bold;
 }
+
+.Signup,
+.Login {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+}
+
+.Signup .form,
+.Login .form {
+    padding: 80px 40px;
+    color: rgb(36, 36, 36);
+    background-color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.Signup .form img,
+.Login .form img {
+    image-rendering: -moz-crisp-edges;
+    /* Firefox */
+    image-rendering: -o-crisp-edges;
+    /* Opera */
+    image-rendering: -webkit-optimize-contrast;
+    /* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    /* IE (non-standard property) */
+}
+
+@media only screen and (min-width: 800px) {
+
+    .Signup .form,
+    .Login .form {
+        width: 500px;
+    }
+}
+
+.Signup .form h3,
+.Login .form h3 {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.Signup .form .btnAuth,
+.Signup .form .btnSignup,
+.Signup .form .btnSignin,
+.Signup .form p,
+.Signup .form label,
+.Signup .form input,
+.Login .form .btnAuth,
+.Login .form .btnSignup,
+.Login .form .btnSignin,
+.Login .form p,
+.Login .form label,
+.Login .form input {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 6px;
+}
+
+.Signup .form .btnSignup,
+.Signup .form .btnSignin,
+.Login .form .btnSignup,
+.Login .form .btnSignin {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 6px 12px;
+    display: block;
+    color: white;
+}
+
+.Signup .form .btnAuth,
+.Login .form .btnAuth {
+    font-size: 18px;
+    padding: 8px 12px;
+    display: block;
+    background-color: #F0F4FF;
+    color: black;
+}
+
+.Signup .form .btnAuth img,
+.Login .form .btnAuth img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.Signup .form .btnSignup,
+.Signup .form .btnSignin,
+.Login .form .btnSignup,
+.Login .form .btnSignin {
+    margin-top: 20px;
+    background-color: rgb(0, 98, 255);
+}
+
+.Signup .form .btnSignup:hover,
+.Signup .form .btnSignin:hover,
+.Login .form .btnSignup:hover,
+.Login .form .btnSignin:hover {
+    background-color: rgb(29, 108, 236);
+}
+
+.Signup .form .btnSignup:active,
+.Signup .form .btnSignin:active,
+.Login .form .btnSignup:active,
+.Login .form .btnSignin:active {
+    background-color: rgb(57, 129, 245);
+}
+
+.Signup .form span,
+.Login .form span {
+    display: block;
+}
+
+.Signup .form label,
+.Login .form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.Signup .form input,
+.Login .form input {
+    padding: 6px 12px;
+    border: 1px solid rgb(190, 190, 190);
+}
+
+.Verify {
+    width: 100%;
+    height: 100vh;
+    padding: 30px;
+    background-color: #F0F4FF;
+}
+
+.Verify .container {
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 6px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.Verify .container img {
+    width: 60px;
+    display: block;
+    margin: 20px auto;
+}
+
+.Verify .container h2 {
+    font-weight: bold;
+    color: rgb(36, 36, 36);
+}
+
+.Verify .container p {
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 800px) {
+    .Verify {
+        padding: 20px;
+    }
+
+    .Verify .container {
+        background-color: transparent;
+        padding: 0;
+    }
+}
+
+.fa-spinner {
+    animation: spin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    font-size: 22px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

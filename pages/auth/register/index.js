@@ -1,122 +1,157 @@
-import React from 'react'
+import React, { Component } from 'react';
 import styles from '/styles/Auth.module.css';
+import firebase from '/utils/firebase';
+import axios from 'axios';
 import Head from 'next/head';
+import Link from 'next/link';
 
-export default function index() {
-    return (
-        <div className={styles.container}>
-            <Head>
-                <title>Register your Facility | Lab2Client</title>
-                <meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <h1 style={{fontWeight: "bold", fontSize: 30, textAlign: "center"}}>Registration Form</h1>
-            {/* <div style={{
-                backgroundColor: "#f5f5f5",
-                padding: 10,
-                borderRadius: 6,
-                color: "#5F5F5F",
-                marginTop: 20,
-                marginBottom: 20
-            }}>
-                <h3 style={{fontWeight: "bold", fontSize: 18, marginTop: 20}}>Welcome to Lab2Client</h3>
-                <p>Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities and expertise by breaking down geographical and institutional barriers. This platform connects researchers with available lab space and equipment, streamlining the entire process from start to finish.</p>
-            </div> */}
-            <br/>
-            <form action="#" method="post" enctype="multipart/form-data">
-                <div className={styles.formGroup}>
-                    <label for="picture">Upload Picture:</label>
-                    <input type="file" id="picture" name="picture" accept="image/*" />
-                </div>
+class Signup extends Component {
+	state = {
+		loading: false,
+		error: ""
+	}
 
-                <div className={styles.formGroup}>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
-                </div>
+	handleGoogleSignup = () => {
+		this.setState({ loading: true });
+		var provider = new firebase.auth.GoogleAuthProvider();
 
-                <div className={styles.formGroup}>
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" required />
-                </div>
+		firebase.auth().signInWithPopup(provider).then((result) => {
+			var user = result.user;
+			axios.get(`https://pupil7-backend.herokuapp.com/users/${user.uid}`)
+				.then(doc => {
+					if (doc.data === "") {
+						axios.post('https://pupil7-backend.herokuapp.com/users', {
+							uid: user.uid,
+							username: user.displayName,
+							email: user.email
+						}).then(doc2 => {
+							const redirect = sessionStorage.getItem("redirect");
+							localStorage.setItem("user", JSON.stringify(doc2.data));
 
-                <div className={styles.formTable}>
-                    <div className={styles.formGroup}>
-                        <label>City*</label>
-                        <div><input type="text" name="city" required /></div>
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label>Province*</label>
-                        <div>
-                            <select name="province" required>
-                                <option value="">Select Province</option>
-                                <option value="AB">Alberta</option>
-                                <option value="BC">British Columbia</option>
-                                <option value="MB">Manitoba</option>
-                                <option value="NB">New Brunswick</option>
-                                <option value="NL">Newfoundland and Labrador</option>
-                                <option value="NS">Nova Scotia</option>
-                                <option value="ON">Ontario</option>
-                                <option value="PE">Prince Edward Island</option>
-                                <option value="QC">Quebec</option>
-                                <option value="SK">Saskatchewan</option>
-                                <option value="NT">Nordivwest Territories</option>
-                                <option value="NU">Nunavut</option>
-                                <option value="YT">Yukon</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label>Postal Code*</label>
-                        <div><input type="text" name="postal_code" required /></div>
-                    </div>
-                </div>
+							if (redirect) {
+								sessionStorage.removeItem("redirect");
+								window.location = redirect;
+							} else {
+								window.location = `/yearly/papers/CAIE`;
+							}
+						}).catch(e => {
+							this.setState({ loading: false });
+						});
+					} else {
+						this.setState({ loading: false, error: "Account already exits. Log in instead." });
 
-                <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 20}}>Contact Information</h2>
+						firebase.auth().signOut();
 
-                <div className={styles.formGroup}>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required />
-                </div>
+						setTimeout(() => {
+							this.setState({ error: "" });
+						}, 4000);
+					}
+				});
+		}).catch((error) => {
+			var errorMessage = error.message;
+			this.setState({ loading: false, error: errorMessage });
+			setTimeout(() => {
+				this.setState({ error: "" });
+			}, 4000);
+		});
+	}
 
-                <div className={styles.formGroup}>
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" required />
-                </div>
+	handleSignup = () => {
+		const email = document.querySelector(".email").value;
+		const password = document.querySelector(".password").value;
+		const confirmPassword = document.querySelector(".confirm-password").value;
+		const firstname = document.querySelector(".firstname").value;
+		const lastname = document.querySelector(".lastname").value;
 
-                <div className={styles.formGroup}>
-                    <label for="contact-email">Email:</label>
-                    <input type="email" id="contact-email" name="contact-email" required />
-                </div>
+		this.setState({ loading: true });
+		if (email.trim() === '' || password.trim() === '' || firstname.trim() === '' || lastname.trim() === '') {
+			this.setState({ loading: false, error: "Please provide a first name, last name, email address and password" });
+			setTimeout(() => {
+				this.setState({ error: "" });
+			}, 4000);
+		} else {
+			if (password === confirmPassword) {
+				firebase.auth().createUserWithEmailAndPassword(email, password)
+					.then(doc => {
+						axios.post('https://pupil7-backend.herokuapp.com/users', {
+							uid: doc.user.uid,
+							username: `${firstname} ${lastname}`,
+							email
+						}).then(user => {
+							const redirect = sessionStorage.getItem("redirect");
+							localStorage.setItem("user", JSON.stringify(user.data));
 
-                <div className={styles.formGroup}>
-                    <label for="telephone">Telephone:</label>
-                    <input type="tel" id="telephone" name="telephone" required />
-                </div>
+							if (redirect) {
+								sessionStorage.removeItem("redirect");
+								window.location = redirect;
+							} else {
+								window.location = `/dashboard`;
+							}
+						}).catch(e => {
+							this.setState({ loading: false });
+						});
+					}).catch((error) => {
+						this.setState({ loading: false, error: error.message });
+						setTimeout(() => {
+							this.setState({ error: "" });
+						}, 4000);
+					});
+			} else {
+				this.setState({ loading: false, error: "Passwords didn't match" });
+				setTimeout(() => {
+					this.setState({ error: "" });
+				}, 4000);
+			}
+		}
+	}
+	render() {
+		return (
+			<div>
+				<div className={styles.Signup}>
+					<Head>
+						<title>Register your Facility | Lab2Client</title>
+						<meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
+						<meta name="viewport" content="width=device-width, initial-scale=1" />
+						<link rel="icon" href="/favicon.ico" />
+					</Head>
+					<div className={styles.form}>
+						<h3>Create your account</h3>
+						<br />
+						<button onClick={this.handleGoogleSignup} className={`${styles.btn} ${styles.btnAuth} btn`}>Continue with Google</button>
+						<br />
 
-                <div className={styles.formGroup}>
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description"></textarea>
-                </div>
+						<p align="center">or</p>
 
-                <div className={styles.formGroup}>
-                    <label for="research">Field of Research:</label>
-                    <div id="research-container">
-                        <input type="text" id="research" name="research[]" required />
-                    </div>
-                    <button className="btn" type="button" id="add-research">Add More</button>
-                </div>
+						<label>First name</label>
+						<input type="text" className="firstname" />
+						<br />
 
-                <div className={styles.formGroup}>
-                    <label for="sector">Sector:</label>
-                    <div id="sector-container">
-                        <input type="text" id="sector" name="sector[]" required />
-                    </div>
-                    <button className="btn" type="button" id="add-sector">Add More</button>
-                </div>
+						<label>Last name</label>
+						<input type="text" className="lastname" />
+						<br />
 
-                <button className={styles.btn} type="submit">Submit</button>
-            </form>
-        </div>
-    )
+						<label>Email Address</label>
+						<input type="text" className="email" />
+						<br />
+
+						<label>Password</label>
+						<input type="password" className="password" />
+						<br />
+						<label>Confirm Password</label>
+						<input type="password" className="confirm-password" />
+						<br />
+
+						<br />
+						<p className="text-muted">By signing up, you are accepting the <a href="/privacypolicy">Privacy Policy</a> and the Terms of Service</p>
+						{this.state.error === "" ? <span></span> : <span className="alert alert-danger error">{this.state.error}</span>}
+						<button onClick={this.handleSignup} disabled={this.state.loading} className={`${styles.btn} ${styles.btnSignup} btn`}>{this.state.loading ? <i className="fa fa-spinner"></i> : "Sign up"}</button>
+						<br />
+						<p>Have an account? <Link href="/auth/login/lab">Log in now</Link></p>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
+
+export default Signup;
