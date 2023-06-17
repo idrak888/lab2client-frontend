@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Navbar(props) {
+export default function Navbar({ user }) {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark">
 			<div className="container-fluid">
@@ -14,6 +14,9 @@ export default function Navbar(props) {
 							<a className="nav-link active" aria-current="page" href="/">Home</a>
 						</li>
 						<li className="nav-item">
+							<a className="nav-link" href="/listings">Browse</a>
+						</li>
+						<li className="nav-item">
 							<a className="nav-link" href="/about">About</a>
 						</li>
 						<li className="nav-item">
@@ -22,8 +25,8 @@ export default function Navbar(props) {
 					</ul>
 					<div className="d-flex">
 						{
-							props.user ?
-							<a href='/auth/register'><button className="btn btn-outline-light">Go to Dashboard</button></a>
+							user ?
+							<a href='/dashboard'><button className="btn btn-outline-light">Go to Dashboard</button></a>
 							:
 							<a href='/auth/register'><button className="btn btn-outline-light">Get Started</button></a>
 						}

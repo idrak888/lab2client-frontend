@@ -18,17 +18,25 @@ export default function Listings({ query }) {
     }
 
     useEffect(() => {
-        fetch(`https://lab2client.herokuapp.com/search_word/${query.search}`).then(response => response.json())
-        .then(data => {
-            setData(data);
-            setSearchKeys(query.search);
-        });
+        if (query.search) {
+            fetch(`https://lab2client.herokuapp.com/search_word/${query.search}`).then(response => response.json())
+            .then(data => {
+                setData(data);
+                setSearchKeys(query.search);
+            });
+        } else {
+            fetch(`https://lab2client.herokuapp.com/getall`).then(response => response.json())
+            .then(data => {
+                setData(data);
+                setSearchKeys("");
+            });
+        }
     },[]);
 
     return (
         <>
             <Head>
-                <title>{capitalizeFirstLetter(query.search)} | Lab2Client</title>
+                <title>{query.search ? capitalizeFirstLetter(query.search) : "All Listings"} | Lab2Client</title>
                 <meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />

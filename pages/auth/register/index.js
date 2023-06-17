@@ -11,51 +11,6 @@ class Signup extends Component {
 		error: ""
 	}
 
-	handleGoogleSignup = () => {
-		this.setState({ loading: true });
-		var provider = new firebase.auth.GoogleAuthProvider();
-
-		firebase.auth().signInWithPopup(provider).then((result) => {
-			var user = result.user;
-			axios.get(`https://pupil7-backend.herokuapp.com/users/${user.uid}`)
-				.then(doc => {
-					if (doc.data === "") {
-						axios.post('https://pupil7-backend.herokuapp.com/users', {
-							uid: user.uid,
-							username: user.displayName,
-							email: user.email
-						}).then(doc2 => {
-							const redirect = sessionStorage.getItem("redirect");
-							localStorage.setItem("user", JSON.stringify(doc2.data));
-
-							if (redirect) {
-								sessionStorage.removeItem("redirect");
-								window.location = redirect;
-							} else {
-								window.location = `/yearly/papers/CAIE`;
-							}
-						}).catch(e => {
-							this.setState({ loading: false });
-						});
-					} else {
-						this.setState({ loading: false, error: "Account already exits. Log in instead." });
-
-						firebase.auth().signOut();
-
-						setTimeout(() => {
-							this.setState({ error: "" });
-						}, 4000);
-					}
-				});
-		}).catch((error) => {
-			var errorMessage = error.message;
-			this.setState({ loading: false, error: errorMessage });
-			setTimeout(() => {
-				this.setState({ error: "" });
-			}, 4000);
-		});
-	}
-
 	handleSignup = () => {
 		const email = document.querySelector(".email").value;
 		const password = document.querySelector(".password").value;
@@ -73,23 +28,29 @@ class Signup extends Component {
 			if (password === confirmPassword) {
 				firebase.auth().createUserWithEmailAndPassword(email, password)
 					.then(doc => {
-						axios.post('https://pupil7-backend.herokuapp.com/users', {
-							uid: doc.user.uid,
-							username: `${firstname} ${lastname}`,
-							email
-						}).then(user => {
-							const redirect = sessionStorage.getItem("redirect");
-							localStorage.setItem("user", JSON.stringify(user.data));
-
-							if (redirect) {
-								sessionStorage.removeItem("redirect");
-								window.location = redirect;
-							} else {
-								window.location = `/dashboard`;
-							}
-						}).catch(e => {
-							this.setState({ loading: false });
+						console.log(doc.user);
+						doc.user.updateProfile({
+							displayName: `${firstname} ${lastname}`
 						});
+						localStorage.setItem("user", JSON.stringify(doc.user));
+						window.location = `/dashboard`;
+						// axios.post('https://pupil7-backend.herokuapp.com/users', {
+						// 	uid: doc.user.uid,
+						// 	username: `${firstname} ${lastname}`,
+						// 	email
+						// }).then(user => {
+						// 	const redirect = sessionStorage.getItem("redirect");
+						// 	localStorage.setItem("user", JSON.stringify(user.data));
+
+						// 	if (redirect) {
+						// 		sessionStorage.removeItem("redirect");
+						// 		window.location = redirect;
+						// 	} else {
+						// 		window.location = `/dashboard`;
+						// 	}
+						// }).catch(e => {
+						// 	this.setState({ loading: false });
+						// });
 					}).catch((error) => {
 						this.setState({ loading: false, error: error.message });
 						setTimeout(() => {
@@ -117,10 +78,6 @@ class Signup extends Component {
 					<div className={styles.form}>
 						<h3>Create your account</h3>
 						<br />
-						<button onClick={this.handleGoogleSignup} className={`${styles.btn} ${styles.btnAuth} btn`}>Continue with Google</button>
-						<br />
-
-						<p align="center">or</p>
 
 						<label>First name</label>
 						<input type="text" className="firstname" />
@@ -146,7 +103,7 @@ class Signup extends Component {
 						{this.state.error === "" ? <span></span> : <span className="alert alert-danger error">{this.state.error}</span>}
 						<button onClick={this.handleSignup} disabled={this.state.loading} className={`${styles.btn} ${styles.btnSignup} btn`}>{this.state.loading ? <i className="fa fa-spinner"></i> : "Sign up"}</button>
 						<br />
-						<p>Have an account? <Link href="/auth/login/lab">Log in now</Link></p>
+						<p>Have an account? <Link href="/auth/login">Log in now</Link></p>
 					</div>
 				</div>
 			</div>

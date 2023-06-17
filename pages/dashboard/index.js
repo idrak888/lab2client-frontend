@@ -22,6 +22,7 @@ export default function index() {
 				<nav className="nav nav-pills nav-fill" style={{backgroundColor: "white", cursor: "pointer"}}>
 					<div className={`nav-link ${view == 0 ? "active" : ""}`} onClick={() => setView(0)}>Orders</div>
 					<div className={`nav-link ${view == 1 ? "active" : ""}`} onClick={() => setView(1)}>Labs</div>
+					<div className={`nav-link ${view == 2 ? "active" : ""}`} onClick={() => setView(2)}>Profile</div>
 				</nav>
 				{
 					view == 0 ?

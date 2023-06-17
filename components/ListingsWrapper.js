@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function ListingsWrapper({ data }) {
   	return (
 		<div className={styles.listings}>
-			{data.map(listing => {
+			{data.length > 0 ? data.map(listing => {
 				return (
 					<Link href={{ pathname: '/view', query: { email: listing.identification.email_identification } }} className={styles.card}>
 						<div className='row' style={{display: "flex", alignItems: "center"}}>
@@ -29,7 +29,7 @@ export default function ListingsWrapper({ data }) {
 						</div>
 					</Link>
 				)
-			})}
+			}) : null}
 		</div>
 	)
 }

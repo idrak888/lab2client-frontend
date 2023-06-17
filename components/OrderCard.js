@@ -42,8 +42,8 @@ export default function OrderCard({ lab }) {
                 </li>
             </ul>
             <div className={`${styles.action}`}>
-                <a className={`${styles.button}`} href="#">
-                    Proceed to Payment
+                <a className={`${styles.button}`} href="">
+                    Place Order
                 </a>
             </div>
         </div>
