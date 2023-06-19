@@ -13,7 +13,6 @@ export default function App({ Component, pageProps }) {
     var userStr = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
     if (userStr) {
       setUser(JSON.parse(userStr));
-      console.log(JSON.parse(userStr));
     }
   },[])
 

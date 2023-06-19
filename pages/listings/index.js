@@ -27,7 +27,7 @@ export default function Listings({ query }) {
         } else {
             fetch(`https://lab2client.herokuapp.com/getall`).then(response => response.json())
             .then(data => {
-                setData(data);
+                setData(data.reverse());
                 setSearchKeys("");
             });
         }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from '/styles/Auth.module.css';
 import firebase from '/utils/firebase';
-import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -72,7 +71,7 @@ class Login extends Component {
                         <br/>
                         <br/>
                         { this.state.error === "" ? <span></span> : <span className="alert alert-danger error">{this.state.error}</span> }
-                        <button onClick={this.handleLogin} disabled={this.state.loading} className={`${styles.btn} ${styles.btnSignin} btn`}>{this.state.loading ? <i className="fa fa-spinner"></i> : "Sign in"}</button>
+                        <button onClick={this.handleLogin} disabled={this.state.loading} className={`${styles.btn} ${styles.btnSignin} btn`}>{this.state.loading ? <i className={`${styles.arrow} bi bi-arrow-repeat`}></i> : "Sign in"}</button>
                         <br/>
                         <p>Don&apos;t have an account? <Link href="/auth/register">Sign up now</Link></p>
                     </div>

@@ -101,7 +101,7 @@ class Signup extends Component {
 						<br />
 						<p className="text-muted">By signing up, you are accepting the <a href="/privacypolicy">Privacy Policy</a> and the Terms of Service</p>
 						{this.state.error === "" ? <span></span> : <span className="alert alert-danger error">{this.state.error}</span>}
-						<button onClick={this.handleSignup} disabled={this.state.loading} className={`${styles.btn} ${styles.btnSignup} btn`}>{this.state.loading ? <i className="fa fa-spinner"></i> : "Sign up"}</button>
+						<button onClick={this.handleSignup} disabled={this.state.loading} className={`${styles.btn} ${styles.btnSignup} btn`}>{this.state.loading ? <i className={`${styles.arrow} bi bi-arrow-repeat`}></i> : "Sign up"}</button>
 						<br />
 						<p>Have an account? <Link href="/auth/login">Log in now</Link></p>
 					</div>

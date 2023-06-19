@@ -8,6 +8,11 @@ body {
     max-width: 1200px;
     padding: 10px;
 }
+@media only screen and (max-width: 1000px) {
+    .navbar .container-fluid {
+        max-width: 860px;
+    }
+}
 .navbar .nav-link {
     font-size: 18px;
     font-weight: bold;

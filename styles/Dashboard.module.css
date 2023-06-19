@@ -12,3 +12,11 @@
     width: 100%;
     max-width: 800px;
 }
+.OrderWrapper {
+    background-color: white;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid grey;
+    border-radius: 6px;
+    color: black;
+}

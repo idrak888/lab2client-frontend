@@ -2,12 +2,12 @@ import React from 'react'
 import styles from '../styles/Listings.module.css';
 import Link from 'next/link';
 
-export default function ListingsWrapper({ data }) {
+export default function ListingsWrapper({ data, edit }) {
   	return (
 		<div className={styles.listings}>
 			{data.length > 0 ? data.map(listing => {
 				return (
-					<Link href={{ pathname: '/view', query: { email: listing.identification.email_identification } }} className={styles.card}>
+					<Link href={ edit ? { pathname: '/edit', query: { email: listing.identification.email_identification } } : { pathname: '/view', query: { email: listing.identification.email_identification } }} className={styles.card}>
 						<div className='row' style={{display: "flex", alignItems: "center"}}>
 							<div className='col-sm-4'>
 								<img style={{width: "100%", maxWidth: 250, padding: 10}} src={listing.research["LOGOS"]}/>

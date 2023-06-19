@@ -3,11 +3,48 @@ import { useEffect, useState } from 'react';
 import styles from '../../styles/Dashboard.module.css';
 import Link from 'next/link';
 import Head from 'next/head';
+import firebase from '/utils/firebase';
+import axios from 'axios';
+import ListingsWrapper from '@/components/ListingsWrapper';
+import OrderWrapper from '@/components/OrderWrapper';
+import Loader from '@/components/Loader';
 
 export default function index() {
     let [view, setView] = useState(1);
+	let [orderView, setOrderView] = useState(0);
 	let [labs, setLabs] = useState([]);
-	let [orders, setOrders] = useState([]);
+	let [ordersReceieved, setOrdersReceived] = useState([]);
+	let [ordersSent, setOrdersSent] = useState([]);
+	let [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		const userStr = localStorage.getItem("user");
+        if (userStr) {
+			setLoading(true);
+			const parsed = JSON.parse(userStr);
+			const uid = parsed.uid;
+			setUser(parsed);
+
+			axios.get(`https://lab2client.herokuapp.com/dashboard/${uid}`).then(doc => {
+				setLabs(doc.data);
+				axios.get(`https://lab2client.herokuapp.com/orders/sent/${uid}`).then(doc => {
+					setOrdersSent(doc.data);
+				}).catch(e => {
+					console.log(e);
+				});
+
+				axios.get(`https://lab2client.herokuapp.com/orders/received/${uid}`).then(doc => {
+					setOrdersReceived(doc.data);
+					setLoading(false);
+				}).catch(e => {
+					console.log(e);
+				});
+			}).catch(e => {
+				console.log(e);
+			});
+		}
+	}, []);
 
 	return (
 		<div className={`${styles.container}`}>
@@ -25,27 +62,70 @@ export default function index() {
 					<div className={`nav-link ${view == 2 ? "active" : ""}`} onClick={() => setView(2)}>Profile</div>
 				</nav>
 				{
+					!loading ? 
+					user ? 
 					view == 0 ?
-					<div>
-						Your orders
+					<div style={{
+						paddingTop: 20
+					}}>
+						<strong>Your orders</strong>
+						<ul className="nav nav-tabs" style={{marginTop: 20}}>
+							<li className="nav-item">
+								<a className={`nav-link ${orderView == 0 ? "active" : ""}`} onClick={() => setOrderView(0)} aria-current="page" href="#">Received ({ordersReceieved.length})</a>
+							</li>
+							<li className="nav-item">
+								<a className={`nav-link ${orderView == 1 ? "active" : ""}`} onClick={() => setOrderView(1)} href="#">Requested ({ordersSent.length})</a>
+							</li>
+						</ul>
+						{
+							orderView == 0 ?
+							ordersReceieved.map(order => {
+								return <OrderWrapper information={order.information} date={order.date} status={order.status}/>
+							}) : orderView == 1 ?
+							ordersSent.map(order => {
+								return <OrderWrapper information={order.information} date={order.date} status={order.status}/>
+							}) : ""
+						}
 					</div>
 					: view == 1 ?
-					<div>
-						Your labs
+					<div style={{
+						paddingTop: 20
+					}}>
+						<strong>Your labs</strong>
 						{
 							labs.length == 0 ? 
 							<div>
-								<h2>You don't have any active listings at the moment</h2>
+								<p>You don't have any active listings at the moment</p>
 								<Link href="/dashboard/form">Register</Link>
 							</div>
 							:
 							<div>
-
+								<Link href="/dashboard/form">Add new</Link>
+								<ListingsWrapper edit={true} data={labs}/>
 							</div>
 						}
 					</div>
+					: view == 2 ?
+					<div style={{
+						paddingTop: 20
+					}}>
+						<strong>Your profile</strong>
+						<p>{user.email}</p>
+						<button onClick={() => {
+							firebase.auth().signOut().then(() => {
+								localStorage.removeItem("user");
+								window.location = "/";
+							}).catch(e => {
+								console.log(e.message);
+							});
+						}} className='btn btn-danger'>Log out</button>
+					</div>
 					:
 					null
+					:
+					<strong>Not logged in</strong>
+					:
+					<Loader/>
 				}
 			</div>
 		</div>

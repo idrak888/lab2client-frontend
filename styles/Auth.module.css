@@ -1,11 +1,17 @@
 .container {
+    width: 100%;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+.inner {
     max-width: 650px;
-    margin: 50px auto;
+    margin: auto;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border: 2px solid #294b80;
 }
 
 .formGroup {
@@ -21,6 +27,7 @@
 .formGroup input[type="text"],
 .formGroup input[type="email"],
 .formGroup input[type="tel"],
+.formGroup input[type="url"],
 .formGroup textarea {
     width: 100%;
     padding: 8px;
@@ -239,19 +246,17 @@
     }
 }
 
-.fa-spinner {
-    animation: spin;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
+.arrow {
+    animation: spin 1s infinite;
     font-size: 22px;
 }
 
 @keyframes spin {
-    from {
+    0% {
         transform: rotate(0deg);
     }
 
-    to {
-        transform: rotate(360deg);
+    100% {
+        transform: rotate(359deg);
     }
 }

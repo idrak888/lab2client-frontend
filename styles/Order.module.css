@@ -1,4 +1,5 @@
-.container, .viewWrapper {
+.container,
+.viewWrapper {
     display: flex;
     width: 100%;
     min-height: 80vh;
@@ -6,7 +7,9 @@
     flex-direction: column;
     background-color: rgb(255, 255, 255);
 }
-.searchWrapper, .header {
+
+.searchWrapper,
+.header {
     width: 100%;
     background-color: #102D5D;
     padding: 10px 20px;
@@ -14,9 +17,11 @@
     align-items: center;
     border-top: 1px solid #294b80;
 }
+
 .loader {
     margin-top: 200px
 }
+
 .plan {
     border-radius: 16px;
     box-shadow: 0 30px 30px -25px rgba(91, 146, 255, 0.205);
@@ -24,18 +29,20 @@
     background-color: #fff;
     color: #697e91;
 }
+
 .plan strong {
     font-weight: 600;
     color: #425275;
 }
+
 .plan .inner {
     align-items: center;
     padding: 30px;
-    padding-top: 60px;
     background-color: #ecf0ff;
     border-radius: 12px;
     position: relative;
 }
+
 .plan .pricing {
     position: absolute;
     top: 0;
@@ -49,34 +56,42 @@
     font-weight: 600;
     color: #425475;
 }
+
 .plan .pricing small {
     color: #707a91;
     font-size: 0.75em;
     margin-left: 0.25em;
 }
+
 .plan .title {
     font-weight: 600;
     font-size: 1.25rem;
     color: #425675;
 }
-.plan .title + * {
+
+.plan .title+* {
     margin-top: 0.75rem;
 }
-.plan .info + * {
+
+.plan .info+* {
     margin-top: 1rem;
 }
+
 .plan .features {
     display: flex;
     flex-direction: column;
 }
+
 .plan .features li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-.plan .features li + * {
+
+.plan .features li+* {
     margin-top: 0.75rem;
 }
+
 .plan .features .icon {
     background-color: #1fca97;
     display: inline-flex;
@@ -87,19 +102,23 @@
     width: 20px;
     height: 20px;
 }
+
 .plan .features .icon svg {
     width: 14px;
     height: 14px;
 }
-.plan .features + * {
+
+.plan .features+* {
     margin-top: 1.25rem;
 }
+
 .plan .action {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: end;
 }
+
 .plan .button {
     background-color: #1aaa32;
     border-radius: 6px;
@@ -112,7 +131,102 @@
     width: 100%;
     padding: 0.625em 0.75em;
     text-decoration: none;
+    margin-top: 10px;
 }
-.plan .button:hover, .plan .button:focus {
+
+.plan .button:hover,
+.plan .button:focus {
     background-color: #129428;
+}
+
+.materialCheckbox {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #777777;
+    cursor: pointer;
+}
+
+.materialCheckbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 2px solid #454B00;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.materialCheckbox input[type="checkbox"]:checked~.checkmark {
+    background-color: #2F3300;
+    border-color: #454B00;
+}
+
+.materialCheckbox input[type="checkbox"]:checked~.checkmark:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.materialCheckbox input[type="checkbox"]:focus~.checkmark {
+    box-shadow: 0 0 0 2px #dfec5065;
+}
+
+.materialCheckbox:hover input[type="checkbox"]~.checkmark {
+    border-color: #C3CF34;
+}
+
+.materialCheckbox input[type="checkbox"]:disabled~.checkmark {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.materialCheckbox input[type="checkbox"]:disabled~.checkmark:hover {
+    border-color: #4d4d4d;
+}
+
+.description {
+    border: 1px solid #697e91;
+    width: 100%;
+    padding: 10px;
+    height: 200px;
+    background-color: transparent;
+}
+
+.description::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(135, 135, 135);
+    opacity: 1;
+    /* Firefox */
+}
+
+.arrow {
+    animation: spin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    font-size: 22px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

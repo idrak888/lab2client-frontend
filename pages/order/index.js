@@ -8,8 +8,14 @@ import OrderCard from '../../components/OrderCard';
 
 export default function Order({ query }) {
     let [data, setData] = useState(null);
+    let [user, setUser] = useState(null);
 
     useEffect(() => {
+        const userStr = localStorage.getItem("user");
+        if (userStr) {
+			const parsed = JSON.parse(userStr);
+			setUser(parsed);
+		}
         fetch(`https://lab2client.herokuapp.com/email/${query.email}`).then(response => response.json())
         .then(data => {
             setData(data[0]);
@@ -56,15 +62,15 @@ export default function Order({ query }) {
                             <p><a href={data.research.website}>{data.research.website}</a></p>
                             <h4 style={{fontWeight: "bold"}}>Fields of Research</h4>
                             {data.Fields_of_research.fields.map(field => <p>{field}</p>)}
-                            <h4 style={{fontWeight: "bold"}}>Sectors</h4>
+                            <h4 style={{fontWeight: "bold"}}>Applications</h4>
                             {data.Sectors_of_application.applications.map(app => <p>{app}</p>)}
                         </div>
                         <div className='col-sm' style={{maxWidth: 450}}>
                             <div style={{marginLeft: 20}}>
                                 <h4>Confirm Details</h4>
-                                <p>This is a non-refundable purchase that will enable access to internal communications with the facility.</p>
+                                <p>Customize your order and confirm the details to make sure you receive the necessary resources from the facility.</p>
                             </div>
-                            <OrderCard lab={query.lab}/>
+                            <OrderCard user={user} lab={query.lab} data={data}/>
                         </div>
                     </div>
                 </div>
