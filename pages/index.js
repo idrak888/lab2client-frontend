@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import styles from '@/styles/Home.module.css';
 import Hero from '@/components/Hero';
 import HomeCard from '@/components/HomeCard';
 import emailjs from '@emailjs/browser';
+import Link from 'next/link';
 
 export default function Home() {
     let [btnText, setBtnText] = useState("Send Message");
@@ -46,10 +46,10 @@ export default function Home() {
                             <h2 className="text-center mb-4">Trusted by hundreds of Institutions</h2>
                             <div className="row">
                                 <div className="col-md-6">
-                                    <HomeCard image="/labphoto1.jpeg" title="Find Available Labs" description="Easily search and discover labs that meet your specific research needs." />
+                                    <Link href="/listings"><HomeCard image="/labphoto1.jpeg" title="Find Available Labs" description="Easily search and discover labs that meet your specific research needs." /></Link>
                                 </div>
                                 <div className="col-md-6">
-                                    <HomeCard image="/labphoto2.jpeg" title="Offer Lab Space" description="Lab PIs can sign up and offer their lab space to other researchers, generating revenue." />
+                                    <Link href="/auth/register"><HomeCard image="/labphoto2.jpeg" title="Offer Lab Space" description="Lab PIs can sign up and offer their lab space to other researchers, generating revenue." /></Link>
                                 </div>
                             </div>
                         </div>

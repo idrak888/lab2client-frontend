@@ -20,3 +20,27 @@
     border-radius: 6px;
     color: black;
 }
+.pill {
+    margin: 10px 0;
+    margin-right: 3px;
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #294b80;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+}
+.btnSuccess {
+    background-color: #1aaa32;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 0.625em 2em;
+    text-decoration: none;
+    margin-top: 10px;
+}

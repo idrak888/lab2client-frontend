@@ -32,25 +32,17 @@ class Signup extends Component {
 						doc.user.updateProfile({
 							displayName: `${firstname} ${lastname}`
 						});
-						localStorage.setItem("user", JSON.stringify(doc.user));
-						window.location = `/dashboard`;
-						// axios.post('https://pupil7-backend.herokuapp.com/users', {
-						// 	uid: doc.user.uid,
-						// 	username: `${firstname} ${lastname}`,
-						// 	email
-						// }).then(user => {
-						// 	const redirect = sessionStorage.getItem("redirect");
-						// 	localStorage.setItem("user", JSON.stringify(user.data));
-
-						// 	if (redirect) {
-						// 		sessionStorage.removeItem("redirect");
-						// 		window.location = redirect;
-						// 	} else {
-						// 		window.location = `/dashboard`;
-						// 	}
-						// }).catch(e => {
-						// 	this.setState({ loading: false });
-						// });
+						axios.post('https://lab2client.herokuapp.com/create/info', {
+							ucid: doc.user.uid,
+							first_name: firstname,
+							last_name: lastname,
+							user_name: `${firstname} ${lastname}`
+						}).then(() => {
+							localStorage.setItem("user", JSON.stringify(doc.user));
+							window.location = `/dashboard`;
+						}).catch(e => {
+							this.setState({ loading: false });
+						});
 					}).catch((error) => {
 						this.setState({ loading: false, error: error.message });
 						setTimeout(() => {

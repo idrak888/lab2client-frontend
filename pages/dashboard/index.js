@@ -16,6 +16,7 @@ export default function index() {
 	let [ordersReceieved, setOrdersReceived] = useState([]);
 	let [ordersSent, setOrdersSent] = useState([]);
 	let [user, setUser] = useState(null);
+	let [userInfo, setUserInfo] = useState(null);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
@@ -28,6 +29,13 @@ export default function index() {
 
 			axios.get(`https://lab2client.herokuapp.com/dashboard/${uid}`).then(doc => {
 				setLabs(doc.data);
+				axios.get(`https://lab2client.herokuapp.com/userinfo/${uid}`).then(doc => {
+					setUserInfo(doc.data[0]);
+					setLoading(false);
+				}).catch(e => {
+					console.log(e);
+				});
+
 				axios.get(`https://lab2client.herokuapp.com/orders/sent/${uid}`).then(doc => {
 					setOrdersSent(doc.data);
 				}).catch(e => {
@@ -36,7 +44,6 @@ export default function index() {
 
 				axios.get(`https://lab2client.herokuapp.com/orders/received/${uid}`).then(doc => {
 					setOrdersReceived(doc.data);
-					setLoading(false);
 				}).catch(e => {
 					console.log(e);
 				});
@@ -79,11 +86,11 @@ export default function index() {
 						</ul>
 						{
 							orderView == 0 ?
-							ordersReceieved.map(order => {
-								return <OrderWrapper information={order.information} date={order.date} status={order.status}/>
+							ordersReceieved.reverse().map(order => {
+								return <OrderWrapper type={"received"} user={user} information={order.information} date={order.date} status={order.status}/>
 							}) : orderView == 1 ?
-							ordersSent.map(order => {
-								return <OrderWrapper information={order.information} date={order.date} status={order.status}/>
+							ordersSent.reverse().map(order => {
+								return <OrderWrapper type={"sent"} user={user} information={order.information} date={order.date} status={order.status}/>
 							}) : ""
 						}
 					</div>
@@ -110,15 +117,22 @@ export default function index() {
 						paddingTop: 20
 					}}>
 						<strong>Your profile</strong>
-						<p>{user.email}</p>
-						<button onClick={() => {
-							firebase.auth().signOut().then(() => {
-								localStorage.removeItem("user");
-								window.location = "/";
-							}).catch(e => {
-								console.log(e.message);
-							});
-						}} className='btn btn-danger'>Log out</button>
+						<div style={{
+							backgroundColor: "white",
+							padding: 20,
+							marginTop: 20
+						}}>
+							<h3>{userInfo.user_name}</h3>
+							<p>{user.email}</p>
+							<button onClick={() => {
+								firebase.auth().signOut().then(() => {
+									localStorage.removeItem("user");
+									window.location = "/";
+								}).catch(e => {
+									console.log(e.message);
+								});
+							}} className='btn btn-danger'>Log out</button>
+						</div>
 					</div>
 					:
 					null

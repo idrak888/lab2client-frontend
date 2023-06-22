@@ -24,7 +24,9 @@ export default function OrderCard({ lab, data, user }) {
 			ucid_recieved: data.user_unique_id,
 			information: {
 				fields,
-				description
+				description,
+				requester_email: user.email,
+				receiver: lab
 			},
 			cost: 0.0,
 			date: getDate(),
