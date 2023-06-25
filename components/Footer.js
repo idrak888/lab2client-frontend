@@ -14,17 +14,17 @@ export default function Footer() {
                         <div className="col-lg-3 footer-links">
                             <h5>Quick Links</h5>
                             <ul className="list-unstyled">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/">Services</a></li>
+                                <li><a href="/#contact">Contact</a></li>
                             </ul>
                         </div>
                         <div className="col-lg-3 footer-social">
                             <h5>Follow Us</h5>
-                            <a href="#" target="_blank"><i className="bi bi-facebook"></i></a>
-                            <a href="#" target="_blank"><i className="bi bi-twitter"></i></a>
-                            <a href="#" target="_blank"><i className="bi bi-instagram"></i></a>
+                            <a href="/" target="_blank"><i className="bi bi-facebook"></i></a>
+                            <a href="/" target="_blank"><i className="bi bi-twitter"></i></a>
+                            <a href="/" target="_blank"><i className="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 </div>

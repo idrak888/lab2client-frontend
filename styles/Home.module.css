@@ -1,7 +1,8 @@
 .outer {
-    background-color: #102D5D;
+    background: rgb(20,50,130);
+background: linear-gradient(0deg, rgba(20,50,130,1) 5%, rgba(20,50,130,1) 12%, rgba(16,45,93,1) 45%);
     color: white;
-    padding: 100px 10px;
+    padding: 110px 20px;
 }
 .outer .container {
     padding: 0 10px;

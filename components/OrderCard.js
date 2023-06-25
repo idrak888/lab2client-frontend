@@ -6,7 +6,7 @@ export default function OrderCard({ lab, data, user }) {
 	const [fields, setFields] = useState([]);
 	const [description, setDescription] = useState("");
 	const [loading, setLoading] = useState(false);
-	
+
 	const getDate = () => {
 		var today = new Date();
 		var dd = String(today.getDate()).padStart(2, '0');
@@ -19,24 +19,34 @@ export default function OrderCard({ lab, data, user }) {
 
 	const submitOrder = () => {
 		setLoading(true);
-		axios.post(`https://lab2client.herokuapp.com/create/order`, {
-			ucid_sent: user.uid,
-			ucid_recieved: data.user_unique_id,
-			information: {
-				fields,
-				description,
-				requester_email: user.email,
-				receiver: lab
-			},
-			cost: 0.0,
-			date: getDate(),
-			status: "Under Process"
-		}).then(doc => {
+		if (user) {
+			if (fields.length > 0 && description != "") {
+				axios.post(`https://lab2client.herokuapp.com/create/order`, {
+					ucid_sent: user.uid,
+					ucid_recieved: data.user_unique_id,
+					information: {
+						fields,
+						description,
+						requester_email: user.email,
+						receiver: lab
+					},
+					cost: 0.0,
+					date: getDate(),
+					status: "Under Process"
+				}).then(doc => {
+					setLoading(false);
+					window.location = "/dashboard";
+				}).catch(e => {
+					console.log(e);
+				});
+			} else {
+				window.alert("Please select at least one relevant field and include a description for the order.");
+				setLoading(false);
+			}
+		} else {
+			window.alert("Not logged in. Create an account or log in to place an order.");
 			setLoading(false);
-			window.location = "/dashboard";
-		}).catch(e => {
-			console.log(e);
-		})
+		}
 	}
 
 	return (

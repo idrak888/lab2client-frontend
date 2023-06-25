@@ -2,9 +2,23 @@ import React, { useState } from 'react'
 import styles from '../styles/Dashboard.module.css';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function OrderWrapper({ type, information, date, status, user }) {
     let [btnText, setBtnText] = useState("Send Message");
+
+    let stripePromise = null
+
+	const getStripe = () => {
+		if(!stripePromise) {
+			stripePromise = loadStripe("pk_test_51NB2f5L5vejuzwJ3crZY5PSOpeBZBJRrrNbVSCy1z93K2fgotOer5V9dgRSUOxwMOK55dP0BUMho8P6LJCHN2cZi00XdlifDJq")
+		}
+		return stripePromise
+	}
+
+	getStripe().then(stripe => {
+        
+    });
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -40,9 +54,9 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                                     <div className="mb-3">
                                         <label for="message" className="form-label">Message</label>
                                         <div style={{ display: "none" }}>
-                                            <input name='from_name' id="from_name" value={information.receiver}/>
-                                            <input name='sender_email' id="sender_email" value={user.email}/>
-                                            <input name='receiver_email' id="receiver_email" value={information.requester_email}/>
+                                            <input name='from_name' id="from_name" value={information.receiver} />
+                                            <input name='sender_email' id="sender_email" value={user.email} />
+                                            <input name='receiver_email' id="receiver_email" value={information.requester_email} />
                                         </div>
                                         <textarea name='message' className="form-control" id="message" rows="10"
                                             placeholder="Enter your message" value={
@@ -63,9 +77,9 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                 <div>
                     <strong>{information.description}</strong>
                     <br />
-                    {information.fields.map(field => {
+                    {information.fields && information.fields.length > 1 ? information.fields.map(field => {
                         return <span className={styles.pill}>{field}</span>
-                    })}
+                    }) : ""}
                     {
                         type == "received" ?
                             <p>From: {information.requester_email}</p>
@@ -79,11 +93,11 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                         <div style={{ minWidth: 180 }}>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" style={{ textDecoration: "none", width: "100%" }} className={`${styles.btnSuccess} btn btn-success`}>Contact</button>
                             <br />
-                            <Link href="/dashboard" style={{ textDecoration: "none", width: "100%", marginTop: 10 }} className={`${styles.btnSuccess} btn btn-success`}>Generate Invoice</Link>
+                            <Link href="/payment/invoice" style={{ textDecoration: "none", width: "100%", marginTop: 10 }} className={`${styles.btnSuccess} btn btn-success`}>Generate Invoice</Link>
                         </div>
                         :
                         <div style={{ minWidth: 180 }}>
-                            
+
                         </div>
                 }
 

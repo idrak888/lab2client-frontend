@@ -122,7 +122,7 @@ export default function index() {
 							padding: 20,
 							marginTop: 20
 						}}>
-							<h3>{userInfo.user_name}</h3>
+							<h3 style={{ fontSize: 20, fontWeight: "bold" }}>{userInfo.user_name}</h3>
 							<p>{user.email}</p>
 							<button onClick={() => {
 								firebase.auth().signOut().then(() => {
@@ -133,13 +133,23 @@ export default function index() {
 								});
 							}} className='btn btn-danger'>Log out</button>
 						</div>
+						<br/>
+						<strong>Payments</strong>
+						<div style={{
+							backgroundColor: "white",
+							padding: 20,
+							marginTop: 20
+						}}>
+							<h3 style={{ fontSize: 20, fontWeight: "bold" }}>How you get paid</h3>
+							<a href=''>Add an Account</a>
+						</div>
 					</div>
 					:
 					null
 					:
 					<strong>Not logged in</strong>
 					:
-					<Loader/>
+					<div style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center", height: 400}}><Loader/></div>
 				}
 			</div>
 		</div>
