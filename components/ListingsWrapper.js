@@ -7,7 +7,7 @@ export default function ListingsWrapper({ data, edit }) {
 		<div className={styles.listings}>
 			{data.length > 0 ? data.map(listing => {
 				return (
-					<Link href={ edit ? "#" : { pathname: '/view', query: { email: listing.identification.email_identification } }} className={styles.card}>
+					<Link href={ edit ? "#" : { pathname: '/view', query: { email: listing.identification.email_identification, building: listing.identification.building_name } }} className={styles.card}>
 						<div className='row' style={{display: "flex", alignItems: "center"}}>
 							<div className='col-sm-4'>
 								<img style={{width: "100%", maxWidth: 250, padding: 10}} src={listing.research["LOGOS"]}/>

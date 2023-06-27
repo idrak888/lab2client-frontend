@@ -11,8 +11,8 @@ export default function View({ query }) {
     useEffect(() => {
         fetch(`https://lab2client.herokuapp.com/email/${query.email}`).then(response => response.json())
         .then(data => {
+            data = data.filter(item => item.identification.building_name == query.building);    
             setData(data[0]);
-            console.log(data);
         });
     },[]);
 
@@ -86,6 +86,13 @@ export default function View({ query }) {
                         {data.Sectors_of_application.applications.map(app => <p>{app}</p>)}
                     </div>
                 </div>
+
+                {/* <div className='row' style={{marginTop: 20, marginBottom: 20}}>
+                    <div style={{backgroundColor: "white", padding: 20}} className='col-md-12'>
+                        <h4 style={{fontWeight: "bold"}}>Available Equipment</h4>
+                        
+                    </div>
+                </div> */}
             </div>
         }
         <FixedBottom data={data}/>

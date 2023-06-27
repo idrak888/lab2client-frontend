@@ -42,7 +42,7 @@ export default function Invoice() {
                             <span className='text-muted'>Please note that a 10% fee applies</span>
                         </div>
 
-                        <button disabled={loading} onClick={e => submit(e)} className={styles.btn} type="submit">{loading ? "loading..." : "Submit"}</button>
+                        <button disabled={loading} className={styles.btn} type="submit">{loading ? "loading..." : "Submit"}</button>
                     </form>
                 </div>
             </div>
