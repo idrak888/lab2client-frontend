@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Listings.module.css';
 import Link from 'next/link';
+//This is a comment
 
 const FixedBottom = ({ data }) => {
   return (
