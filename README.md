@@ -1,7 +1,7 @@
 
 ## Getting Started
 
-First, install all packages:
+After cloning, navigate to root and start by installing all packages:
 
 ```bash
 npm install
