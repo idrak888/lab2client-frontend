@@ -4,7 +4,7 @@
 First, install all packages:
 
 ```bash
-npm i
+npm install
 ```
 
 Then, run the development server:
@@ -14,6 +14,14 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the live development version.
+
+## What we are using
+
+- Bootstrap for styled components and responsive design
+- Firebase for client-side authentication
+- Axios for REST operations
+- 
+
 
 ## Deploy on Vercel
 
