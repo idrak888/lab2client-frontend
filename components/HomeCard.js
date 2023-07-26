@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from '@/styles/Home.module.css';
 
+// this is the card component that appears on the homepage (side by side in the middle)
+
 export default function HomeCard({ image, title, description }) {
     return (
         <div className={styles.card}>

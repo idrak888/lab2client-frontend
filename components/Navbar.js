@@ -1,5 +1,7 @@
 import React from 'react'
 
+// this is the main navbar that appears in all of the pages
+
 export default function Navbar({ user }) {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark">

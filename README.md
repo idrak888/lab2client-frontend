@@ -22,6 +22,39 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Documentation
+
+<h3>Public/</h3>
+<p>Both the /public and /assets folders contains asset files such as favicons and logos</p>
+
+<h3>Layouts</h3>
+<p>The main layout files are _app.js and _document.js<p>
+
+<h3>Pages</h3>
+<p>Currently there are 10 main views<p>
+
+- / (index.js)
+- /about 
+- /auth/login
+- /auth/register
+- /dashboard
+- /dashboard/form
+- /listings
+- /view
+- /order
+- /payment/invoice
+
+<h3>Components</h3>
+<p>The /components folder contains all of the modular components. Each component file contains a comment on the top describing where it is used.<p>
+
+<h3>Styles</h3>
+<p>/styles folder contains all of the css files</p>
+
+<h3>Utils</h3>
+<p>Utility files stay in the /utils directory</p>
+
+- firebase.js
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

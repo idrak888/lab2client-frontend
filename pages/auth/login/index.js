@@ -26,21 +26,6 @@ class Login extends Component {
                 console.log(doc.user);
                 localStorage.setItem("user", JSON.stringify(doc.user));
 				window.location = `/dashboard`;
-                // axios.get(`https://pupil7-backend.herokuapp.com/users/${doc.user.uid}`).then(user => {
-                //     const redirect = sessionStorage.getItem("redirect");
-                //     localStorage.setItem("user", JSON.stringify(user.data));
-
-                //     this.setState({loading: false});
-
-                //     if (redirect) {
-                //         sessionStorage.removeItem("redirect");
-                //         window.location = redirect;
-                //     } else {
-                //         window.location = `/dashboard`;
-                //     }
-                // }).catch(e => {
-                //     console.log(e);
-                // });
             }).catch(e => {
                 this.setState({loading: false, error: e.message});
                 setTimeout(() => {
