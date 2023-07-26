@@ -22,11 +22,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Axios for REST operations
 - Email.js for email forms
 
-
-## Deploy on Vercel
-
-Simply pushing your changes to the Main branch will update the hosted version at lab2client.com.
-
 ## Documentation
 
 <h3>Public</h3>
@@ -59,6 +54,10 @@ Simply pushing your changes to the Main branch will update the hosted version at
 <p>Utility files stay in the /utils directory</p>
 
 - firebase.js
+
+## Deploy on Vercel
+
+Simply pushing your changes to the Main branch will update the live version at https://lab2client.com.
 
 ## Learn More
 
