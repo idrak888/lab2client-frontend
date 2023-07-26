@@ -29,7 +29,7 @@ Simply pushing your changes to the Main branch will update the hosted version at
 
 ## Documentation
 
-<h3>Public/</h3>
+<h3>Public</h3>
 <p>Both the /public and /assets folders contains asset files such as favicons and logos</p>
 
 <h3>Layouts</h3>
