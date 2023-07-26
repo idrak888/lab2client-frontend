@@ -25,7 +25,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Documentation
 
 <h3>Public</h3>
-<p>Both the /public and /assets folders contains asset files such as favicons and logos</p>
+<p>Both the ```bash/public``` and ```bash/assets``` folders contains asset files such as favicons and logos</p>
 
 <h3>Layouts</h3>
 <p>The main layout files are _app.js and _document.js<p>
