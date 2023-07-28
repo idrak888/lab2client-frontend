@@ -4,6 +4,8 @@ import Hero from '@/components/Hero';
 import HomeCard from '@/components/HomeCard';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
+import Slideshow2 from '@/components/slideshow2';
+
 
 export default function Home() {
     let [btnText, setBtnText] = useState("Send Message");
@@ -56,6 +58,11 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            {/* SlideShow section*/}
+            <div>
+                <Slideshow2 folderPath="@/public/slideshow_pic" interval={3000}> </Slideshow2>
+            </div>
 
             {/* contact us section */}
             <section className="py-5" id="contact">

@@ -78,4 +78,5 @@ const Slideshow = ({ data, interval = 30000 }) => {
   );
 };
 
+
 export default Slideshow;

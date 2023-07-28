@@ -4,6 +4,7 @@ import Loader from '@/components/Loader';
 import styles from '../../styles/Listings.module.css';
 import Head from 'next/head';
 import FixedBottom from '@/components/FixedBottom';
+import Slideshow from '@/components/SlideShow';
 
 export default function View({ query }) {
     let [data, setData] = useState(null);
@@ -52,10 +53,11 @@ export default function View({ query }) {
                                 <p>{data.identification.street_address}, {data.identification.postal_code}</p>
                                 <p>{data.identification.province}</p>
                             </div>
+                                <Slideshow data={'@/public/slideshow_pic'}> </Slideshow>
                         </div>
                     </div>
                     <div style={{backgroundColor: "white", padding: 20}} className='col-md-5'>
-                        <h4 style={{fontWeight: "bold"}}>Contact</h4>
+                        <h4 style={{fontWeight: "bold"}}>Contacttttt</h4>
                         <div className='row'>
                             <div className='col-xs' style={{fontSize: 12, marginTop: 15, color: "grey"}}>Name</div><div className='col-xs'>{data.contact.first_name} {data.contact.last_name}</div>
                         </div>  
