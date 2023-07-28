@@ -2,6 +2,8 @@ import React from 'react'
 import styles from '../styles/Listings.module.css';
 import Link from 'next/link';
 
+// this is a wrapper that renders all listings in the /listings page
+
 export default function ListingsWrapper({ data, edit }) {
   	return (
 		<div className={styles.listings}>

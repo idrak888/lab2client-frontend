@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from '@/styles/Home.module.css';
 
+// this is the Hero section on the homepage
+
 export default function Hero() {
     const [searchKeys, setSearchKeys] = React.useState("");
     const handleChange = event => {

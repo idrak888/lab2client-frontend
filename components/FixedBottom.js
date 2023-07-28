@@ -3,6 +3,8 @@ import styles from '../styles/Listings.module.css';
 import Link from 'next/link';
 //This is a comment
 
+// this is the fixed footer that appears in the /view page
+
 const FixedBottom = ({ data }) => {
   return (
     <footer className={`${styles.FixedBottom} navbar navbar-dark fixed-bottom`}>

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import { loadStripe } from "@stripe/stripe-js";
 
+// this is an "order" component that appears on the dashboard of the user
+
 export default function OrderWrapper({ type, information, date, status, user }) {
     let [btnText, setBtnText] = useState("Send Message");
 

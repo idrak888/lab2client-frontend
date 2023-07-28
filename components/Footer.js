@@ -1,5 +1,7 @@
 import React from 'react'
 
+// this is main the footer on the bottom of the page
+
 export default function Footer() {
     return (
         <div className='FooterWrapper'>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import styles from '../styles/Order.module.css';
 import axios from 'axios';
 
+// this is one of the column sections that appear on the /order page, containing the order description form
+
 export default function OrderCard({ lab, data, user }) {
 	const [fields, setFields] = useState([]);
 	const [description, setDescription] = useState("");
