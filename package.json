@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
-    "@fortawesome/fontawesome-free": "^6.4.0",
     "@stripe/stripe-js": "^1.54.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
