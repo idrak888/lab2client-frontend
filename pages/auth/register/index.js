@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '@/styles/Auth.module.css';
+import styles from '/styles/Auth.module.css';
 import firebase from '/utils/firebase';
 import axios from 'axios';
 import Head from 'next/head';

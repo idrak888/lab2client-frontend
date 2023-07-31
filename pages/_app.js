@@ -2,8 +2,8 @@ import '@/styles/globals.css';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.css';
-import Navbar from '@/components/Layout/Navbar';
-import Footer from '@/components/Layout/Footer';
+import Navbar from '/components/Layout/Navbar';
+import Footer from '/components/Layout/Footer';
 
 export default function App({ Component, pageProps }) {
   const [user, setUser] = useState(null);

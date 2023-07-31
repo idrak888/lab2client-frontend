@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import firebase from '/utils/firebase';
 import axios from 'axios';
-import ListingsWrapper from '@/components/Listings/ListingsWrapper';
+import ListingsWrapper from '/components/Listings/ListingsWrapper';
 import OrderWrapper from '@/components/Dashboard/OrderWrapper';
 import Loader from '@/components/Layout/Loader';
 
@@ -66,7 +66,7 @@ export default function index() {
 				<nav className="nav nav-pills nav-fill" style={{backgroundColor: "white", cursor: "pointer"}}>
 					<div className={`nav-link ${view == 0 ? "active" : ""}`} onClick={() => setView(0)}>Orders</div>
 					<div className={`nav-link ${view == 1 ? "active" : ""}`} onClick={() => setView(1)}>Labs</div>
-					<div className={`nav-link ${view == 2 ? "active" : ""}`} onClick={() => setView(2)}>Profile</div>
+					<div className={`nav-link ${view == 2 ? "active" : ""}`} onClick={() => setView(2)}>Profile and Payments</div>
 				</nav>
 				{
 					!loading ? 
