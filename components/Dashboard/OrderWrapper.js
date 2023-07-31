@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '../styles/Dashboard.module.css';
+import styles from '@/styles/Dashboard.module.css';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import { loadStripe } from "@stripe/stripe-js";

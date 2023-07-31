@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from '../styles/Listings.module.css';
+import styles from '@/styles/Listings.module.css';
 import Link from 'next/link';
-//This is a comment
 
 // this is the fixed footer that appears in the /view page
 
