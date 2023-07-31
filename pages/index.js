@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import Hero from '@/components/Home/Hero';
-import HomeCard from '@/components/Home/HomeCard';
+import Hero from '/components/Home/Hero';
+import HomeCard from '/components/Home/HomeCard';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 

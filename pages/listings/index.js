@@ -1,9 +1,9 @@
 import React from 'react'
 import Head from 'next/head';
-import Loader from '@/components/Layout/Loader';
-import styles from '@/styles/Listings.module.css';
+import Loader from '/components/Layout/Loader';
+import styles from '/styles/Listings.module.css';
 import { useEffect, useState } from 'react';
-import ListingsWrapper from '@/components/Listings/ListingsWrapper';
+import ListingsWrapper from '/components/Listings/ListingsWrapper';
 
 export default function Listings({ query }) {
     let [data, setData] = useState(null);

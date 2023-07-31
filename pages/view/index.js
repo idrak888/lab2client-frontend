@@ -1,9 +1,9 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import Loader from '@/components/Layout/Loader';
-import styles from '@/styles/Listings.module.css';
+import Loader from '/components/Layout/Loader';
+import styles from '/styles/Listings.module.css';
 import Head from 'next/head';
-import FixedBottom from '@/components/Orders/FixedBottom';
+import FixedBottom from '/components/Orders/FixedBottom';
 
 export default function View({ query }) {
     let [data, setData] = useState(null);

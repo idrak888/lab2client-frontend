@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styles from '@/styles/Payment.module.css';
+import styles from '/styles/Payment.module.css';
 import Head from 'next/head';
 
 export default function Invoice() {

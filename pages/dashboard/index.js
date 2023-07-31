@@ -6,8 +6,8 @@ import Head from 'next/head';
 import firebase from '/utils/firebase';
 import axios from 'axios';
 import ListingsWrapper from '/components/Listings/ListingsWrapper';
-import OrderWrapper from '@/components/Dashboard/OrderWrapper';
-import Loader from '@/components/Layout/Loader';
+import OrderWrapper from '/components/Dashboard/OrderWrapper';
+import Loader from '/components/Layout/Loader';
 
 export default function index() {
     let [view, setView] = useState(1);

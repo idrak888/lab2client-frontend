@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styles from '@/styles/Order.module.css';
+import styles from '/styles/Order.module.css';
 import axios from 'axios';
 
 // this is one of the column sections that appear on the /order page, containing the order description form

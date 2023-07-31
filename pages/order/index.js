@@ -1,9 +1,9 @@
 import React from 'react'
 import Head from 'next/head';
-import Loader from '@/components/Layout/Loader';
-import styles from '@/styles/Order.module.css';
+import Loader from '/components/Layout/Loader';
+import styles from '/styles/Order.module.css';
 import { useEffect, useState } from 'react';
-import OrderCard from '@/components/Orders/OrderCard';
+import OrderCard from '/components/Orders/OrderCard';
 
 export default function Order({ query }) {
     let [data, setData] = useState(null);
