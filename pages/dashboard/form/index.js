@@ -8,15 +8,7 @@ export default function index() {
     let [equipmentName, setEquipmentName] = useState("");
     let [equipmentImage, setEquipmentImage] = useState("");
     let [equipmentDescription, setEquipmentDescription] = useState("");
-	let [equipments, setEquipments] = useState([{
-        name: "S-8S",
-        image: "https://cdn.everythingrf.com/live/937_1070_s_8s637423936275327822_big.PNG",
-        description: "The S-8S from Thermotron Inc is a Temperature Chamber with Temperature Fluctuation ±0.3 Degree C, Temperature Range -40 to 180 Degree C, Temperature Uniformity ±0.7 Degree C. Tags: Refrigerator Contained Chamber. More details for S-8S can be seen below.        "
-    }, {
-        name: "FNR64",
-        image: "https://cdn.everythingrf.com/live/937_1570_fnr64637423949802790433_big.PNG",
-        description: "The FNR64 from Bemco is a Temperature Chamber with Temperature Range -35 to 177 Degree C. Tags: Refrigerator Contained Chamber. More details for FNR64 can be seen below        "
-    }]);
+	let [equipments, setEquipments] = useState([]);
     let [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -84,7 +76,7 @@ export default function index() {
 
             fields,
             applications,
-            lab_equipment: [],
+            lab_equipment: equipments,
 
             DESCRIPTION_OF_YOUR_FACILITY: description,
             areas_of_expertise: "",
@@ -204,7 +196,7 @@ export default function index() {
                         </div>
                     </div>
                     
-                    {/* <div className={styles.inner}>
+                    <div className={styles.inner}>
                         <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 20}}>Equipment</h2>
                         <div className={styles.formGroup} style={{padding: 20, border: "1px dashed rgb(215, 215, 215)", borderRadius: 6}}>
                             <h3 style={{fontWeight: "bold", fontSize: 18}}>Add new equipment</h3>
@@ -236,7 +228,7 @@ export default function index() {
                                 </div>
                             )
                         })}
-                    </div> */}
+                    </div>
                     
                     <div className={styles.inner}>
                         <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 30}}>Contact Information</h2>

@@ -87,12 +87,21 @@ export default function View({ query }) {
                     </div>
                 </div>
 
-                {/* <div className='row' style={{marginTop: 20, marginBottom: 20}}>
+                <div className='row' style={{marginTop: 20, marginBottom: 20}}>
                     <div style={{backgroundColor: "white", padding: 20}} className='col-md-12'>
                         <h4 style={{fontWeight: "bold"}}>Available Equipment</h4>
-                        
+                        {data.lab_equipment ? data.lab_equipment.map(equipment => {
+                            return (
+                                <div style={{padding: 15, display: "inline-block", width: 250, height: 400, overflow: "scroll"}}>
+                                    <img src={equipment.image} width={200}/>
+                                    <br/>
+                                    <strong>{equipment.name}</strong>
+                                    <p>{equipment.description}</p>
+                                </div>
+                            )
+                        }) : "No available Lab Equipment listed"}
                     </div>
-                </div> */}
+                </div>
             </div>
         }
         <FixedBottom data={data}/>
