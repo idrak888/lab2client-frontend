@@ -3,8 +3,8 @@ import styles from '/styles/Auth.module.css';
 import Head from 'next/head';
 import axios from 'axios';
 
-export default function index() {
-	let [user, setUser] = useState(null);
+export default function EditListing({ query }) {
+    let [user, setUser] = useState(null);
     let [equipmentName, setEquipmentName] = useState("");
     let [equipmentImage, setEquipmentImage] = useState("");
     let [equipmentDescription, setEquipmentDescription] = useState("");
@@ -17,6 +17,29 @@ export default function index() {
 			const parsed = JSON.parse(user);
 			setUser(parsed);
 		}
+        fetch(`https://lab2client.herokuapp.com/email/${query.email}`).then(response => response.json())
+        .then(data => {
+            data = data.filter(item => item.identification.building_name == query.building)[0];    
+            console.log(data);
+            document.getElementById("institution_name").value = data.identification.institution_name;
+            document.getElementById("research_facility").value = data.identification.research_facillity;
+            document.getElementById("picture").value = data.research.LOGOS;
+            document.getElementById("address").value = data.identification.street_address;
+            document.getElementById("city").value = data.identification.city;
+            document.getElementById("province").value = data.identification.province;
+            document.getElementById("postal_code").value = data.identification.postal_code;
+            document.getElementById("name").value = data.contact.first_name;
+            document.getElementById("title").value = data.contact.title;
+            document.getElementById("contact_email").value = data.contact.email;
+            document.getElementById("telephone").value = data.contact.telephone;
+            document.getElementById("description").value = data.research.DESCRIPTION_OF_YOUR_FACILITY;
+            document.getElementById("building_name").value = data.identification.building_name;
+            document.getElementById("research_infrastructure").value = data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE;
+            document.getElementById("fields").value = data.Fields_of_research.fields.join(",");
+            document.getElementById("applications").value = data.Sectors_of_application.applications.join(",");
+
+            setEquipments(data.lab_equipment);
+        });
 	}, []);
 
     const submit = e => {
@@ -95,16 +118,22 @@ export default function index() {
             setLoading(false);
         });
     }
+
+    const deleteListing = e => {
+        e.preventDefault();
+        
+    }
+
     return (
         <div className={styles.container}>
             <Head>
-                <title>Register your Facility | Lab2Client</title>
+                <title>Edit Listing | Lab2Client</title>
                 <meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div>
-                <h1 style={{fontWeight: "bold", fontSize: 30, textAlign: "center"}}>Lab Registration Form</h1>
+                <h1 style={{fontWeight: "bold", fontSize: 30, textAlign: "center"}}>Edit Lab</h1>
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div className={styles.inner}>
                         <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 20}}>Lab Information</h2>
@@ -252,10 +281,19 @@ export default function index() {
                             <input type="tel" id="telephone" name="telephone" required />
                         </div>
 
-                        <button disabled={loading} onClick={e => submit(e)} className={styles.btn} type="submit">{loading ? "loading..." : "Submit"}</button>
+                        <button disabled={loading} onClick={e => submit(e)} className={styles.btn} type="submit">{loading ? "loading..." : "Update"}</button>
+                    </div>
+                    <div className={styles.inner}>
+                        <div className={styles.formGroup} style={{padding: 20, border: "1px dashed red", borderRadius: 6}}>
+                            <button disabled={loading} onClick={e => deleteListing(e)} className="btn btn-danger" type="submit">Delete Listing</button>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     )
+}
+
+EditListing.getInitialProps = async ({ query }) => {  
+    return { query };
 }
