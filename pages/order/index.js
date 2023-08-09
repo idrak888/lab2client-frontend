@@ -15,9 +15,9 @@ export default function Order({ query }) {
 			const parsed = JSON.parse(userStr);
 			setUser(parsed);
 		}
-        fetch(`https://lab2client.herokuapp.com/email/${query.email}`).then(response => response.json())
+        fetch(`https://lab2client.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
         .then(data => {
-            setData(data[0]);
+            setData(data);
             console.log(data);
         });
     },[]);
