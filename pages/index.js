@@ -5,6 +5,7 @@ import HomeCard from '/components/Home/HomeCard';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import GetStarted from '/components/Home/GetStarted';
+import Partners from '../components/Home/Partners';
 
 export default function Home() {
     let [btnText, setBtnText] = useState("Send Message");
@@ -28,7 +29,7 @@ export default function Home() {
     }
 
     return (
-        <>
+        <div>
             <Head>
                 <title>Connecting Researchers with Lab Space and Expertise | Lab2Client</title>
                 <meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
@@ -39,12 +40,15 @@ export default function Home() {
             {/* hero section */}
             <Hero />
 
+            {/* partners */}
+            <Partners/>
+
             {/* about us section */}
-            <section className="bg-light py-5" style={{paddingTop: 50}}>
+            <section className="bg-light py-5" style={{ paddingTop: 50 }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 offset-lg-2">
-                            <h2 className="text-center mb-4">Trusted by hundreds of Institutions</h2>
+                            <h3 className="text-center mb-4">Trusted by hundreds of Institutions</h3>
                             <div className="row">
                                 <div className="col-md-6">
                                     <Link href="/listings"><HomeCard image="/labphoto1.jpeg" title="Find Available Labs" description="Easily search and discover labs that meet your specific research needs." /></Link>
@@ -57,9 +61,9 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            
+
             {/* get started section */}
-            <GetStarted/>
+            <GetStarted />
 
             {/* contact us section */}
             <section className="py-5" id="contact">
@@ -67,7 +71,7 @@ export default function Home() {
                     <div className="row">
                         <div className="col-lg-8 offset-lg-2">
                             <div className="text-center mb-4">
-                                <h2 className="mb-2">Contact Us</h2>
+                                <h3 className="mb-2">Contact Us</h3>
                                 <p className="text-muted">Have any questions or inquiries? Feel free to reach out to us.</p>
                             </div>
                             <div className="row justify-content-center">
@@ -98,6 +102,6 @@ export default function Home() {
                 </div>
             </section>
 
-        </>
+        </div>
     )
 }

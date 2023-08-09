@@ -31,7 +31,7 @@ export default function Footer() {
                     </div>
                 </div>
             </footer>
-            <div className="row" style={{backgroundColor: "#0B131C", padding: 20, color: "rgba(255, 255, 255, 0.7)"}}>
+            <div style={{width: "100%", backgroundColor: "#0B131C", padding: 20, color: "rgba(255, 255, 255, 0.7)"}}>
                 <div className="col-lg-12 text-center mt-4">
                     <p>&copy; 2023 Lab2Client. All rights reserved.</p>
                 </div>

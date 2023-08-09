@@ -1,4 +1,4 @@
-import '@/styles/globals.css';
+import '/styles/globals.css';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.css';
