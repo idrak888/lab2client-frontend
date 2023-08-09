@@ -4,6 +4,7 @@ import Hero from '/components/Home/Hero';
 import HomeCard from '/components/Home/HomeCard';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
+import GetStarted from '/components/Home/GetStarted';
 
 export default function Home() {
     let [btnText, setBtnText] = useState("Send Message");
@@ -39,7 +40,7 @@ export default function Home() {
             <Hero />
 
             {/* about us section */}
-            <section className="bg-light py-5">
+            <section className="bg-light py-5" style={{paddingTop: 50}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-8 offset-lg-2">
@@ -56,6 +57,9 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+            
+            {/* get started section */}
+            <GetStarted/>
 
             {/* contact us section */}
             <section className="py-5" id="contact">

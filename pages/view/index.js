@@ -9,10 +9,9 @@ export default function View({ query }) {
     let [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch(`https://lab2client.herokuapp.com/email/${query.email}`).then(response => response.json())
+        fetch(`https://lab2client.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
         .then(data => {
-            data = data.filter(item => item.identification.building_name == query.building);    
-            setData(data[0]);
+            setData(data);
         });
     },[]);
 

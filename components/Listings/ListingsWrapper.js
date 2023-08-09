@@ -2,9 +2,10 @@ import React from 'react'
 import styles from '/styles/Listings.module.css';
 import Link from 'next/link';
 
-// this is a wrapper that renders all listings in the /listings page
+// this is a wrapper that renders all listings in the /listings and /dashboard page
 
 export default function ListingsWrapper({ data, edit }) {
+	console.log(data);
   	return (
 		<div className={styles.listings}>
 			{data.length > 0 ? data.map(listing => {
@@ -12,7 +13,7 @@ export default function ListingsWrapper({ data, edit }) {
 					<Link href={ 
 						{ 
 							pathname: edit ?  '/edit' : '/view', 
-							query: { email: listing.identification.email_identification, building: listing.identification.building_name }
+							query: { id: listing.id }
 						}
 					} className={styles.card}>
 						<div className='row' style={{display: "flex", alignItems: "center"}}>

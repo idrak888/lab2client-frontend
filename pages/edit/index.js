@@ -5,52 +5,50 @@ import axios from 'axios';
 
 export default function EditListing({ query }) {
     let [user, setUser] = useState(null);
+    let [labId, setLabId] = useState(null);
     let [equipmentName, setEquipmentName] = useState("");
     let [equipmentImage, setEquipmentImage] = useState("");
     let [equipmentDescription, setEquipmentDescription] = useState("");
-	let [equipments, setEquipments] = useState([]);
+    let [equipments, setEquipments] = useState([]);
     let [loading, setLoading] = useState(false);
 
     useEffect(() => {
-		const user = localStorage.getItem("user");
+        const user = localStorage.getItem("user");
         if (user) {
-			const parsed = JSON.parse(user);
-			setUser(parsed);
-		}
-        fetch(`https://lab2client.herokuapp.com/email/${query.email}`).then(response => response.json())
-        .then(data => {
-            data = data.filter(item => item.identification.building_name == query.building)[0];    
-            console.log(data);
-            document.getElementById("institution_name").value = data.identification.institution_name;
-            document.getElementById("research_facility").value = data.identification.research_facillity;
-            document.getElementById("picture").value = data.research.LOGOS;
-            document.getElementById("address").value = data.identification.street_address;
-            document.getElementById("city").value = data.identification.city;
-            document.getElementById("province").value = data.identification.province;
-            document.getElementById("postal_code").value = data.identification.postal_code;
-            document.getElementById("name").value = data.contact.first_name;
-            document.getElementById("title").value = data.contact.title;
-            document.getElementById("contact_email").value = data.contact.email;
-            document.getElementById("telephone").value = data.contact.telephone;
-            document.getElementById("description").value = data.research.DESCRIPTION_OF_YOUR_FACILITY;
-            document.getElementById("building_name").value = data.identification.building_name;
-            document.getElementById("research_infrastructure").value = data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE;
-            document.getElementById("fields").value = data.Fields_of_research.fields.join(",");
-            document.getElementById("applications").value = data.Sectors_of_application.applications.join(",");
+            const parsed = JSON.parse(user);
+            setUser(parsed);
+        }
+        fetch(`https://lab2client.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
+            .then(data => {
+                document.getElementById("institution_name").value = data.identification.institution_name;
+                document.getElementById("research_facility").value = data.identification.research_facillity;
+                document.getElementById("picture").value = data.research.LOGOS;
+                document.getElementById("address").value = data.identification.street_address;
+                document.getElementById("city").value = data.identification.city;
+                document.getElementById("province").value = data.identification.province;
+                document.getElementById("postal_code").value = data.identification.postal_code;
+                document.getElementById("name").value = data.contact.first_name;
+                document.getElementById("title").value = data.contact.title;
+                document.getElementById("contact_email").value = data.contact.email;
+                document.getElementById("telephone").value = data.contact.telephone;
+                document.getElementById("description").value = data.research.DESCRIPTION_OF_YOUR_FACILITY;
+                document.getElementById("building_name").value = data.identification.building_name;
+                document.getElementById("research_infrastructure").value = data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE;
+                document.getElementById("fields").value = data.Fields_of_research.fields.join(",");
+                document.getElementById("applications").value = data.Sectors_of_application.applications.join(",");
 
-            setEquipments(data.lab_equipment);
-        });
-	}, []);
+                setEquipments(data.lab_equipment);
+                setLabId(data.id);
+            });
+    }, []);
 
     const submit = e => {
         e.preventDefault();
         setLoading(true);
 
-        const uid = user.uid;
         const institution_name = document.getElementById("institution_name").value;
         const research_facillity = document.getElementById("research_facility").value;
         const picture = document.getElementById("picture").value;
-        const email1 = user.email;
         const address = document.getElementById("address").value;
         const city = document.getElementById("city").value;
         const province = document.getElementById("province").value;
@@ -65,54 +63,60 @@ export default function EditListing({ query }) {
         const fields = document.getElementById("fields").value.split(",");
         const applications = document.getElementById("applications").value.split(",");
 
-        axios.post(`https://lab2client.herokuapp.com/create`, {
-            user_unique_id: uid,
-            email_identification: email1,
-            institution_name,
-            research_facillity,
-            street_address: address,
-            building_name,
-            city,
-            province,
-            postal_code,
-
-            first_name: name,
-            last_name: "",
-            title,
-            office: "",
-            email: contact_email,
-            telephone: telephone,
-            language: "English",
-            first_name2: "",
-            last_name2: "",
-            title2: "",
-            office2: "",
-            email2: "",
-            telephone2: "",
-            language2: "",
-
-            CFI_project_number: "",
-            Project_leader_first_name: "",
-            Project_leader_last_name: "",
-            Project_leader_email: "",
-
-            fields,
-            applications,
-            lab_equipment: equipments,
-
-            DESCRIPTION_OF_YOUR_FACILITY: description,
-            areas_of_expertise: "",
-            Research_services: "",
-            DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE: research_infrastructure,
-            PRIVATE_AND_PUBLIC_SECTOR_RESEARCH_PARTNERS: "",
-            website: "",
-            Additional_information : "",
-            Social_media_platforms : "",
-            LOGOS: picture
+        axios.put(`https://lab2client.herokuapp.com/updatelab/${labId}`, {
+            "Fields_of_research": {
+                "fields": fields
+            },
+            "identification": {
+                "street_address": address,
+                "building_name": building_name,
+                "province": province,
+                "city": city,
+                "research_facillity": research_facillity,
+                "postal_code": postal_code,
+                "institution_name": institution_name
+            },
+            "lab_equipment": [],
+            "contact": {
+                "last_name2": "",
+                "language2": "",
+                "office2": "",
+                "last_name": "",
+                "telephone2": "",
+                "telephone": telephone,
+                "language": "English",
+                "title2": "",
+                "office": "",
+                "title": title,
+                "email2": "",
+                "first_name2": "",
+                "first_name": name,
+                "email": contact_email
+            },
+            "facilities": {
+                "Project_leader_last_name": "",
+                "Project_leader_first_name": "",
+                "CFI_project_number": "",
+                "Project_leader_email": ""
+            },
+            "Sectors_of_application": {
+                "applications": applications
+            },
+            "research": {
+                "areas_of_expertise": "",
+                "PRIVATE_AND_PUBLIC_SECTOR_RESEARCH_PARTNERS": "",
+                "website": "",
+                "DESCRIPTION_OF_YOUR_FACILITY": description,
+                "DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE": research_infrastructure,
+                "Additional_information": "",
+                "Research_services": "",
+                "Social_media_platforms": "",
+                "LOGOS": picture
+            }
         }).then(doc => {
             console.log(doc);
             setLoading(false);
-            window.location = "/dashboard";
+            // window.location = "/dashboard";
         }).catch(e => {
             console.log(e);
             setLoading(false);
@@ -121,7 +125,12 @@ export default function EditListing({ query }) {
 
     const deleteListing = e => {
         e.preventDefault();
-        
+
+        axios.delete(`https://lab2client.herokuapp.com/delete/${labId}`).then(doc => {
+            window.location = "/dashboard";
+        }).catch(e => {
+            console.log(e);
+        });
     }
 
     return (
@@ -133,10 +142,10 @@ export default function EditListing({ query }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div>
-                <h1 style={{fontWeight: "bold", fontSize: 30, textAlign: "center"}}>Edit Lab</h1>
+                <h1 style={{ fontWeight: "bold", fontSize: 30, textAlign: "center" }}>Edit Lab</h1>
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div className={styles.inner}>
-                        <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 20}}>Lab Information</h2>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 20 }}>Lab Information</h2>
                         {/* <div className={styles.formGroup}>
                             <label for="picture">Upload Picture:</label>
                             <input type="file" id="picture" name="picture" accept="image/*" />
@@ -163,7 +172,7 @@ export default function EditListing({ query }) {
 
                         <div className={styles.formGroup}>
                             <label for="applications">Application Sectors (Seperated by commas)</label>
-                            <input type="text" id="applications" name="applications" required />    
+                            <input type="text" id="applications" name="applications" required />
                         </div>
 
                         <div className={styles.formGroup}>
@@ -223,15 +232,15 @@ export default function EditListing({ query }) {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className={styles.inner}>
-                        <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 20}}>Equipment</h2>
-                        <div className={styles.formGroup} style={{padding: 20, border: "1px dashed rgb(215, 215, 215)", borderRadius: 6}}>
-                            <h3 style={{fontWeight: "bold", fontSize: 18}}>Add new equipment</h3>
-                            
-                            <input value={equipmentName} onChange={e => setEquipmentName(e.target.value)} style={{marginTop: 5}} type="text" placeholder='Equipment Name'/>
-                            <input value={equipmentImage} onChange={e => setEquipmentImage(e.target.value)} style={{marginTop: 5}} type="url" placeholder='Link to image'/>
-                            <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{marginTop: 5}} placeholder='Description and specifications'></textarea>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 20 }}>Equipment</h2>
+                        <div className={styles.formGroup} style={{ padding: 20, border: "1px dashed rgb(215, 215, 215)", borderRadius: 6 }}>
+                            <h3 style={{ fontWeight: "bold", fontSize: 18 }}>Add new equipment</h3>
+
+                            <input value={equipmentName} onChange={e => setEquipmentName(e.target.value)} style={{ marginTop: 5 }} type="text" placeholder='Equipment Name' />
+                            <input value={equipmentImage} onChange={e => setEquipmentImage(e.target.value)} style={{ marginTop: 5 }} type="url" placeholder='Link to image' />
+                            <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{ marginTop: 5 }} placeholder='Description and specifications'></textarea>
                             <button onClick={e => {
                                 e.preventDefault();
                                 const newEquipment = {
@@ -243,23 +252,23 @@ export default function EditListing({ query }) {
                                 setEquipmentName("");
                                 setEquipmentImage("");
                                 setEquipmentDescription("");
-                                setEquipments(arr => [...arr, newEquipment]);  
-                            }} style={{width: 100}} className='btn btn-primary'>Add</button>
+                                setEquipments(arr => [...arr, newEquipment]);
+                            }} style={{ width: 100 }} className='btn btn-primary'>Add</button>
                         </div>
                         {equipments.map(equipment => {
                             return (
-                                <div style={{padding: 15, display: "inline-block", width: 250, height: 400, overflow: "scroll"}}>
-                                    <img src={equipment.image} width={200}/>
-                                    <br/>
+                                <div style={{ padding: 15, display: "inline-block", width: 250, height: 400, overflow: "scroll" }}>
+                                    <img src={equipment.image} width={200} />
+                                    <br />
                                     <strong>{equipment.name}</strong>
                                     <p>{equipment.description}</p>
                                 </div>
                             )
                         })}
                     </div>
-                    
+
                     <div className={styles.inner}>
-                        <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 30}}>Contact Information</h2>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 30 }}>Contact Information</h2>
 
                         <div className={styles.formGroup}>
                             <label for="name">Contact Name</label>
@@ -284,7 +293,7 @@ export default function EditListing({ query }) {
                         <button disabled={loading} onClick={e => submit(e)} className={styles.btn} type="submit">{loading ? "loading..." : "Update"}</button>
                     </div>
                     <div className={styles.inner}>
-                        <div className={styles.formGroup} style={{padding: 20, border: "1px dashed red", borderRadius: 6}}>
+                        <div className={styles.formGroup} style={{ padding: 20, border: "1px dashed red", borderRadius: 6 }}>
                             <button disabled={loading} onClick={e => deleteListing(e)} className="btn btn-danger" type="submit">Delete Listing</button>
                         </div>
                     </div>
@@ -294,6 +303,6 @@ export default function EditListing({ query }) {
     )
 }
 
-EditListing.getInitialProps = async ({ query }) => {  
+EditListing.getInitialProps = async ({ query }) => {
     return { query };
 }

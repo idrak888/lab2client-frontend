@@ -1,6 +1,6 @@
 .outer {
     background: rgb(20,50,130);
-background: linear-gradient(0deg, rgba(20,50,130,1) 5%, rgba(20,50,130,1) 12%, rgba(16,45,93,1) 45%);
+    background: linear-gradient(0deg, rgba(20,50,130,1) 5%, rgba(20,50,130,1) 12%, rgba(16,45,93,1) 45%);
     color: white;
     padding: 110px 20px;
 }
@@ -106,4 +106,25 @@ background: linear-gradient(0deg, rgba(20,50,130,1) 5%, rgba(20,50,130,1) 12%, r
 }
 .card:hover .cardDescription {
     transform: translateY(100%);
+}
+.getStarted {
+    width: 100%;
+    background-color: #f5f5f5;
+    justify-content: center;
+    align-items: center;
+}
+.getStarted .inner {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 30px auto;
+}
+.inner .navlink {
+    color: black;
+    border-radius: 0;
+}
+.inner .active {
+    background-color: rgb(20, 50, 130);
+    color: white;
 }
