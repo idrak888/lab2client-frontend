@@ -9,6 +9,7 @@ export default function GetStarted() {
         <section className={`bg-light py-5 ${styles.getStarted}`}>
             <div className={styles.inner}>
                 <h3>How to use our platform</h3>
+                {/* Navigation to switch between Researchers and Facilities views */}
                 <nav className="nav nav-pills nav-fill" style={{ backgroundColor: "white", cursor: "pointer", marginTop: 30}}>
                     <div className={`${styles.navlink} nav-link ${view == 0 ? `${styles.active}` : ""}`} onClick={() => setView(0)}>Researchers</div>
                     <div className={`${styles.navlink} nav-link ${view == 1 ? `${styles.active}` : ""}`} onClick={() => setView(1)}>Facilities</div>
@@ -18,6 +19,7 @@ export default function GetStarted() {
             <div className={styles.content}>
                 {
                     view == 0 ?
+                    // Instructions for Researchers
                     <div>
                         <h2 style={{fontSize: 40, fontWeight: "bold", marginBottom: 40}}>For Researchers</h2>
                         <span className={styles.number}>1</span> Browse available listings and facilities based on your needs
@@ -31,6 +33,7 @@ export default function GetStarted() {
                         <span className={styles.number}>5</span> Settle payments
                     </div>
                     :
+                    // Instructions for Facilities (Institutions)
                     <div>
                         <h2 style={{fontSize: 40, fontWeight: "bold", marginBottom: 40}}>For Institutions</h2>
                         <span className={styles.number}>1</span> Create an account
