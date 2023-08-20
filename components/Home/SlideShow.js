@@ -1,30 +1,38 @@
 import { useState, useEffect } from 'react';
-
+// Slideshow component that displays a rotating set of images
 const Slideshow = ({ data, interval = 30000 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [pictures, setPictures] = useState([]);
 
   useEffect(() => {
+    // Extract image URLs from the data prop
     const imageUrls = data.map(item => item.imageUrl);
     setPictures(imageUrls);
-
+    
+    // Set up an interval timer to change slides at a specified interval
     const timer = setInterval(() => {
       setCurrentSlide(prevSlide => (prevSlide + 1) % imageUrls.length);
     }, interval);
 
+    // Clean up by clearing the interval timer when the component unmounts
     return () => {
       clearInterval(timer);
     };
   }, [data, interval]);
 
+
+
+  // Function to move to the next slide
   const nextSlide = () => {
     setCurrentSlide(prevSlide => (prevSlide + 1) % pictures.length);
   };
 
+  // Function to move to the previous slide
   const previousSlide = () => {
     setCurrentSlide(prevSlide => (prevSlide - 1 + pictures.length) % pictures.length);
   };
 
+  // Render the slideshow component
   return (
     <div className="slideshow-container">
       <button className="previous-button" onClick={previousSlide}>&lt;</button>

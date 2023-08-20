@@ -2,7 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import styles from '/styles/Home.module.css';
 
+// Component to display partner logos
 export default function Partners() {
+    // Array of partner logo URLs
     const partnerLogos = [
         'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Logo_York_University.svg/2560px-Logo_York_University.svg.png',
         'https://www.torontomu.ca/content/dam/brand/global/images/visual-guide/tmu-logo-full-colour.jpg',

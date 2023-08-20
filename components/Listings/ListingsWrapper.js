@@ -8,8 +8,10 @@ export default function ListingsWrapper({ data, edit }) {
 	console.log(data);
   	return (
 		<div className={styles.listings}>
+			{/* Check if there is data to display */}
 			{data.length > 0 ? data.map(listing => {
 				return (
+					// Link to view or edit page with listing details
 					<Link href={ 
 						{ 
 							pathname: edit ?  '/edit' : '/view', 

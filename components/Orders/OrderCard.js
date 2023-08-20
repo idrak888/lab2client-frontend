@@ -9,6 +9,7 @@ export default function OrderCard({ lab, data, user }) {
 	const [description, setDescription] = useState("");
 	const [loading, setLoading] = useState(false);
 
+	// Function to get the current date in MM/DD/YYYY format
 	const getDate = () => {
 		var today = new Date();
 		var dd = String(today.getDate()).padStart(2, '0');
@@ -19,10 +20,13 @@ export default function OrderCard({ lab, data, user }) {
 		return today;
 	}
 
+	 // Function to handle order submission
 	const submitOrder = () => {
 		setLoading(true);
+		// Check if the user is logged in
 		if (user) {
 			if (fields.length > 0 && description != "") {
+				 // Make a POST request to create a new order
 				axios.post(`https://lab2client.herokuapp.com/create/order`, {
 					ucid_sent: user.uid,
 					ucid_recieved: data.user_unique_id,
@@ -52,6 +56,7 @@ export default function OrderCard({ lab, data, user }) {
 	}
 
 	return (
+		// Render the order card
 		<div className={`${styles.plan}`}>
 			<div className={`${styles.inner}`}>
 				{/* <span className={`${styles.pricing}`}>
