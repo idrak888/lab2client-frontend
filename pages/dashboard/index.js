@@ -38,6 +38,7 @@ export default function index() {
 
 				axios.get(`https://lab2client.herokuapp.com/orders/sent/${uid}`).then(doc => {
 					setOrdersSent(doc.data);
+					console.log(doc.data);
 				}).catch(e => {
 					console.log(e);
 				});
