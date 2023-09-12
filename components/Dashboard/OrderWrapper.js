@@ -9,8 +9,14 @@ import { loadStripe } from "@stripe/stripe-js";
 export default function OrderWrapper({ type, information, date, status, user }) {
     let [btnText, setBtnText] = useState("Send Message");
 
+
+    //Initialize Stripe promise and assigning the result of getStripe() function to it
     let stripePromise = null
 
+    /* Function to get the Stripe instance and update the value of stripePromise
+        -purpose: ensure that the Stripe library is loaded asynchronously when the component mounts. 
+            This can help improve the performance by not blocking the initial render
+            while waiting for the Stripe library to load. */
 	const getStripe = () => {
 		if(!stripePromise) {
 			stripePromise = loadStripe("pk_test_51NB2f5L5vejuzwJ3crZY5PSOpeBZBJRrrNbVSCy1z93K2fgotOer5V9dgRSUOxwMOK55dP0BUMho8P6LJCHN2cZi00XdlifDJq")
@@ -22,6 +28,8 @@ export default function OrderWrapper({ type, information, date, status, user }) 
         
     });
 
+
+    // Function to handle form submission
     const handleSubmit = e => {
         e.preventDefault();
 
