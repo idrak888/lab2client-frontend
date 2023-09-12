@@ -87,10 +87,10 @@ export default function index() {
 						</ul>
 						{
 							orderView == 0 ?
-							ordersReceieved.reverse().map(order => {
+							ordersReceieved.map(order => {
 								return <OrderWrapper type={"received"} user={user} information={order.information} date={order.date} status={order.status}/>
 							}) : orderView == 1 ?
-							ordersSent.reverse().map(order => {
+							ordersSent.map(order => {
 								return <OrderWrapper type={"sent"} user={user} information={order.information} date={order.date} status={order.status}/>
 							}) : ""
 						}
