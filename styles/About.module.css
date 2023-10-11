@@ -1,0 +1,6 @@
+.feature {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(180, 180, 180); 
+    padding: 50px 0;
+}
