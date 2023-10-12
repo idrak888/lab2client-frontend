@@ -104,7 +104,7 @@ export default function index() {
 							labs.length == 0 ? 
 							<div>
 								<p>You don't have any active listings at the moment</p>
-								<Link href="/dashboard/form">Register</Link>
+								<Link href="/dashboard/form">Register Lab</Link>
 							</div>
 							:
 							<div>
@@ -142,7 +142,7 @@ export default function index() {
 							marginTop: 20
 						}}>
 							<h3 style={{ fontSize: 20, fontWeight: "bold" }}>How you get paid</h3>
-							<a href=''>Add an Account</a>
+							<a href='/dashboard/add_account'>Add an Account</a>
 						</div>
 					</div>
 					:
