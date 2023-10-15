@@ -1,19 +1,20 @@
-import React from 'react'
-import styles from '../../styles/About.module.css';
+import React from "react";
+import styles from "../../styles/About.module.css";
 
-export default function TeamCard() {
-	return (
-		<div className={`col-md-4 ${styles.teamCard}`}>
-			<img src="avatar.jpeg" className="img-fluid mb-3" style={{ width: "400px", height: "300px", objectFit: "cover" }} /> {/* are the files going to be pre-determined sizes? should I adjust them using code */}
-			<h5 style={{ fontWeight: "bold" }}>Curtizs Dizon</h5>
-			<h6>UX/UI Designer</h6>
-			<p>
-				Curtis oversees the UX/UI design at Lab2Client. He is in his
-				final year of the business program at TMU. Prior to
-				Lab2Client, Curtis Interned at CIBC and
-				CGI for UX Design.
-			</p>
-			<a href="/" target="_blank"><i className="bi bi-linkedin" style={{ color: "black" }}></i></a>
-		</div>
-	)
+export default function TeamCard(properties) {
+  return (
+	//Looks way better size-wise with 'col-md-4', but with the side margins it shifts the third teamcard to the row below
+    <div className={`col-md-3 ${(styles.teamCard, styles.cardBacking)}`}>
+      <img src={properties.imageSource} className={`img-fluid mb-3 ${styles.headshot}`}/>
+      <div className={`${(styles.teamCardText)}`}>
+        <h5 className={`${styles.staffName}`}>{properties.name}</h5>
+        <h6>{properties.jobTitle}</h6>
+        <p>{properties.description}</p>
+        <a href={properties.socialLink} target="_blank" className={`${styles.linkedInIcon}`}>
+          <i className={`bi bi-linkedin ${styles.linkedInIcon}`}></i>
+		  <span className={`${styles.linkedInIconText}`}>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  );
 }

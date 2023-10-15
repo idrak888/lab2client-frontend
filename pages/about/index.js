@@ -37,42 +37,56 @@ export default function TeamPage() {
 				<h2 style={{ textAlign: "center", fontWeight: "bold" }}>Key Features of Lab2Client</h2>
 				<div className={styles.feature}>
 					<div style={{ flex: 1 }}>
-						<strong>Description</strong>
+						<strong>Comprehensive Lab Database</strong>
 					</div>
 					<div style={{ flex: 1 }}>
-						<p>Long description</p>
-					</div>
-				</div>
-				<div className={styles.feature}>
-					<div style={{ flex: 1 }}>
-						<strong>Description</strong>
-					</div>
-					<div style={{ flex: 1 }}>
-						<p>Long description</p>
+						<p>
+							Our platform hosts an extensive database of available lab
+							spaces and equipment, allowing researchers to search and filter based on their specific
+							requirements.
+						</p>
 					</div>
 				</div>
 				<div className={styles.feature}>
 					<div style={{ flex: 1 }}>
-						<strong>Description</strong>
+						<strong>Advanced Search Functionality</strong>
 					</div>
 					<div style={{ flex: 1 }}>
-						<p>Long description</p>
-					</div>
-				</div>
-				<div className={styles.feature}>
-					<div style={{ flex: 1 }}>
-						<strong>Description</strong>
-					</div>
-					<div style={{ flex: 1 }}>
-						<p>Long description</p>
+						<p>
+							We have developed powerful search algorithms that enable
+							researchers to quickly find the lab space and equipment they need.
+						</p>
 					</div>
 				</div>
 				<div className={styles.feature}>
 					<div style={{ flex: 1 }}>
-						<strong>Description</strong>
+						<strong>Seamless Booking and Communication</strong>
 					</div>
 					<div style={{ flex: 1 }}>
-						<p>Long description</p>
+						<p>
+							Lab2Client facilitates easy and efficient communication between researchers and lab owners.
+						</p>
+					</div>
+				</div>
+				<div className={styles.feature}>
+					<div style={{ flex: 1 }}>
+						<strong>Collaborative Environment</strong>
+					</div>
+					<div style={{ flex: 1 }}>
+						<p>
+							Lab2Client encourages researchers to share their expertise,
+							knowledge, and experiences through our platform.
+						</p>
+					</div>
+				</div>
+				<div className={styles.feature}>
+					<div style={{ flex: 1 }}>
+						<strong>Verified and Trusted Lab Partners</strong>
+					</div>
+					<div style={{ flex: 1 }}>
+						<p>
+							Lab2Client ensures the credibility and reliability of lab partners through a robust verification process.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -88,22 +102,83 @@ export default function TeamPage() {
 								Meet the Team
 							</h2>
 							<p className="text-center mb-5">
-								Some arbritrary text wil go here like "Meet the Lab2Client team
-								members!" and this will look so kewl.
+								The engineers and designers behind Lab2Client
 							</p>
 
+							{/* the co-founders */}
+							<div className="row mb-5 justify-content-center">
+								<TeamCard 
+									imageSource="/headshots/Aref.png"
+									name="Aref Soltani"
+									jobTitle="Co-founder & CEO"
+									description="Aref started his journey as a Mechanical Engineering master's student at York University, where the idea for L2C was born. 
+									His entrepreneurial spirit led him to participate in programs like Lab2Market and i2I before starting L2C.
+									"
+									socialLink="/"
+									/* Aref's Email */
+								/>
+								<TeamCard 
+									imageSource="/headshots/Reza.png"
+									name="Dr. Reza Rizvi"
+									jobTitle="Co-founder & Business Development Manager"
+									description="Reza is the Assistant Professor of the Department of Mechanical Engineering at York University. 
+									He plays a vital role in fostering the company's partnership growth and expansion."
+									socialLink="/"
+								/>
+							</div>
+
 							{/* first row of staff */}
-							<div className="row mb-5">
-								<TeamCard />
-								<TeamCard />
-								<TeamCard />
+							<div className="row mb-5 justify-content-center">
+								<TeamCard 
+									imageSource="/headshots/Idrak.png"
+									name="Idrak Islam"
+									jobTitle="Lead Software Engineer"
+									description="Idrak is a second-year computer science student at York University. 
+									He handles the lead development and Software architecture for Lab2Client. 
+									Idrak joined Lab2Client as a Summer co-op student and now works on the project actively."
+									socialLink="/"
+								/>
+								<TeamCard 
+									imageSource="/headshots/Hamza.png"
+									name="Hamza Sohail"
+									jobTitle="Backend Engineer"
+									description="Hamza is a third-year software engineering student at York University. 
+									He handles the backend development of Lab2Client. 
+									Hamza joined Lab2Client as a Summer co-op student and now works on the project actively."
+									socialLink="/"
+								/>
+								<TeamCard 
+									imageSource="/headshots/Syed.png"
+									name="Syed Abdul Wadood"
+									jobTitle="Backend Engineer"
+									description="Syed has been working as a backend engineer at Lab2Client. 
+									He is in his final year of the computer engineering program at TMU. 
+									Prior to Lab2Client, Syed interned at 2 startups in Toronto."
+									socialLink="/"
+								/>
 							</div>
 
 							{/* second row of staff */}
-							<div className="row mb-5">
-								<TeamCard />
-								<TeamCard />
-								<TeamCard />
+							<div className="row mb-5 justify-content-center">
+								<TeamCard 
+									imageSource="/headshots/Peter.png"
+									name="Peter Pulcini"
+									jobTitle="Front End Developer"
+									description="Peter is a third-year computer science student at TMU. 
+									He works as a front-end developer at Lab2Client. 
+									This co-op term, he's eager to learn as much as possible."
+									socialLink="/"
+								/>
+								<TeamCard 
+									imageSource="/headshots/Curtis.png"
+									name="Curtis Dizon"
+									jobTitle="UX/UI Designer"
+									description="Curtis oversees the UX/UI design at Lab2Client. He is in his
+									final year of the business program at TMU. Prior to
+									Lab2Client, Curtis Interned at CIBC and
+									CGI for UX Design."
+									socialLink="/"
+								/>
 							</div>
 
 						</div>
