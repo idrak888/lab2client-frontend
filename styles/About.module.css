@@ -2,7 +2,10 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid rgb(180, 180, 180); 
-    padding: 50px 0;
+    padding: 40px 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
 }
 
 .headshot {
@@ -32,18 +35,13 @@
 }
 
 .cardBacking {
-    background-color: #e7e7e7;
-    border-width: 1px;
-    border-style: solid;
-    border-color: grey;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 0px 0px 25px 0px;
-    margin-right: 15px;
-    margin-left: 15px;
+    margin: 0 10px;
     position: relative;
 }
 
 .teamCardText {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 20px;
 }
