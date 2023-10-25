@@ -23,7 +23,7 @@ export default function ListingsWrapper({ data, edit }) {
 								<img style={{width: "100%", maxWidth: 250, padding: 10}} src={listing.research["LOGOS"]}/>
 							</div>
 							<div className='col-sm-8'>
-								<h3 style={{textDecoration: "underline", fontSize: 24, fontWeight: "bold"}}>{listing.identification.building_name}</h3>
+								<h3 style={{textDecoration: "underline", fontSize: 24, fontWeight: "bold"}}>{listing.identification.research_facillity}</h3>
 								<strong>{listing.identification.institution_name}</strong>
 								<p style={{textDecoration: "none"}}>{listing.research["DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE"]}</p>
 								<div className={styles.fields}>

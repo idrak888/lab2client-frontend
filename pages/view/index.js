@@ -12,13 +12,14 @@ export default function View({ query }) {
         fetch(`https://lab2client.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
         .then(data => {
             setData(data);
+            console.log(data);
         });
     },[]);
 
   return (
     <div className={styles.viewWrapper}>
         <Head>
-            <title>{data ? data.identification.building_name : "loading"} | Lab2Client</title>
+            <title>{data ? data.identification.research_facillity : "loading"} | Lab2Client</title>
             <meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
@@ -45,11 +46,10 @@ export default function View({ query }) {
                                 <img width={"100%"} style={{maxWidth: 200}} src={data.research["LOGOS"]}/>
                             </div>
                             <div className='col-sm-8'>
-                                <h2 style={{fontWeight: "bold"}}>{data.identification.building_name}</h2>
+                                <h2 style={{fontWeight: "bold"}}>{data.identification.research_facillity}</h2>
                                 <h4>{data.identification.institution_name}</h4>
                                 <p>{data.identification.email_identification}</p>
-                                <p>{data.identification.street_address}, {data.identification.postal_code}</p>
-                                <p>{data.identification.province}</p>
+                                <p>{data.identification.city}, {data.identification.province}</p>
                             </div>
                         </div>
                     </div>
@@ -81,8 +81,6 @@ export default function View({ query }) {
                     <div style={{backgroundColor: "white", padding: 20}} className='col-md-5'>
                         <h4 style={{fontWeight: "bold"}}>Fields of Research</h4>
                         {data.Fields_of_research.fields.map(field => <p>{field}</p>)}
-                        <h4 style={{fontWeight: "bold"}}>Sectors</h4>
-                        {data.Sectors_of_application.applications.map(app => <p>{app}</p>)}
                     </div>
                 </div>
 

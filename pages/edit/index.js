@@ -32,10 +32,8 @@ export default function EditListing({ query }) {
                 document.getElementById("contact_email").value = data.contact.email;
                 document.getElementById("telephone").value = data.contact.telephone;
                 document.getElementById("description").value = data.research.DESCRIPTION_OF_YOUR_FACILITY;
-                document.getElementById("building_name").value = data.identification.building_name;
                 document.getElementById("research_infrastructure").value = data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE;
                 document.getElementById("fields").value = data.Fields_of_research.fields.join(",");
-                document.getElementById("applications").value = data.Sectors_of_application.applications.join(",");
 
                 setEquipments(data.lab_equipment);
                 setLabId(data.id);
@@ -58,10 +56,8 @@ export default function EditListing({ query }) {
         const contact_email = document.getElementById("contact_email").value;
         const telephone = document.getElementById("telephone").value;
         const description = document.getElementById("description").value;
-        const building_name = document.getElementById("building_name").value;
         const research_infrastructure = document.getElementById("research_infrastructure").value;
         const fields = document.getElementById("fields").value.split(",");
-        const applications = document.getElementById("applications").value.split(",");
 
         axios.put(`https://lab2client.herokuapp.com/updatelab/${labId}`, {
             "Fields_of_research": {
@@ -69,7 +65,7 @@ export default function EditListing({ query }) {
             },
             "identification": {
                 "street_address": address,
-                "building_name": building_name,
+                "building_name": "",
                 "province": province,
                 "city": city,
                 "research_facillity": research_facillity,
@@ -100,7 +96,7 @@ export default function EditListing({ query }) {
                 "Project_leader_email": ""
             },
             "Sectors_of_application": {
-                "applications": applications
+                "applications": []
             },
             "research": {
                 "areas_of_expertise": "",
@@ -156,7 +152,7 @@ export default function EditListing({ query }) {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="research_facility">Research Facility</label>
+                            <label for="research_facility">Lab Name</label>
                             <input type="text" id="research_facility" name="research_facility" required />
                         </div>
 
@@ -171,17 +167,12 @@ export default function EditListing({ query }) {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="applications">Application Sectors (Seperated by commas)</label>
-                            <input type="text" id="applications" name="applications" required />
-                        </div>
-
-                        <div className={styles.formGroup}>
                             <label for="description">Description of Facility</label>
                             <textarea id="description" name="description"></textarea>
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="research_infrastructure">Description of Research Infrastructure</label>
+                            <label for="research_infrastructure">Description of Lab Infrastructure</label>
                             <textarea id="research_infrastructure" name="research_infrastructure"></textarea>
                         </div>
 
@@ -191,22 +182,17 @@ export default function EditListing({ query }) {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="building_name">Building Name</label>
-                            <input type="text" id="building_name" name="building_name" required />
-                        </div>
-
-                        <div className={styles.formGroup}>
                             <label for="address">Address</label>
                             <input type="text" id="address" name="address" required />
                         </div>
 
                         <div className={styles.formTable}>
                             <div className={styles.formGroup}>
-                                <label>City*</label>
+                                <label>City</label>
                                 <div><input type="text" id='city' name="city" required /></div>
                             </div>
                             <div className={styles.formGroup}>
-                                <label>Province*</label>
+                                <label>Province</label>
                                 <div>
                                     <select id='province' name="province" required>
                                         <option value="">Select Province</option>
@@ -227,7 +213,7 @@ export default function EditListing({ query }) {
                                 </div>
                             </div>
                             <div className={styles.formGroup}>
-                                <label>Postal Code*</label>
+                                <label>Postal Code</label>
                                 <div><input type="text" id='postal_code' name="postal_code" required /></div>
                             </div>
                         </div>
@@ -243,21 +229,40 @@ export default function EditListing({ query }) {
                             <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{ marginTop: 5 }} placeholder='Description and specifications'></textarea>
                             <button onClick={e => {
                                 e.preventDefault();
-                                const newEquipment = {
-                                    name: equipmentName,
-                                    image: equipmentImage,
-                                    description: equipmentDescription
-                                }
+                                if (equipmentName !== "" && equipmentDescription !== "") {
+                                    const newEquipment = {
+                                        name: equipmentName,
+                                        image: equipmentImage,
+                                        description: equipmentDescription
+                                    }
 
-                                setEquipmentName("");
-                                setEquipmentImage("");
-                                setEquipmentDescription("");
-                                setEquipments(arr => [...arr, newEquipment]);
+                                    setEquipmentName("");
+                                    setEquipmentImage("");
+                                    setEquipmentDescription("");
+                                    setEquipments(arr => [...arr, newEquipment]);
+                                }
                             }} style={{ width: 100 }} className='btn btn-primary'>Add</button>
                         </div>
                         {equipments.map(equipment => {
                             return (
                                 <div style={{ padding: 15, display: "inline-block", width: 250, height: 400, overflow: "scroll" }}>
+                                    <div style={{ display: "flex", flexDirection: "row" }}>
+                                        <button onClick={e => {
+                                            e.preventDefault();
+                                            setEquipmentName(equipment.name);
+                                            setEquipmentImage(equipment.image);
+                                            setEquipmentDescription(equipment.description);
+                                            setEquipments(val => {
+                                                return val.filter(doc => doc.name !== equipment.name);
+                                            });
+                                        }} className='btn btn-light' style={{ marginRight: 5 }}>Edit</button>
+                                        <button onClick={e => {
+                                            e.preventDefault();
+                                            setEquipments(val => {
+                                                return val.filter(doc => doc.name !== equipment.name);
+                                            });
+                                        }} className='btn btn-danger'>Remove</button>
+                                    </div>
                                     <img src={equipment.image} width={200} />
                                     <br />
                                     <strong>{equipment.name}</strong>

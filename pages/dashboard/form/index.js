@@ -4,20 +4,20 @@ import Head from 'next/head';
 import axios from 'axios';
 
 export default function index() {
-	let [user, setUser] = useState(null);
+    let [user, setUser] = useState(null);
     let [equipmentName, setEquipmentName] = useState("");
     let [equipmentImage, setEquipmentImage] = useState("");
     let [equipmentDescription, setEquipmentDescription] = useState("");
-	let [equipments, setEquipments] = useState([]);
+    let [equipments, setEquipments] = useState([]);
     let [loading, setLoading] = useState(false);
 
     useEffect(() => {
-		const user = localStorage.getItem("user");
+        const user = localStorage.getItem("user");
         if (user) {
-			const parsed = JSON.parse(user);
-			setUser(parsed);
-		}
-	}, []);
+            const parsed = JSON.parse(user);
+            setUser(parsed);
+        }
+    }, []);
 
     const submit = e => {
         e.preventDefault();
@@ -37,10 +37,8 @@ export default function index() {
         const contact_email = document.getElementById("contact_email").value;
         const telephone = document.getElementById("telephone").value;
         const description = document.getElementById("description").value;
-        const building_name = document.getElementById("building_name").value;
         const research_infrastructure = document.getElementById("research_infrastructure").value;
         const fields = document.getElementById("fields").value.split(",");
-        const applications = document.getElementById("applications").value.split(",");
 
         axios.post(`https://lab2client.herokuapp.com/create`, {
             user_unique_id: uid,
@@ -48,7 +46,7 @@ export default function index() {
             institution_name,
             research_facillity,
             street_address: address,
-            building_name,
+            building_name: "",
             city,
             province,
             postal_code,
@@ -74,7 +72,7 @@ export default function index() {
             Project_leader_email: "",
 
             fields,
-            applications,
+            applications: [],
             lab_equipment: equipments,
 
             DESCRIPTION_OF_YOUR_FACILITY: description,
@@ -83,8 +81,8 @@ export default function index() {
             DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE: research_infrastructure,
             PRIVATE_AND_PUBLIC_SECTOR_RESEARCH_PARTNERS: "",
             website: "",
-            Additional_information : "",
-            Social_media_platforms : "",
+            Additional_information: "",
+            Social_media_platforms: "",
             LOGOS: picture
         }).then(doc => {
             console.log(doc);
@@ -104,10 +102,10 @@ export default function index() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div>
-                <h1 style={{fontWeight: "bold", fontSize: 30, textAlign: "center"}}>Lab Registration Form</h1>
+                <h1 style={{ fontWeight: "bold", fontSize: 30, textAlign: "center" }}>Lab Registration Form</h1>
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div className={styles.inner}>
-                        <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 20}}>Lab Information</h2>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 20 }}>Lab Information</h2>
                         {/* <div className={styles.formGroup}>
                             <label for="picture">Upload Picture:</label>
                             <input type="file" id="picture" name="picture" accept="image/*" />
@@ -118,7 +116,7 @@ export default function index() {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="research_facility">Research Facility</label>
+                            <label for="research_facility">Lab Name</label>
                             <input type="text" id="research_facility" name="research_facility" required />
                         </div>
 
@@ -133,17 +131,12 @@ export default function index() {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="applications">Application Sectors (Seperated by commas)</label>
-                            <input type="text" id="applications" name="applications" required />    
-                        </div>
-
-                        <div className={styles.formGroup}>
                             <label for="description">Description of Facility</label>
                             <textarea id="description" name="description"></textarea>
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="research_infrastructure">Description of Research Infrastructure</label>
+                            <label for="research_infrastructure">Description of Lab Infrastructure</label>
                             <textarea id="research_infrastructure" name="research_infrastructure"></textarea>
                         </div>
 
@@ -153,22 +146,17 @@ export default function index() {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="building_name">Building Name</label>
-                            <input type="text" id="building_name" name="building_name" required />
-                        </div>
-
-                        <div className={styles.formGroup}>
                             <label for="address">Address</label>
                             <input type="text" id="address" name="address" required />
                         </div>
 
                         <div className={styles.formTable}>
                             <div className={styles.formGroup}>
-                                <label>City*</label>
+                                <label>City</label>
                                 <div><input type="text" id='city' name="city" required /></div>
                             </div>
                             <div className={styles.formGroup}>
-                                <label>Province*</label>
+                                <label>Province</label>
                                 <div>
                                     <select id='province' name="province" required>
                                         <option value="">Select Province</option>
@@ -189,48 +177,67 @@ export default function index() {
                                 </div>
                             </div>
                             <div className={styles.formGroup}>
-                                <label>Postal Code*</label>
+                                <label>Postal Code</label>
                                 <div><input type="text" id='postal_code' name="postal_code" required /></div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className={styles.inner}>
-                        <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 20}}>Equipment</h2>
-                        <div className={styles.formGroup} style={{padding: 20, border: "1px dashed rgb(215, 215, 215)", borderRadius: 6}}>
-                            <h3 style={{fontWeight: "bold", fontSize: 18}}>Add new equipment</h3>
-                            
-                            <input value={equipmentName} onChange={e => setEquipmentName(e.target.value)} style={{marginTop: 5}} type="text" placeholder='Equipment Name'/>
-                            <input value={equipmentImage} onChange={e => setEquipmentImage(e.target.value)} style={{marginTop: 5}} type="url" placeholder='Link to image'/>
-                            <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{marginTop: 5}} placeholder='Description and specifications'></textarea>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 20 }}>Equipment</h2>
+                        <div className={styles.formGroup} style={{ padding: 20, border: "1px dashed rgb(215, 215, 215)", borderRadius: 6 }}>
+                            <h3 style={{ fontWeight: "bold", fontSize: 18 }}>Add new equipment</h3>
+
+                            <input value={equipmentName} onChange={e => setEquipmentName(e.target.value)} style={{ marginTop: 5 }} type="text" placeholder='Equipment Name' />
+                            <input value={equipmentImage} onChange={e => setEquipmentImage(e.target.value)} style={{ marginTop: 5 }} type="url" placeholder='Link to image' />
+                            <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{ marginTop: 5 }} placeholder='Description and specifications'></textarea>
                             <button onClick={e => {
                                 e.preventDefault();
-                                const newEquipment = {
-                                    name: equipmentName,
-                                    image: equipmentImage,
-                                    description: equipmentDescription
-                                }
+                                if (equipmentName !== "" && equipmentDescription !== "") {
+                                    const newEquipment = {
+                                        name: equipmentName,
+                                        image: equipmentImage,
+                                        description: equipmentDescription
+                                    }
 
-                                setEquipmentName("");
-                                setEquipmentImage("");
-                                setEquipmentDescription("");
-                                setEquipments(arr => [...arr, newEquipment]);  
-                            }} style={{width: 100}} className='btn btn-primary'>Add</button>
+                                    setEquipmentName("");
+                                    setEquipmentImage("");
+                                    setEquipmentDescription("");
+                                    setEquipments(arr => [...arr, newEquipment]);
+                                }
+                            }} style={{ width: 100 }} className='btn btn-primary'>Add</button>
                         </div>
                         {equipments.map(equipment => {
                             return (
-                                <div style={{padding: 15, display: "inline-block", width: 250, height: 400, overflow: "scroll"}}>
-                                    <img src={equipment.image} width={200}/>
-                                    <br/>
+                                <div style={{ padding: 15, display: "inline-block", width: 250, height: 400, overflow: "scroll" }}>
+                                    <div style={{ display: "flex", flexDirection: "row" }}>
+                                        <button onClick={e => {
+                                            e.preventDefault();
+                                            setEquipmentName(equipment.name);
+                                            setEquipmentImage(equipment.image);
+                                            setEquipmentDescription(equipment.description);
+                                            setEquipments(val => {
+                                                return val.filter(doc => doc.name !== equipment.name);
+                                            });
+                                        }} className='btn btn-light' style={{ marginRight: 5 }}>Edit</button>
+                                        <button onClick={e => {
+                                            e.preventDefault();
+                                            setEquipments(val => {
+                                                return val.filter(doc => doc.name !== equipment.name);
+                                            });
+                                        }} className='btn btn-danger'>Remove</button>
+                                    </div>
+                                    <img src={equipment.image} width={200} />
+                                    <br />
                                     <strong>{equipment.name}</strong>
                                     <p>{equipment.description}</p>
                                 </div>
                             )
                         })}
                     </div>
-                    
+
                     <div className={styles.inner}>
-                        <h2 style={{fontWeight: "bold", fontSize: 24, marginTop: 30}}>Contact Information</h2>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 30 }}>Contact Information</h2>
 
                         <div className={styles.formGroup}>
                             <label for="name">Contact Name</label>
