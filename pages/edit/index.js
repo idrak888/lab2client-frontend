@@ -72,7 +72,7 @@ export default function EditListing({ query }) {
                 "postal_code": postal_code,
                 "institution_name": institution_name
             },
-            "lab_equipment": [],
+            "lab_equipment": equipments,
             "contact": {
                 "last_name2": "",
                 "language2": "",
