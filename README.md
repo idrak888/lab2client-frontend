@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 <p>The main layout files are _app.js and _document.js<p>
 
 <h3>Pages</h3>
-<p>Currently there are 10 main views<p>
+<p>Currently there are 9 main views<p>
 
 - / (index.js)
 - /about 
@@ -41,7 +41,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - /dashboard/form
 - /listings
 - /view
-- /order
 - /payment/invoice
 
 <h3>Components</h3>

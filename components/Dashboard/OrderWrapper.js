@@ -87,6 +87,9 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                 <div>
                     <strong>{information.description}</strong>
                     <br />
+                    {information.equipment && information.equipment.length > 0 ? information.equipment.map(val => {
+                        return <span className={styles.pill}>{val}</span>
+                    }) : ""}
                     {information.fields && information.fields.length > 0 ? information.fields.map(field => {
                         return <span className={styles.pill}>{field}</span>
                     }) : ""}

@@ -7,8 +7,14 @@ import FixedBottom from '/components/Orders/FixedBottom';
 
 export default function View({ query }) {
     let [data, setData] = useState(null);
+    let [user, setUser] = useState(null);
 
     useEffect(() => {
+        const userStr = localStorage.getItem("user");
+        if (userStr) {
+			const parsed = JSON.parse(userStr);
+			setUser(parsed);
+		}
         fetch(`https://lab2client.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
         .then(data => {
             setData(data);
@@ -101,7 +107,7 @@ export default function View({ query }) {
                 </div>
             </div>
         }
-        <FixedBottom data={data}/>
+        {data ? <FixedBottom user={user} data={data}/> : ""}
     </div>
   )
 }
