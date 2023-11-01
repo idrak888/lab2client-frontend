@@ -12,10 +12,6 @@
     margin-top: 100px;
 }
 
-.viewWrapper svg {
-    margin-top: 200px
-}
-
 .listings {
     width: 100%;
     max-width: 900px;
@@ -95,10 +91,6 @@
     .btn {
         min-width: 0;
     }
-
-    .text {
-        display: none;
-    }
 }
 
 .FixedBottom {
@@ -146,11 +138,23 @@
     
 }
 
-.LoginModal h4 {
-    font-weight: bolder;
+.content .btn {
+    background-color: #294b80;
+    float: right;
 }
 
-.LoginModal a {
-    color: blue;
-    text-decoration: underline;
+.description {
+    border: 1px solid #8c9fb0;
+    width: 100%;
+    padding: 10px;
+    height: 200px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.description::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(135, 135, 135);
+    opacity: 1;
+    /* Firefox */
 }
