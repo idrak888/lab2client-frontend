@@ -3,7 +3,7 @@ import styles from "../../styles/About.module.css";
 
 export default function TeamCard(properties) {
 	return (
-		<div className={`col-md-3 ${(styles.teamCard, styles.cardBacking)}`}>
+		<div className={`col-md-3 ${(styles.cardBacking)}`}>
 			<img src={properties.imageSource} className={`img-fluid mb-3 ${styles.headshot}`} />
 			<div className={`${(styles.teamCardText)}`}>
 				<h5 className={`${styles.staffName}`}>{properties.name}</h5>
