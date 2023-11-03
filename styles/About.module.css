@@ -46,3 +46,15 @@
 .teamCardText {
     padding: 20px;
 }
+
+.topRow {
+    display: flex;
+    flex-direction: row;
+    margin-top: 25;
+}
+
+@media only screen and (max-width: 600px) {
+    .topRow {
+        flex-direction: column;
+    }
+}
