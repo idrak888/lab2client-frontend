@@ -22,6 +22,8 @@ export default function View({ query }) {
         });
     },[]);
 
+    
+
   return (
     <div className={styles.viewWrapper}>
         <Head>
@@ -45,38 +47,38 @@ export default function View({ query }) {
         {
             !data ? <Loader/> : 
             <div className='container'>
-                <div className='row' style={{marginTop: 20, marginBottom: 20}}>
-                    <div style={{backgroundColor: "white", padding: 20}} className='col-md-7'>
-                        <div className='row'>
-                            <div className='col-sm-4'>
-                                <img width={"100%"} style={{maxWidth: 200}} src={data.research["LOGOS"]}/>
-                            </div>
-                            <div className='col-sm-8'>
-                                <h2 style={{fontWeight: "bold"}}>{data.identification.research_facillity}</h2>
-                                <h4>{data.identification.institution_name}</h4>
-                                <p>{data.identification.email_identification}</p>
-                                <p>{data.identification.city}, {data.identification.province}</p>
-                            </div>
+                <div className='row'>
+                    <div style={{backgroundColor: "white", padding: 20}} className='col-md-12'>                        
+                    <div className={`lab-details ${styles.labdetails}`}>
+                        <h2 className={`${styles.institutiontitle}`}>
+                            {data.identification.institution_name}
+                        </h2>
+                        <h6 className={`${styles.locationinfo}`}>
+                            {data.identification.research_facillity}, {data.identification.city}, {data.identification.province}
+                        </h6>
+                        <img
+                            src={data.research.LOGOS}
+                            className={`${styles.labimage}`}
+                            alt="Laboratory"
+                        />
+                        <div style={{display: "flex", flexDirection: "row", marginTop: "-2%"}}>
+                        <div className={styles.profileImageContainer}>
+                                <img
+                                    src="https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
+                                    alt=""
+                                    className={styles.profileImage}
+                                />
+                        </div>
+                        <div className={`${styles.labdetailsleft}`}>        
+                                <h4 className={`${styles.labhosttitle}`}>Lab Hosted by John Smith</h4>
+                                <h7 className={`${styles.labhostsubtitle}`}>Research Director @ {data.identification.research_facillity}</h7>
+                        </div>
                         </div>
                     </div>
-                    <div style={{backgroundColor: "white", padding: 20}} className='col-md-5'>
-                        <h4 style={{fontWeight: "bold"}}>Contact</h4>
-                        <div className='row'>
-                            <div className='col-xs' style={{fontSize: 12, marginTop: 15, color: "grey"}}>Name</div><div className='col-xs'>{data.contact.first_name} {data.contact.last_name}</div>
-                        </div>  
-                        <div className='row'>
-                        <div className='col-xs' style={{fontSize: 12, marginTop: 15, color: "grey"}}>Title</div><div className='col-xs'>{data.contact.title}</div>
-                        </div>  
-                        <div className='row'>
-                            <div className='col-xs' style={{fontSize: 12, marginTop: 15, color: "grey"}}>Email</div><div className='col-xs'>{data.contact.email}</div>
-                        </div>  
-                        <div className='row'>
-                            <div className='col-xs' style={{fontSize: 12, marginTop: 15, color: "grey"}}>Telephone</div><div className='col-xs'>{data.contact.telephone}</div>
-                        </div>  
                     </div>
                 </div>
 
-                <div className='row' style={{marginTop: 20, marginBottom: 20}}>
+                <div className='row'>
                     <div style={{backgroundColor: "white", padding: 20}} className='col-md-7'>
                         <h4 style={{fontWeight: "bold"}}>Research</h4>
                         <p>{data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE}</p>
@@ -89,8 +91,9 @@ export default function View({ query }) {
                         {data.Fields_of_research.fields.map(field => <p>{field}</p>)}
                     </div>
                 </div>
+                
 
-                <div className='row' style={{marginTop: 20, marginBottom: 20}}>
+                <div className='row'>
                     <div style={{backgroundColor: "white", padding: 20}} className='col-md-12'>
                         <h4 style={{fontWeight: "bold"}}>Available Equipment</h4>
                         {data.lab_equipment ? data.lab_equipment.map(equipment => {
