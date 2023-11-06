@@ -278,15 +278,10 @@
 .labhosttitle {
     font-weight: bold;
     margin-left: 0.5%;
-    padding-top: 0.5%;
-  }
-  
-  .labhostsubtitle {
+    margin-top: 0.5%;
+}
+
+.labhostsubtitle {
     font-weight: bold;
     margin-left: 0.5%;
-  }
-
-  .boldicon {
-    font-weight: bold;
-  }
-  
+}
