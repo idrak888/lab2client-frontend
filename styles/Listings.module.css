@@ -138,7 +138,6 @@
         margin-left: -2.5%;
     }
 
-
 }
 
 .FixedBottom {
@@ -230,8 +229,8 @@
 }
 
 .imageWrapper {
-    width: 100%; 
-    height: 400px;
+    width: 90%; 
+    height: 200%;
     overflow: hidden; 
     border-radius: 6vw;
     margin: 50px 6%;
