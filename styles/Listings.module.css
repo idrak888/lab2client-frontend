@@ -113,7 +113,7 @@
     width: 90%; 
     height: 50%; /* Updated to 50% */
     overflow: hidden; 
-    border-radius: 6vw;
+    border-radius: 3vw;
     margin: 50px 6%;
     max-width: 80%;
     max-height: 500px;
@@ -254,7 +254,6 @@
     display: flex;
     flex-direction: row;
     margin-top: -2%;
-    margin-left: 4%;
 }
 
 /* Profile Image Container */
