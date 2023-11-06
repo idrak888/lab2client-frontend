@@ -109,6 +109,15 @@
     font-size: 12px;
 }
 
+.imageWrapper {
+    width: 90%; 
+    height: 50%; /* Updated to 50% */
+    overflow: hidden; 
+    border-radius: 6vw;
+    margin: 50px 6%;
+    max-width: 1100px;
+}
+
 @media only screen and (max-width: 800px) {
     .searchWrapper {
         padding: 10px;
@@ -228,17 +237,10 @@
     margin-top: 1%;
 }
 
-.imageWrapper {
-    width: 90%; 
-    height: 200%;
-    overflow: hidden; 
-    border-radius: 6vw;
-    margin: 50px 6%;
-    max-width: 1100px;
-}
 
 .labimage {
     width: 100%;
+    height: 80vh;
 }
 
 .labdetailsleft {
