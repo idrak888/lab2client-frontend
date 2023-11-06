@@ -63,7 +63,7 @@ export default function View({ query }) {
                                 alt="Laboratory"
                             />
                         </div>
-                        <div style={{display: "flex", flexDirection: "row", marginTop: "-2%"}}>
+                        <div className={`${styles.labownerinfo}`} style={{display: "flex", flexDirection: "row", marginTop: "-2%", marginLeft: "4%"}}>
                         <div className={styles.profileImageContainer}>
                                 <img
                                     src="https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
