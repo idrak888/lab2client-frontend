@@ -8,6 +8,36 @@
     background-color: rgb(240, 240, 240);
 }
 
+.profileImageContainer {
+    width: 70px;
+    /* Adjust the size as needed */
+    height: 70px;
+    /* Adjust the size as needed */
+    border-radius: 50%;
+    /* Makes the container circular */
+    overflow: hidden;
+    /* Clips the image within the circular container */
+    border: 4px solid #ffffff;
+    /* Optional border for the circular container */
+    margin-left: 25%;
+    margin-top: -2%;
+    margin-right: 20px;
+}
+
+.profileImage {
+    width: 100%;
+    /* Ensures the image fills the circular container */
+    height: 100%;
+    /* Ensures the image fills the circular container */
+    object-fit: cover;
+    /* Maintains aspect ratio and covers the container */
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+
 .container svg {
     margin-top: 100px;
 }
@@ -79,7 +109,18 @@
     font-size: 12px;
 }
 
-@media only screen and (max-width: 600px) {
+.imageWrapper {
+    width: 90%; 
+    height: 50%; /* Updated to 50% */
+    overflow: hidden; 
+    border-radius: 3vw;
+    margin: 50px 6%;
+    max-width: 80%;
+    max-height: 500px;
+    margin-left: 10%;
+}
+
+@media only screen and (max-width: 800px) {
     .searchWrapper {
         padding: 10px;
     }
@@ -91,6 +132,23 @@
     .btn {
         min-width: 0;
     }
+
+    /* Lab Host Title and Subtitle */
+    .labhosttitle {
+        font-size: medium;
+        width: 15rem;
+    }
+
+    .labhostsubtitle {
+        font-size: x-small;
+    }
+
+
+    .labdetailsleft {
+        margin-top: 1.5%;
+        margin-left: -2.5%;
+    }
+
 }
 
 .FixedBottom {
@@ -135,7 +193,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     position: fixed;
-    
+
 }
 
 .content .btn {
@@ -157,6 +215,84 @@
     color: rgb(135, 135, 135);
     opacity: 1;
     /* Firefox */
+}
+
+
+
+/* Laboratory details */
+.labdetails {
+    background-color: white;
+    padding: 20px;
+}
+
+.institutiontitle {
+    font-weight: bold;
+    margin-left: 6%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
+
+.locationinfo {
+    font-weight: bold;
+    margin-left: 6.25%;
+    color: grey;
+    margin-top: 1%;
+}
+
+
+.labimage {
+    width: 100%;
+    height: 30%;
+}
+
+.labdetailsleft {
+    font-weight: bold;
+    width: 70%;
+}
+
+.labownerinfo {
+    display: flex;
+    flex-direction: row;
+    margin-top: -2%;
+}
+
+/* Profile Image Container */
+.profileImageContainer {
+    width: 70px;
+    /* Adjust the size as needed */
+    height: 70px;
+    /* Adjust the size as needed */
+    border-radius: 50%;
+    /* Makes the container circular */
+    overflow: hidden;
+    /* Clips the image within the circular container */
+    border: 4px solid #ffffff;
+    /* Optional border for the circular container */
+    margin-left: 10%;
+    margin-top: 0%;
+    margin-right: 20px;
+}
+
+/* Profile Image */
+.profileImage {
+    width: 100%;
+    /* Ensures the image fills the circular container */
+    height: 100%;
+    /* Ensures the image fills the circular container */
+    object-fit: cover;
+    /* Maintains aspect ratio and covers the container */
+}
+
+/* Lab Host Title and Subtitle */
+.labhosttitle {
+    font-weight: bold;
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+}
+
+.labhostsubtitle {
+    font-weight: bold;
+    margin-left: 0.5%;
 }
 
 /* About/Fields of Research */
