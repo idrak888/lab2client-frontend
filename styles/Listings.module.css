@@ -158,3 +158,40 @@
     opacity: 1;
     /* Firefox */
 }
+
+/* About/Fields of Research */
+.sectionMargins {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.sectionContentPadding {
+    padding: 20px;
+}
+
+.separationBar {
+    position: relative;
+}
+
+.separationBar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+    border-left: 1px solid #878787;
+
+}
+
+/* media query that removes the bar if on a mobile device */
+@media only screen and (max-width: 767px) {
+    .separationBar::before {
+        display: none;
+    }
+}
+
+.equipmentImage {
+    border: 1px solid #878787;
+}

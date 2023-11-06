@@ -4,6 +4,7 @@ import Loader from '/components/Layout/Loader';
 import styles from '/styles/Listings.module.css';
 import Head from 'next/head';
 import FixedBottom from '/components/Orders/FixedBottom';
+import Select from 'react-select';
 
 export default function View({ query }) {
     let [data, setData] = useState(null);
@@ -76,35 +77,42 @@ export default function View({ query }) {
                     </div>
                 </div>
 
-                <div className='row' style={{marginTop: 20, marginBottom: 20}}>
-                    <div style={{backgroundColor: "white", padding: 20}} className='col-md-7'>
-                        <h4 style={{fontWeight: "bold"}}>Research</h4>
+                {/* About and Fields of Research */}
+                <div className={`row ${styles.sectionMargins}`}>
+
+                    {/* About */}
+                    <div className={`col-md-6 ${styles.sectionContentPadding}`}>
+                        <h4 style={{fontWeight: "bold"}}>About</h4>
                         <p>{data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE}</p>
                         <p>{data.research.DESCRIPTION_OF_YOUR_FACILITY}</p>
                         <p>{data.research.areas_of_expertise}</p>
                         <p><a href={data.research.website}>{data.research.website}</a></p>
                     </div>
-                    <div style={{backgroundColor: "white", padding: 20}} className='col-md-5'>
+
+                    {/* Research Fields */}
+                    <div className={`col-md-6 ${styles.sectionContentPadding} ${styles.separationBar}`}> 
                         <h4 style={{fontWeight: "bold"}}>Fields of Research</h4>
-                        {data.Fields_of_research.fields.map(field => <p>{field}</p>)}
+                        <ul>
+                            {data.Fields_of_research.fields.map(field => <li>{field}</li>)}
+                        </ul>
                     </div>
                 </div>
 
-                <div className='row' style={{marginTop: 20, marginBottom: 20}}>
-                    <div style={{backgroundColor: "white", padding: 20}} className='col-md-12'>
-                        <h4 style={{fontWeight: "bold"}}>Available Equipment</h4>
-                        {data.lab_equipment ? data.lab_equipment.map(equipment => {
-                            return (
-                                <div style={{padding: 15, display: "inline-block", width: 250, height: 400, overflow: "scroll"}}>
-                                    <img src={equipment.image} width={200}/>
-                                    <br/>
-                                    <strong>{equipment.name}</strong>
-                                    <p>{equipment.description}</p>
-                                </div>
-                            )
-                        }) : "No available Lab Equipment listed"}
+
+                {/* Available Equipment */}
+                <div className={`row ${styles.sectionMargins}`}>
+                    <h4 className={`m-0 fw-bold pb-0 ${styles.sectionContentPadding}`}> Available Equipment </h4>
+
+                    {/* Equipment Dropdown Section */}
+                    <div className={`col-md-6 ${styles.sectionContentPadding}`}>
+
                     </div>
-                </div>
+
+                    {/* Right Side Corresponding Image */}
+                    <div className={`col-md-6 ${styles.sectionContentPadding}`}>
+
+                    </div>
+                </div> 
             </div>
         }
         {data ? <FixedBottom user={user} data={data}/> : ""}
