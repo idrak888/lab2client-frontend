@@ -215,7 +215,7 @@
   }
   
   .locationinfo {
-    font-weight: bold;
+    font-weight: bolder;
     margin-left: 6.25%;
     color: grey;
     margin-top: 1%;
@@ -256,11 +256,15 @@
   .labhosttitle {
     font-weight: bold;
     margin-left: 0.5%;
-    margin-top: 0.5%;
+    padding-top: 0.5%;
   }
   
   .labhostsubtitle {
     font-weight: bold;
     margin-left: 0.5%;
+  }
+
+  .boldicon {
+    font-weight: bold;
   }
   

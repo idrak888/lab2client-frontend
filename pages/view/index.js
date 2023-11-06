@@ -54,7 +54,7 @@ export default function View({ query }) {
                             {data.identification.institution_name}
                         </h2>
                         <h6 className={`${styles.locationinfo}`}>
-                            {data.identification.research_facillity}, {data.identification.city}, {data.identification.province}
+                        <i class="bi bi-mortarboard"></i> {data.identification.research_facillity} <i className='bi bi-geo-alt' style={{marginLeft: "2%"}}></i> {data.identification.city}, {data.identification.province}
                         </h6>
                         <img
                             src={data.research.LOGOS}
