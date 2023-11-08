@@ -129,7 +129,7 @@
     }
 
     .btn {
-        min-width: 0;
+        width: 10rem;
     }
 
     /* Lab Host Title and Subtitle */
