@@ -55,7 +55,7 @@ export default function Listings({ query }) {
                         />
                         <a className={`${styles.btn} btn`}  href={searchKeys.trim() != "" ? `/listings?search=${searchKeys}` : "#"}><span className={styles.text}>Find Labs</span> <i className="bi bi-arrow-right" style={{marginLeft: 3, marginRight: 3}}></i></a>
                     </div>
-                    <h5 style={{fontWeight: "bold", marginTop: 20, fontSize: 18}}>SHOWING {data.length} RESULTS</h5>
+                    <h5 className={`${styles.showingResults}`}>SHOWING {data.length} RESULTS</h5>
                     <ListingsWrapper data={data}/>
                 </>
             }

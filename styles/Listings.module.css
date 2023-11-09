@@ -119,6 +119,21 @@
     max-height: 500px;
 }
 
+.showingResults {
+    font-weight: bold;
+    margin-top: 5vh;
+}
+
+.title {
+    font-size: 20px; 
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 10px; 
+    font-weight: light;
+}
+
 @media only screen and (max-width: 800px) {
     .searchWrapper {
         padding: 10px;
