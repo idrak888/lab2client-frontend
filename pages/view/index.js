@@ -59,7 +59,7 @@ export default function View({ query }) {
                                         {data.identification.institution_name}
                                     </h2>
                                     <h6 className={`${styles.locationinfo}`}>
-                                        <i class="bi bi-mortarboard"></i> {data.identification.research_facillity} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
+                                        <i className="bi bi-mortarboard"></i> {data.identification.research_facillity} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
                                     </h6>
                                     <div className={styles.imageWrapper}>
                                         <img
