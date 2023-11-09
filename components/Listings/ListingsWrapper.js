@@ -20,7 +20,7 @@ export default function ListingsWrapper({ data, edit }) {
 					} className={styles.card}>
 						<div className='row' style={{display: "flex", alignItems: "center"}}>
 							<div className='col-sm-4'>
-								<img style={{width: "100%", maxWidth: 250, padding: 10}} src={listing.research["LOGOS"]}/>
+								<img style={{width: "100%", maxWidth: 250, padding: 0, borderRadius: 25}} src={listing.research["LOGOS"]}/>
 							</div>
 							<div className='col-sm-8'>
 								<h3 style={{textDecoration: "underline", fontSize: 24, fontWeight: "bold"}}>{listing.identification.research_facillity}</h3>

@@ -51,7 +51,7 @@ export default function Listings({ query }) {
                             value={searchKeys}
                             onChange={handleChange} 
                             className={`${styles.input} form-control me-2`} 
-                            placeholder="Search for more resources"
+                            placeholder="Search for Resources"
                         />
                         <a className={`${styles.btn} btn`}  href={searchKeys.trim() != "" ? `/listings?search=${searchKeys}` : "#"}><span className={styles.text}>Find Labs</span> <i className="bi bi-arrow-right" style={{marginLeft: 3, marginRight: 3}}></i></a>
                     </div>
