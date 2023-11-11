@@ -7,6 +7,28 @@ import Link from 'next/link';
 
 export default function ListingsWrapper({ data, edit }) {
 	console.log(data);
+
+	const items = ["Autocollimators", "Scanning Electron Microscope (SEM)", "Microscope", "Another Component", "Yet Another Component", "More Components"];
+
+	const DynamicWidthElement = ({ text }) => {
+		const dynamicWidth = {
+		  backgroundColor: '#294B80',
+		  borderRadius: '12px',
+		  justifyContent: 'center',
+		  display: 'flex',
+		  color: 'white',
+		  width: 'auto',
+		  padding: "0.8% 2%",
+		  fontSize: '12px',
+		  alignItems: 'center',
+		  fontFamily: 'Segoe UI',
+		  marginBottom: '8px', 
+		  marginRight: "8px"
+		};
+	  
+		return <div style={dynamicWidth}>{text}</div>;
+	  };
+
 	return (
 	  <div className={styles.listings}>
 		{/* Check if there is data to display */}
@@ -34,7 +56,15 @@ export default function ListingsWrapper({ data, edit }) {
 					<span className={styles.subtitle}>{listing.identification.city}, {listing.identification.province}</span>
 				  </div>
 				  <p style={{ textDecoration: "none" }}>{listing.research["DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE"]}</p>
-				
+				  <h6 className={styles.equipmentsTitle}>Equipment Offered:</h6>
+				  <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+						{items.map((item, index) => (
+							<DynamicWidthElement key={index} text={item} />
+						))}
+						{
+							items.length > 5 ? <DynamicWidthElement key={-1} text={"+9 more"}/> : null
+						}
+				  </div>
 				</div>
 			  </div>
 			</Link>

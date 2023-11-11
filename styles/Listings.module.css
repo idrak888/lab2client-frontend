@@ -59,20 +59,36 @@
 
 .searchWrapper,
 .header {
-    width: 100%;
-    background-color: #102D5D;
-    padding: 10px 20px;
+    padding: 0rem 0px;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #294b80;
+    margin-top: -2%;
+    flex-direction: column;
+}
+
+
+.searchWrapper {
+    width: 58.5%;
+    /* Adjust margin-top to create space between title and search bar */
+    margin-top: 10px;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    margin-top: 5%;
 }
 
 .input {
     width: 100%;
-    border-radius: 8px;
-    max-width: 680px;
+    border-radius: 30px;
+    max-width: 80px;
     font-size: 18px;
     padding: 10px 16px;
+    align-items: center;
+    padding-bottom: 1%;
 }
 
 .btn {
@@ -120,8 +136,9 @@
 }
 
 .showingResults {
-    font-weight: bold;
+    font-weight: light;
     margin-top: 5vh;
+    font-size: medium;
 }
 
 .title {
@@ -134,9 +151,16 @@
     font-weight: light;
 }
 
+.equipmentsTitle {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 800px) {
     .searchWrapper {
         padding: 10px;
+        width: 100%;
+        margin-bottom:-2rem;
     }
 
     .listings {
@@ -355,3 +379,14 @@
     cursor: pointer;
     background-color: #f8f8f8;
 }
+
+
+  .my-list-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 10rem;
+    color: rgb(78, 246, 78)
+  }
+
+
