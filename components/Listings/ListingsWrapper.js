@@ -55,7 +55,9 @@ export default function ListingsWrapper({ data, edit }) {
 					<i className="bi bi-dot"></i>
 					<span className={styles.subtitle}>{listing.identification.city}, {listing.identification.province}</span>
 				  </div>
-				  <p style={{ textDecoration: "none" }}>{listing.research["DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE"]}</p>
+				  <p style={{ textDecoration: "none", fontWeight: "normal" }}>
+					Fields of Research: {listing.Fields_of_research.fields.join(", ")}.
+				  </p>
 				  <h6 className={styles.equipmentsTitle}>Equipment Offered:</h6>
 				  <div style={{ display: 'flex', flexWrap: 'wrap' }}>
 						{items.map((item, index) => (

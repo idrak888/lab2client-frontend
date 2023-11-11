@@ -1,47 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import Loader from '/components/Layout/Loader';
 import styles from '/styles/Listings.module.css';
-import { useEffect, useState } from 'react';
 import ListingsWrapper from '/components/Listings/ListingsWrapper';
 
 export default function Listings({ query }) {
   let [data, setData] = useState(null);
-  const [searchKeys, setSearchKeys] = React.useState("");
+  const [searchKeys, setSearchKeys] = useState("");
+  const inputRef = useRef(null);
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setSearchKeys(event.target.value);
-  }
+  };
+
+  const handleSearch = () => {
+    const trimmedSearchKeys = searchKeys.trim();
+    if (trimmedSearchKeys !== '') {
+      window.location.href = `/listings?search=${trimmedSearchKeys}`;
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent the default form submission behavior
+      handleSearch();
+    }
+  };
 
   useEffect(() => {
     if (query.search) {
       fetch(`https://lab2client.herokuapp.com/search_word/${query.search}`)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           setData(data);
           setSearchKeys(query.search);
         });
     } else {
       fetch(`https://lab2client.herokuapp.com/getall`)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           setData(data.reverse());
           setSearchKeys("");
         });
     }
   }, []);
 
+  useEffect(() => {
+    // Focus the input field on component mount with a slight delay
+    const timeoutId = setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 100);
+
+    // Clear the timeout when the component is unmounted
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <>
       <Head>
         <title>{query.search ? capitalizeFirstLetter(query.search) : "All Listings"} | Lab2Client</title>
-        <meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* ... (your other Head meta tags) */}
       </Head>
       <div className={styles.container}>
         {
@@ -49,9 +73,9 @@ export default function Listings({ query }) {
             <>
               <div className={`${styles.searchWrapper}`}>
                 <h1 className={styles.pageTitle}>
-                    Lorem Epsum Dolor Sit Amet, consectatur adipiscing elit.
+                  Find research equipment that suits your needs.
                 </h1>
-                <div style={{ position: 'relative', width: '100%', marginTop: '30px'}}>
+                <div style={{ position: 'relative', width: '100%', marginTop: '30px' }}>
                   <div
                     style={{
                       position: 'absolute',
@@ -65,15 +89,17 @@ export default function Listings({ query }) {
                     <i className="bi bi-search"></i>
                   </div>
                   <input
+                    ref={inputRef}
                     type="text"
-                    placeholder="Search for lab equipment, try 'microscope'"
+                    placeholder="Search for lab equipment, etc. Microscope"
                     style={{
-                      padding: '15px 0px 15px 50px', // Adjusted padding for height and width
+                      padding: '15px 0px 15px 50px',
                       width: '100%',
                       boxSizing: 'border-box',
-                      borderRadius: '30px', // Rounded corners
+                      borderRadius: '30px',
                       fontSize: "80%"
                     }}
+                    onKeyDown={handleKeyDown}
                     value={searchKeys}
                     onChange={handleChange}
                   />
@@ -90,14 +116,4 @@ export default function Listings({ query }) {
 
 Listings.getInitialProps = async ({ query }) => {
   return { query };
-}
-
-/*
-<a
-                  className={`${styles.btn} btn`}
-                  href={searchKeys.trim() !== '' ? `/listings?search=${searchKeys}` : '#'}
-                >
-                  <span className={styles.text}>Find Labs</span>{' '}
-                  <i className="bi bi-arrow-right" style={{ marginLeft: 3, marginRight: 3 }}></i>
-                </a>
-*/
+};
