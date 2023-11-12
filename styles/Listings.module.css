@@ -55,6 +55,7 @@
     color: rgb(0, 0, 0);
     background-color: white;
     text-decoration: none;
+    border-radius: 30px;
 }
 
 .searchWrapper,
