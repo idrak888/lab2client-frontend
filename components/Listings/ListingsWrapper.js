@@ -2,9 +2,6 @@ import React from 'react'
 import styles from '/styles/Listings.module.css';
 import Link from 'next/link';
 
-// this is a wrapper that renders all listings in the /listings and /dashboard page
-// ... (other imports)
-
 export default function ListingsWrapper({ data, edit }) {
 	console.log(data);
 
@@ -59,17 +56,11 @@ export default function ListingsWrapper({ data, edit }) {
 								</p>
 								<h6 className={styles.equipmentsTitle}>Equipment Offered:</h6>
 								<div style={{ display: 'flex', flexWrap: 'wrap' }}>
-									{/* {listing.lab_equipment.map((item, index) => (
-										<DynamicWidthElement key={index} text={item.name} />
+									{listing.lab_equipment.slice(0, 5).map((item, index) => (
+									<DynamicWidthElement key={index} text={item.name} />
 									))}
 									{
-										listing.lab_equipment.length > 5 ? <DynamicWidthElement key={-1} text={"+9 more"} /> : null
-									} */}
-									{items.map((item, index) => (
-										<DynamicWidthElement key={index} text={item} />
-									))}
-									{
-										items.length > 5 ? <DynamicWidthElement key={-1} text={"+9 more"} /> : null
+									listing.lab_equipment.length > 5 ? <DynamicWidthElement key={-1} text={`+${listing.lab_equipment.length - 5} more`} /> : null
 									}
 								</div>
 							</div>
