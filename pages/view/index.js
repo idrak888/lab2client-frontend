@@ -9,6 +9,7 @@ import Select from 'react-select';
 export default function View({ query }) {
     let [data, setData] = useState(null);
     let [user, setUser] = useState(null);
+    let [imageLoading, setImageLoading] = useState(false);
     let [equipmentShowing, setEquipmentShowing] = useState(null);
 
     useEffect(() => {
@@ -110,13 +111,16 @@ export default function View({ query }) {
                         {/* Available Equipment */}
                         <div className={`row ${styles.sectionMargins}`}>
                             <h4 className={`m-0 fw-bold pb-0 ${styles.sectionContentPadding}`}> Available Equipment </h4>
-
                             {/* Equipment Dropdown Section */}
                             <div className={`col-md-6 ${styles.sectionContentPadding}`}>
                                 {data.lab_equipment.map((doc, index) => {
                                     return (
                                         <div onClick={() => {
                                             setEquipmentShowing(doc)
+                                            setImageLoading(true);
+                                            setTimeout(() => {
+                                                setImageLoading(false);
+                                            }, 1500);
                                         }} className={styles.equipmentItem}>
                                             <strong style={{fontSize: 18}}>{doc.name}</strong>
                                             {equipmentShowing == doc ? <p style={{marginTop: 10}}>{doc.description}</p> : ""}
@@ -126,11 +130,18 @@ export default function View({ query }) {
                             </div>
 
                             {/* Right Side Corresponding Image */}
-                            <div className={`col-md-6 ${styles.sectionContentPadding}`}>
-                                {equipmentShowing ? 
-                                <div>
-                                    <img width={"100%"} src={equipmentShowing.image}/>
-                                </div> : "No Equipments"}
+                            <div style={{
+                                display: "flex",
+                                flex: 1,
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }} className={`col-md-6 ${styles.sectionContentPadding}`}>
+                                {equipmentShowing != null ? 
+                                    !imageLoading ? 
+                                    <div>
+                                        <img width={"100%"} src={equipmentShowing.image}/>
+                                    </div> : <Loader />
+                                : "No Equipments"}
                             </div>
                         </div>
                     </div>
