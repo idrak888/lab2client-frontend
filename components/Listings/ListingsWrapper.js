@@ -54,7 +54,11 @@ export default function ListingsWrapper({ data, edit }) {
 								<p style={{ textDecoration: "none", fontWeight: "normal" }}>
 									Fields of Research: {listing.Fields_of_research.fields.join(", ")}.
 								</p>
-								<h6 className={styles.equipmentsTitle}>Equipment Offered:</h6>
+								{
+									listing.lab_equipment.length > 0 ?
+									<h6 className={styles.equipmentsTitle}>Equipment Offered:</h6>
+									: <h6 className={styles.equipmentsTitle}>No Equipments Offered</h6>
+								}
 								<div style={{ display: 'flex', flexWrap: 'wrap' }}>
 									{listing.lab_equipment.slice(0, 5).map((item, index) => (
 									<DynamicWidthElement key={index} text={item.name} />
