@@ -60,7 +60,7 @@
 
 .searchWrapper,
 .header {
-    padding: 0rem 0px;
+    padding: 10px 0px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
