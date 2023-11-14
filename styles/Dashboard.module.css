@@ -6,12 +6,14 @@
     padding: 40px;
     background-color: #f5f5f5;
 }
+
 .inner {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 800px;
 }
+
 .OrderWrapper {
     background-color: white;
     padding: 15px;
@@ -20,6 +22,22 @@
     border-radius: 6px;
     color: black;
 }
+
+.orderRow {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media only screen and (max-width: 800px) { 
+    .orderRow {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
 .pill {
     margin: 10px 0;
     margin-right: 3px;
@@ -30,6 +48,7 @@
     font-weight: bold;
     font-size: 12px;
 }
+
 .btnSuccess {
     background-color: #1aaa32;
     border-radius: 3px;
