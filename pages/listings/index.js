@@ -49,6 +49,11 @@ export default function Listings({ query }) {
     }
   }, []);
 
+  const handleClearClick = () => {
+    // Clear the input field
+    inputRef.current.value = '';
+  };
+
   useEffect(() => {
     // Focus the input field on component mount with a slight delay
     const timeoutId = setTimeout(() => {
@@ -93,16 +98,29 @@ export default function Listings({ query }) {
                     type="text"
                     placeholder="Search for lab equipment, etc. Microscope"
                     style={{
-                      padding: '15px 0px 15px 50px',
+                      padding: '15px 40px 15px 50px', // Increased right padding to accommodate the clear icon
                       width: '100%',
                       boxSizing: 'border-box',
                       borderRadius: '30px',
-                      fontSize: "80%"
+                      fontSize: '80%',
                     }}
                     onKeyDown={handleKeyDown}
-                    value={searchKeys}
                     onChange={handleChange}
                   />
+                  {searchKeys && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        right: '20px',
+                        transform: 'translateY(-50%)',
+                        cursor: 'pointer',
+                      }}
+                      onClick={handleClearClick}
+                    >
+                      &#x2715;
+                    </div>
+                  )}
                 </div>
               </div>
               <h5 className={`${styles.showingResults}`}>Showing {data.length} results</h5>
