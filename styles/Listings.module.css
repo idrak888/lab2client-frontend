@@ -144,6 +144,7 @@
 .title {
     font-size: 20px; 
     font-weight: bold;
+    margin-top: 4%;
 }
 
 .subtitle {
@@ -356,13 +357,42 @@
     top: 20px;
     bottom: 20px;
     border-left: 2px solid #dcdcdc;
-
 }
 
-/* media query that removes the bar if on a mobile device */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 575px) {
     .separationBar::before {
         display: none;
+    }
+
+    .responsiveCard {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+}
+
+
+
+.dynamicWidth {
+    background-color: #294B80;
+    border-radius: 12px;
+    justify-content: center;
+    display: flex;
+    color: white;
+    width: auto;
+    padding: 0.8% 2%;
+    font-size: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-right: 8px;
+  }
+
+.mobileCenter {
+    @media only screen and (max-width: 575px) {
+      justify-content: center;
+      text-align: center; /* Optionally center text inside elements */
     }
 }
 
