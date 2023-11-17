@@ -46,12 +46,7 @@ export default function OrderWrapper({ type, information, date, status, user }) 
 
     return (
         <div className={`${styles.OrderWrapper}`}>
-            <div style={{
-                display: "flex",
-                flex: 1,
-                justifyContent: "space-between",
-                alignItems: "center"
-            }}>
+            <div className={styles.orderRow}>
                 <div className="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">

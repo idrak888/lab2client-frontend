@@ -8,6 +8,7 @@ import FixedBottom from '/components/Orders/FixedBottom';
 export default function View({ query }) {
     let [data, setData] = useState(null);
     let [user, setUser] = useState(null);
+    let [imageLoading, setImageLoading] = useState(false);
     let [equipmentShowing, setEquipmentShowing] = useState(null);
 
     useEffect(() => {
@@ -62,7 +63,7 @@ export default function View({ query }) {
 
                                     {/* Lab Name and Location Information */}
                                     <h6 className={`${styles.locationinfo}`}>
-                                        <i class="bi bi-mortarboard"></i> {data.identification.institution_name} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
+                                        <i className="bi bi-mortarboard"></i> {data.identification.research_facillity} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
                                     </h6>
 
                                     {/* Large Lab Image */}
@@ -125,13 +126,16 @@ export default function View({ query }) {
                             <h4 className={`m-0 fw-bold pb-3 ${styles.sectionContentPadding}`}> Available Equipment 
                                 <span className={`${styles.availableEquipmentVariable}`}> ({data.lab_equipment.length}) </span>
                             </h4>
-
                             {/* Equipment Dropdown Section */}
                             <div className={`col-md-6 pt-0 ${styles.sectionContentPadding} ${styles.equipmentScrollBar}`}>
                                 {data.lab_equipment.map((doc, index) => {
                                     return (
                                         <div onClick={() => {
                                             setEquipmentShowing(doc)
+                                            setImageLoading(true);
+                                            setTimeout(() => {
+                                                setImageLoading(false);
+                                            }, 1500);
                                         }} className={styles.equipmentItem}>
                                             <strong style={{fontSize: 18}}>{doc.name}</strong>
                                             {equipmentShowing == doc ? 
@@ -144,11 +148,19 @@ export default function View({ query }) {
                             </div>
 
                             {/* Right Side Corresponding Image */}
-                            <div className={`col-md-6 pt-0 ${styles.sectionContentPadding}`}>
-                                {equipmentShowing ? 
-                                <div className={`${styles.equipmentImageContainer}`}>
-                                    <img src={equipmentShowing.image} className={`${styles.equipmentImage}`}/>
-                                </div> : "No Images Available"}
+
+                            <div style={{
+                                display: "flex",
+                                flex: 1,
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }} className={`col-md-6 ${styles.sectionContentPadding}`}>
+                                {equipmentShowing != null ? 
+                                    !imageLoading ? 
+                                    <div>
+                                        <img width={"100%"} src={equipmentShowing.image}/>
+                                    </div> : <Loader />
+                                : "No Equipments"}
                             </div>
                         </div>
                     </div>
