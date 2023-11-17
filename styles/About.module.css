@@ -1,10 +1,10 @@
 .feature {
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid rgb(180, 180, 180); 
-    padding: 40px 20px;
+    padding: 40px 30px;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
     background-color: white;
 }
 
@@ -36,12 +36,17 @@
 
 .cardBacking {
     background-color: #ffffff;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 0px 0px 25px 0px;
     margin: 0 10px;
     position: relative;
     overflow: hidden;
     max-width: 480px;
+    filter: drop-shadow(0 -6mm 4mm rgb(228, 228, 228));
+}
+
+.cardBacking p {
+    font-size: 14px;
 }
 
 .teamCardText {
@@ -57,5 +62,15 @@
 @media only screen and (max-width: 600px) {
     .topRow {
         flex-direction: column;
+    }
+    .feature {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .feature p {
+        margin-top: 10px;
+    }
+    .previewImage {
+        display: none;
     }
 }
