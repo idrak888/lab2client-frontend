@@ -85,8 +85,8 @@ export default function View({ query }) {
                                         </div>
                                         <div className={`${styles.labdetailsleft}`}>
                                             <div>
-                                                <h4 className={`${styles.labhosttitle}`}>Lab Hosted by John Smith</h4>
-                                                <h6 className={`${styles.labhostsubtitle}`}>Research Director @ {data.identification.research_facillity}</h6>
+                                                <h4 className={`${styles.labhosttitle}`}>Lab Hosted by {data.contact.first_name} {data.contact.last_name}</h4>
+                                                <h6 className={`${styles.labhostsubtitle}`}>{data.contact.title} @ {data.identification.research_facillity}</h6>
                                             </div>
                                             <span className={`${styles.contactInfoDisclaimerText}`}> *Contact information will be provided once a lab order is placed. </span>
                                         </div>
