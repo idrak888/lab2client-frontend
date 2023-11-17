@@ -9,8 +9,8 @@
 }
 
 .headshot {
-    width: 400px;
-    height: 300px;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
 }
 
@@ -40,6 +40,8 @@
     padding: 0px 0px 25px 0px;
     margin: 0 10px;
     position: relative;
+    overflow: hidden;
+    max-width: 480px;
 }
 
 .teamCardText {
