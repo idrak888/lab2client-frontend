@@ -26,7 +26,7 @@ export default function TeamPage() {
 				margin: "auto",
 				padding: 30
 			}}>
-				<div style={{ display: "flex", flexDirection: "row", marginTop: 25 }}>
+				<div className={styles.topRow}>
 					<div style={{ flex: 1, paddingTop: 50 }}>
 						<h2 style={{ fontWeight: "bold" }}>About Lab2Client</h2>
 						<p>Lab2Client is a revolutionary web platform designed to address the challenges faced by university professors and graduate students when conducting experimental tests. Our mission is to connect researchers with available lab space and equipment, making the process of conducting experiments more efficient, accessible, and collaborative.</p>
@@ -119,8 +119,7 @@ export default function TeamPage() {
 										description="Aref started his journey as a Mechanical Engineering master's student at York University, where the idea for L2C was born. 
 									His entrepreneurial spirit led him to participate in programs like Lab2Market and i2I before starting L2C.
 									"
-										socialLink="/"
-									/* Aref's Email */
+										socialLink="https://www.linkedin.com/in/aref-soltani/"
 									/>
 									<TeamCard
 										imageSource="/headshots/Reza.png"
@@ -128,7 +127,7 @@ export default function TeamPage() {
 										jobTitle="Co-founder & Business Development Manager"
 										description="Reza is the Assistant Professor of the Department of Mechanical Engineering at York University. 
 									He plays a vital role in fostering the company's partnership growth and expansion."
-										socialLink="/"
+										socialLink="https://www.linkedin.com/in/reza-rizvi-81062289/"
 									/>
 								</div>
 
@@ -141,7 +140,7 @@ export default function TeamPage() {
 										description="Idrak is a second-year computer science student at York University. 
 									He handles the lead development and Software architecture for Lab2Client. 
 									Idrak joined Lab2Client as a Summer co-op student and now works on the project actively."
-										socialLink="/"
+										socialLink="https://www.linkedin.com/in/idrak-mustahsin/"
 									/>
 									<TeamCard
 										imageSource="/headshots/Hamza.png"
@@ -150,7 +149,7 @@ export default function TeamPage() {
 										description="Hamza is a third-year software engineering student at York University. 
 									He handles the backend development of Lab2Client. 
 									Hamza joined Lab2Client as a Summer co-op student and now works on the project actively."
-										socialLink="/"
+										socialLink="https://www.linkedin.com/in/muhammadhamzasohail/	"
 									/>
 									<TeamCard
 										imageSource="/headshots/Syed.png"
@@ -159,7 +158,7 @@ export default function TeamPage() {
 										description="Syed has been working as a backend engineer at Lab2Client. 
 									He is in his final year of the computer engineering program at TMU. 
 									Prior to Lab2Client, Syed interned at 2 startups in Toronto."
-										socialLink="/"
+										socialLink="https://www.linkedin.com/in/abdul-wadood-syed-978085220/"
 									/>
 								</div>
 
@@ -172,7 +171,7 @@ export default function TeamPage() {
 										description="Peter is a third-year computer science student at TMU. 
 									He works as a front-end developer at Lab2Client. 
 									This co-op term, he's eager to learn as much as possible."
-										socialLink="/"
+										socialLink="https://www.linkedin.com/in/peter-pulcini/	"
 									/>
 									<TeamCard
 										imageSource="/headshots/Curtis.png"
@@ -182,7 +181,7 @@ export default function TeamPage() {
 									final year of the business program at TMU. Prior to
 									Lab2Client, Curtis Interned at CIBC and
 									CGI for UX Design."
-										socialLink="/"
+										socialLink="https://www.linkedin.com/in/curtisdizon/"
 									/>
 								</div>
 

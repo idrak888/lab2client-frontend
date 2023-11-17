@@ -30,24 +30,40 @@
     color: rgb(0, 0, 0);
     background-color: white;
     text-decoration: none;
+    border-radius: 30px;
 }
 
 .searchWrapper,
 .header {
-    width: 100%;
-    background-color: #102D5D;
-    padding: 10px 20px;
+    padding: 10px 0px;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #294b80;
+    flex-direction: column;
+}
+
+
+.searchWrapper {
+    width: 58.5%;
+    /* Adjust margin-top to create space between title and search bar */
+    margin-top: 10px;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    margin-top: 5%;
 }
 
 .input {
     width: 100%;
-    border-radius: 8px;
-    max-width: 680px;
+    border-radius: 30px;
+    max-width: 80px;
     font-size: 18px;
     padding: 10px 16px;
+    align-items: center;
+    padding-bottom: 1%;
 }
 
 .btn {
@@ -95,9 +111,33 @@
     max-height: 500px;
 }
 
+.showingResults {
+    font-weight: light;
+    margin-top: 5vh;
+    font-size: medium;
+}
+
+.title {
+    font-size: 20px; 
+    font-weight: bold;
+    margin-top: 4%;
+}
+
+.subtitle {
+    font-size: 10px; 
+    font-weight: light;
+}
+
+.equipmentsTitle {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 800px) {
     .searchWrapper {
         padding: 10px;
+        width: 100%;
+        margin-bottom:-2rem;
     }
 
     .listings {
@@ -105,7 +145,7 @@
     }
 
     .btn {
-        min-width: 0;
+        width: 10rem;
     }
 
     /* Lab Host Title and Subtitle */
@@ -304,13 +344,43 @@
     top: 20px;
     bottom: 20px;
     border-left: 2px solid #dcdcdc;
-
 }
 
 /* media query that removes the bar if on a mobile device */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 575px) {
     .separationBar::before {
         display: none;
+    }
+
+    .responsiveCard {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+}
+
+
+
+.dynamicWidth {
+    background-color: #294B80;
+    border-radius: 12px;
+    justify-content: center;
+    display: flex;
+    color: white;
+    width: auto;
+    padding: 0.8% 2%;
+    font-size: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-right: 8px;
+  }
+
+.mobileCenter {
+    @media only screen and (max-width: 575px) {
+      justify-content: center;
+      text-align: center; /* Optionally center text inside elements */
     }
 }
 
@@ -332,6 +402,7 @@
     cursor: pointer;
     background-color: #f8f8f8;
 }
+
 
 .equipmentImageContainer {
     border: 1px solid #878787;
@@ -362,4 +433,12 @@
 
 .equipmentScrollBar::-webkit-scrollbar-track {
     background-color: #f0f0f0;
+}
+
+.my-list-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 10rem;
+    color: rgb(78, 246, 78)
 }
