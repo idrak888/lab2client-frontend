@@ -21,7 +21,6 @@ export default function TeamPage() {
 
 <div style={{
 				width: "100%",
-				maxWidth: 1000,
 				display: "block",
 				margin: "auto",
 				padding: 0,
@@ -30,13 +29,13 @@ export default function TeamPage() {
 			{/* introduction section */}
 			<div className="container-fluid p-0" style={{ flexDirection: "row" }}>
 				<div className="row d-flex justify-content-end">
-					<div className="col-lg-6" style={{ paddingTop: 50, paddingLeft: 30, paddingRight: 30 }}>
+					<div className="col-lg-6" style={{ paddingTop: 50, paddingLeft: 50, paddingRight: 50 }}>
 						<h2 style={{ fontWeight: "bold" }}>About Lab2Client</h2>
 						<p>Lab2Client is a revolutionary web platform designed to address the challenges faced by university professors and graduate students when conducting experimental tests. Our mission is to connect researchers with available lab space and equipment, making the process of conducting experiments more efficient, accessible, and collaborative.</p>
 						<p><strong>Out mission: </strong>At Lab2Client, we understand the importance of hands-on experimentation in the academic and scientific community. We recognize that finding suitable lab space and equipment can often be a time-consuming and frustrating process. That's why we have created a user-friendly platform that simplifies the search and connection between researchers and lab resources.</p>
 					</div>
-					<div className="col-6 p-0">
-						<img style={{ maxWidth: "100%" }} src="/headshots/Screenshot.png" />
+					<div className="col-6 p-0 text-lg-end">
+						<img style={{ maxHeight: "650px", maxWidth: "100%" }} src="/headshots/Screenshot.png" alt="Lab2Client" />
 					</div>
 				</div>
 			</div>
@@ -51,7 +50,7 @@ export default function TeamPage() {
 			}}>
 
 			{/* feature section */}
-			<div style={{ padding: 20, marginTop: 50 }}>
+			<div style={{ padding: 20 }}>
 				<h2 style={{ textAlign: "center", fontWeight: "bold" }}>Key Features of Lab2Client</h2>
 <br/>
 				<Feature 
@@ -80,11 +79,20 @@ export default function TeamPage() {
 				/>
 			</div>
 
+		</div>
+		<div style={{
+			width: "100%",
+			maxWidth: 1400,
+			display: "block",
+			margin: "auto",
+			padding: 30
+		}}>
+
 			{/* team section */}
 			<section className="py-5" style={{ marginTop: 50 }}>
-				<div className="container">
+				<div className="container-fluid">
 					<div className="row">
-						<div className="col-lg-12">
+						<div className="col-lg-12 p-0">
 
 							{/* pre-text before the staff */}
 							<h2 className="text-center" style={{ fontWeight: "bold" }}>
@@ -94,7 +102,7 @@ export default function TeamPage() {
 								The engineers and designers behind Lab2Client
 							</p>
 
-							{/* the co-founders */}
+							{/* first row of staff */}
 							<div className="row mb-5 justify-content-center">
 								<TeamCard 
 									imageSource="/headshots/Aref.png"
@@ -113,10 +121,6 @@ export default function TeamPage() {
 									He plays a vital role in fostering the company's partnership growth and expansion."
 									socialLink="https://www.linkedin.com/in/reza-rizvi-81062289/"
 								/>
-							</div>
-
-							{/* first row of staff */}
-							<div className="row mb-5 justify-content-center">
 								<TeamCard 
 									imageSource="/headshots/Idrak.png"
 									name="Idrak Islam"
@@ -135,6 +139,10 @@ export default function TeamPage() {
 									Hamza joined Lab2Client as a Summer co-op student and now works on the project actively."
 									socialLink="https://www.linkedin.com/in/muhammadhamzasohail/	"
 								/>
+							</div>
+
+							{/* second row of staff */}
+							<div className="row mb-5 justify-content-center">
 								<TeamCard 
 									imageSource="/headshots/Syed.png"
 									name="Syed Abdul Wadood"
@@ -144,10 +152,6 @@ export default function TeamPage() {
 									Prior to Lab2Client, Syed interned at 2 startups in Toronto."
 									socialLink="https://www.linkedin.com/in/abdul-wadood-syed-978085220/"
 								/>
-							</div>
-
-							{/* second row of staff */}
-							<div className="row mb-5 justify-content-center">
 								<TeamCard 
 									imageSource="/headshots/Peter.png"
 									name="Peter Pulcini"
@@ -168,12 +172,11 @@ export default function TeamPage() {
 									socialLink="https://www.linkedin.com/in/curtisdizon/"
 								/>
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</section>
-</div>
 		</div>
+	</div>
 	);
 }

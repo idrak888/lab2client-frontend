@@ -41,6 +41,7 @@
     margin: 0 10px;
     position: relative;
     overflow: hidden;
+    max-width: 480px;
 }
 
 .teamCardText {
