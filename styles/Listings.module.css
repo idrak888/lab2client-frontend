@@ -8,6 +8,16 @@
     background-color: rgb(240, 240, 240);
 }
 
+.greyComponent {
+    color: grey; /* Set the default text color to grey */
+}
+
+.card:hover .componentWrapper {
+    color:#0052d7;
+    /* Add any additional hover styles */
+  }
+  
+
 .profileImageContainer {
     width: 70px;
     /* Adjust the size as needed */
@@ -106,7 +116,7 @@
 }
 
 .btn:hover {
-    background-color: #1a6a6c;
+    background-color: #84fdff;
     color: white;
 }
 
