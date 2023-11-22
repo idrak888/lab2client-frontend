@@ -55,14 +55,12 @@ export default function Listings({ query }) {
   };
 
   useEffect(() => {
-    // Focus the input field on component mount with a slight delay
     const timeoutId = setTimeout(() => {
       if (inputRef.current) {
         inputRef.current.focus();
       }
     }, 100);
 
-    // Clear the timeout when the component is unmounted
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -70,7 +68,6 @@ export default function Listings({ query }) {
     <>
       <Head>
         <title>{query.search ? capitalizeFirstLetter(query.search) : "All Listings"} | Lab2Client</title>
-        {/* ... (your other Head meta tags) */}
       </Head>
       <div className={styles.container}>
         {
@@ -88,7 +85,7 @@ export default function Listings({ query }) {
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: '#555',
-                      fontWeight: 'bold', // Make the icon bold
+                      fontWeight: 'bold',
                     }}
                   >
                     <i className="bi bi-search"></i>

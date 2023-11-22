@@ -8,6 +8,41 @@
     background-color: rgb(240, 240, 240);
 }
 
+.greyComponent {
+    color: grey; /* Set the default text color to grey */
+}
+
+.card:hover .componentWrapper {
+    color:#0052d7;
+    /* Add any additional hover styles */
+  }
+  
+
+.profileImageContainer {
+    width: 70px;
+    /* Adjust the size as needed */
+    height: 70px;
+    /* Adjust the size as needed */
+    border-radius: 50%;
+    /* Makes the container circular */
+    overflow: hidden;
+    /* Clips the image within the circular container */
+    border: 4px solid #ffffff;
+    /* Optional border for the circular container */
+    margin-left: 25%;
+    margin-top: -2%;
+    margin-right: 20px;
+}
+
+.profileImage {
+    width: 100%;
+    /* Ensures the image fills the circular container */
+    height: 100%;
+    /* Ensures the image fills the circular container */
+    object-fit: cover;
+    /* Maintains aspect ratio and covers the container */
+}
+
 .responsive-image {
     max-width: 100%;
     height: auto;
@@ -81,7 +116,7 @@
 }
 
 .btn:hover {
-    background-color: #1a6a6c;
+    background-color: #84fdff;
     color: white;
 }
 
