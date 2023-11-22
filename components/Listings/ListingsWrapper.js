@@ -56,7 +56,7 @@ export default function ListingsWrapper({ data, edit }) {
                     : <h6 className={styles.equipmentsTitle}>No Equipments Offered</h6>
                 }
                 <div className={`equipmentWrapper d-flex flex-wrap ${styles.mobileCenter}`}>
-                  {listing.lab_equipment.slice(0, 5).map((item, index) => (
+                  {listing.lab_equipment.slice(0, 4).map((item, index) => (
                     <div
                       key={index}
                       className={`${styles.dynamicWidth} ${styles.customClass}`}
@@ -65,12 +65,12 @@ export default function ListingsWrapper({ data, edit }) {
                     </div>
                   ))}
                   {
-                    listing.lab_equipment.length > 5 ? (
+                    listing.lab_equipment.length > 4 ? (
                       <div
                         key={-1}
                         className={`${styles.dynamicWidth} ${styles.customClass}`}
                       >
-                        +{listing.lab_equipment.length - 5} more
+                        +{listing.lab_equipment.length - 4} more
                       </div>
                     ) : null
                   }
