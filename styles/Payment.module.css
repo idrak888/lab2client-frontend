@@ -1,0 +1,203 @@
+.container {
+    width: 100%;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+.inner {
+    max-width: 650px;
+    margin: auto;
+    padding: 50px 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="tel"],
+.formGroup input[type="url"],
+.formGroup textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formGroup textarea {
+    height: 100px;
+}
+
+.btn {
+    display: flex;
+    background-color: #3D898B;
+    border-radius: 4px;
+    outline: none;
+    border: 0;
+    padding: 12px 16px;
+    min-width: 150px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.removeButton {
+    margin-left: 10px;
+}
+
+.formTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.formTable th,
+.formTable td {
+    padding: 8px;
+}
+
+.formTable th {
+    text-align: left;
+    font-weight: bold;
+}
+
+.Signup,
+.Login {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+}
+
+.Signup .form,
+.Login .form {
+    padding: 80px 40px;
+    color: rgb(36, 36, 36);
+    background-color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.Signup .form img,
+.Login .form img {
+    image-rendering: -moz-crisp-edges;
+    /* Firefox */
+    image-rendering: -o-crisp-edges;
+    /* Opera */
+    image-rendering: -webkit-optimize-contrast;
+    /* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    /* IE (non-standard property) */
+}
+
+@media only screen and (min-width: 800px) {
+
+    .Signup .form,
+    .Login .form {
+        width: 500px;
+    }
+}
+
+.Signup .form h3,
+.Login .form h3 {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.Signup .form .btnAuth,
+.Signup .form .btnSignup,
+.Signup .form .btnSignin,
+.Signup .form p,
+.Signup .form label,
+.Signup .form input,
+.Login .form .btnAuth,
+.Login .form .btnSignup,
+.Login .form .btnSignin,
+.Login .form p,
+.Login .form label,
+.Login .form input {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 6px;
+}
+
+.Signup .form .btnSignup,
+.Signup .form .btnSignin,
+.Login .form .btnSignup,
+.Login .form .btnSignin {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 6px 12px;
+    display: block;
+    color: white;
+}
+
+.Signup .form .btnAuth,
+.Login .form .btnAuth {
+    font-size: 18px;
+    padding: 8px 12px;
+    display: block;
+    background-color: #F0F4FF;
+    color: black;
+}
+
+.Signup .form .btnAuth img,
+.Login .form .btnAuth img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.Signup .form .btnSignup,
+.Signup .form .btnSignin,
+.Login .form .btnSignup,
+.Login .form .btnSignin {
+    margin-top: 20px;
+    background-color: rgb(0, 98, 255);
+}
+
+.Signup .form .btnSignup:hover,
+.Signup .form .btnSignin:hover,
+.Login .form .btnSignup:hover,
+.Login .form .btnSignin:hover {
+    background-color: rgb(29, 108, 236);
+}
+
+.Signup .form .btnSignup:active,
+.Signup .form .btnSignin:active,
+.Login .form .btnSignup:active,
+.Login .form .btnSignin:active {
+    background-color: rgb(57, 129, 245);
+}
+
+.Signup .form span,
+.Login .form span {
+    display: block;
+}
+
+.Signup .form label,
+.Login .form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.Signup .form input,
+.Login .form input {
+    padding: 6px 12px;
+    border: 1px solid rgb(190, 190, 190);
+}

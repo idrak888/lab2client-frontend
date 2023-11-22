@@ -1,0 +1,23 @@
+{
+  "name": "lab2client-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "@stripe/stripe-js": "^1.54.1",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.2.3",
+    "firebase": "^8.0.1",
+    "next": "13.4.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-select": "^5.7.7",
+    "stripe": "^12.6.0"
+  }
+}

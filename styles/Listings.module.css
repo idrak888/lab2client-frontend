@@ -1,0 +1,479 @@
+.container,
+.viewWrapper {
+    display: flex;
+    width: 100%;
+    min-height: 75vh;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(240, 240, 240);
+}
+
+.greyComponent {
+    color: grey; /* Set the default text color to grey */
+}
+
+.card:hover .componentWrapper {
+    color:#0052d7;
+    /* Add any additional hover styles */
+  }
+  
+
+.profileImageContainer {
+    width: 70px;
+    /* Adjust the size as needed */
+    height: 70px;
+    /* Adjust the size as needed */
+    border-radius: 50%;
+    /* Makes the container circular */
+    overflow: hidden;
+    /* Clips the image within the circular container */
+    border: 4px solid #ffffff;
+    /* Optional border for the circular container */
+    margin-left: 25%;
+    margin-top: -2%;
+    margin-right: 20px;
+}
+
+.profileImage {
+    width: 100%;
+    /* Ensures the image fills the circular container */
+    height: 100%;
+    /* Ensures the image fills the circular container */
+    object-fit: cover;
+    /* Maintains aspect ratio and covers the container */
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.container svg {
+    margin-top: 100px;
+}
+
+.listings {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px 0;
+}
+
+.card {
+    display: block;
+    padding: 20px;
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    text-decoration: none;
+    border-radius: 30px;
+}
+
+.searchWrapper,
+.header {
+    padding: 10px 0px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.searchWrapper {
+    width: 58.5%;
+    /* Adjust margin-top to create space between title and search bar */
+    margin-top: 10px;
+}
+
+.pageTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+    margin-top: 5%;
+}
+
+.input {
+    width: 100%;
+    border-radius: 30px;
+    max-width: 80px;
+    font-size: 18px;
+    padding: 10px 16px;
+    align-items: center;
+    padding-bottom: 1%;
+}
+
+.btn {
+    display: flex;
+    background-color: #3D898B;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+    padding: 12px 16px;
+    min-width: 150px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #84fdff;
+    color: white;
+}
+
+.fields {
+    display: flex;
+    flex-direction: row;
+}
+
+.pill {
+    margin: 0 3px;
+    display: block;
+    padding: 10px 15px;
+    background-color: #294b80;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 50%;
+    /* Updated to 50% */
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    max-height: 500px;
+}
+
+.showingResults {
+    font-weight: light;
+    margin-top: 5vh;
+    font-size: medium;
+}
+
+.title {
+    font-size: 20px; 
+    font-weight: bold;
+    margin-top: 4%;
+}
+
+.subtitle {
+    font-size: 10px; 
+    font-weight: light;
+}
+
+.equipmentsTitle {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .searchWrapper {
+        padding: 10px;
+        width: 100%;
+        margin-bottom:-2rem;
+    }
+
+    .listings {
+        padding: 20px 10px;
+    }
+
+    .btn {
+        width: 10rem;
+    }
+
+    /* Lab Host Title and Subtitle */
+    .labhosttitle {
+        font-size: medium;
+        width: 15rem;
+    }
+
+    .labhostsubtitle {
+        font-size: x-small;
+    }
+
+    .labdetailsleft {
+        margin-top: 1.5%;
+        margin-left: -2.5%;
+    }
+
+}
+
+.FixedBottom {
+    background-color: #102D5D;
+}
+
+.li {
+    list-style-type: none;
+    color: white;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.li a {
+    color: white;
+    text-decoration: none;
+}
+
+.li a:hover {
+    text-decoration: underline;
+}
+
+.background {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    width: 110vw;
+    height: 100vh;
+    z-index: 50;
+    top: 0;
+}
+
+.content {
+    width: 95%;
+    max-width: 800px;
+    padding: 50px;
+    z-index: 100;
+    border-radius: 18px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+
+}
+
+.content .btn {
+    background-color: #1565f0;
+    float: right;
+}
+
+.description {
+    border: 1px solid #8c9fb0;
+    width: 100%;
+    padding: 10px;
+    height: 200px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.description::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(135, 135, 135);
+    opacity: 1;
+    /* Firefox */
+}
+
+
+
+
+/* Laboratory details */
+.labdetails {
+    background-color: white;
+    padding: 0px;
+}
+
+.institutiontitle {
+    font-weight: bold;
+    margin-left: 0;
+    margin-top: 3%;
+    margin-bottom: 10px;
+}
+
+.locationinfo {
+    font-weight: bold;
+    margin-left: 0;
+    color: grey;
+
+}
+
+.labimage {
+    width: 100%;
+    height: 30%;
+}
+
+.labdetailsleft {
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+
+.labownerinfo {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Profile Image Container */
+.profileImageContainer {
+    width: 75px;
+    /* Adjust the size as needed */
+    height: 70px;
+    /* Adjust the size as needed */
+    border-radius: 50%;
+    /* Makes the container circular */
+    overflow: hidden;
+    /* Clips the image within the circular container */
+    border: 4px solid #ffffff;
+    /* Optional border for the circular container */
+    margin-left: 0;
+    margin-top: 0;
+    margin-right: 20px;
+}
+
+/* Profile Image */
+.profileImage {
+    width: 100%;
+    /* Ensures the image fills the circular container */
+    height: 100%;
+    /* Ensures the image fills the circular container */
+    object-fit: cover;
+    /* Maintains aspect ratio and covers the container */
+}
+
+/* Lab Host Title and Subtitle */
+.labhosttitle {
+    font-weight: bold;
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+}
+
+.labhostsubtitle {
+    margin-left: 0.5%;
+}
+
+.contactInfoDisclaimerText {
+    color: #636363;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    padding-top: 50px;
+}
+
+
+
+
+/* About & Fields of Research */
+.sectionMargins {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.sectionContentPadding {
+    padding: 40px;
+}
+
+.separationBar {
+    position: relative;
+}
+
+.separationBar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    bottom: 20px;
+    border-left: 2px solid #dcdcdc;
+}
+
+/* media query that removes the bar if on a mobile device */
+@media only screen and (max-width: 575px) {
+    .separationBar::before {
+        display: none;
+    }
+
+    .responsiveCard {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; 
+        align-items: center; 
+        text-align: center; 
+    }
+}
+
+
+
+.dynamicWidth {
+    background-color: #294B80;
+    border-radius: 12px;
+    justify-content: center;
+    display: flex;
+    color: white;
+    width: auto;
+    padding: 0.8% 2%;
+    font-size: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-right: 8px;
+  }
+
+.mobileCenter {
+    @media only screen and (max-width: 575px) {
+      justify-content: center;
+      text-align: center; /* Optionally center text inside elements */
+    }
+}
+
+.availableEquipmentVariable {
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 5px;
+}
+
+.equipmentItem {
+    padding: 10px;
+    padding-top: 0;
+    padding-left: 0;
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 10px;
+}
+
+.equipmentItem:hover {
+    cursor: pointer;
+    background-color: #f8f8f8;
+}
+
+
+.equipmentImageContainer {
+    border: 1px solid #878787;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.equipmentImage {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Scroll Bar Settings */
+.equipmentScrollBar {
+    max-height: inherit;
+    overflow-y: auto;
+}
+
+.equipmentScrollBar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.equipmentScrollBar::-webkit-scrollbar-thumb {
+    background-color: #878787;
+    border-radius: 4px;
+}
+
+.equipmentScrollBar::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+.my-list-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 10rem;
+    color: rgb(78, 246, 78)
+}
