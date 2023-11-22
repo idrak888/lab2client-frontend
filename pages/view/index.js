@@ -4,7 +4,6 @@ import Loader from '/components/Layout/Loader';
 import styles from '/styles/Listings.module.css';
 import Head from 'next/head';
 import FixedBottom from '/components/Orders/FixedBottom';
-import Select from 'react-select';
 
 export default function View({ query }) {
     let [data, setData] = useState(null);
@@ -53,15 +52,21 @@ export default function View({ query }) {
             {
                 !data ? <Loader /> :
                     <div className='container' style={{maxWidth: 1200}}>
-                        <div className='row'>
-                            <div className='col-md-12'>
-                                <div style={{ backgroundColor: "transparent" }} className={`lab-details ${styles.labdetails}`}>
+                        <div className={`row`}>
+                            <div className='col-md-12 p-0'>
+                                <div style={{ backgroundColor: "transparent" }} className={`${styles.labdetails}`}>
+
+                                    {/* Institution Title */}
                                     <h2 className={`${styles.institutiontitle}`}>
-                                        {data.identification.institution_name}
+                                        {data.identification.research_facillity}
                                     </h2>
+
+                                    {/* Lab Name and Location Information */}
                                     <h6 className={`${styles.locationinfo}`}>
-                                        <i class="bi bi-mortarboard"></i> {data.identification.research_facillity} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
+                                        <i className="bi bi-mortarboard"></i> {data.identification.research_facillity} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
                                     </h6>
+
+                                    {/* Large Lab Image */}
                                     <div className={styles.imageWrapper}>
                                         <img
                                             src={data.research.LOGOS}
@@ -69,22 +74,30 @@ export default function View({ query }) {
                                             alt="Laboratory"
                                         />
                                     </div>
+
+                                    {/* Lab Owner PFP and Info */}
                                     <div className={`${styles.labownerinfo}`}>
                                         <div className={styles.profileImageContainer}>
                                             <img
-                                                src="https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
+                                                src="https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg" 
                                                 alt=""
                                                 className={styles.profileImage}
                                             />
                                         </div>
                                         <div className={`${styles.labdetailsleft}`}>
-                                            <h4 className={`${styles.labhosttitle}`}>Lab Hosted by John Smith</h4>
-                                            <h7 className={`${styles.labhostsubtitle}`}>Research Director @ {data.identification.research_facillity}</h7>
+                                            <div>
+                                                <h4 className={`${styles.labhosttitle}`}>Lab Hosted by {data.contact.first_name} {data.contact.last_name}</h4>
+                                                <h6 className={`${styles.labhostsubtitle}`}>{data.contact.title} @ {data.identification.research_facillity}</h6>
+                                            </div>
+                                            <span className={`${styles.contactInfoDisclaimerText}`}> *Contact information will be provided once a lab order is placed. </span>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
+                        <hr />
 
                         {/* About and Fields of Research */}
                         <div className={`row ${styles.sectionMargins}`}>
@@ -110,9 +123,11 @@ export default function View({ query }) {
 
                         {/* Available Equipment */}
                         <div className={`row ${styles.sectionMargins}`}>
-                            <h4 className={`m-0 fw-bold pb-0 ${styles.sectionContentPadding}`}> Available Equipment </h4>
+                            <h4 className={`m-0 fw-bold pb-3 ${styles.sectionContentPadding}`}> Available Equipment 
+                                <span className={`${styles.availableEquipmentVariable}`}> ({data.lab_equipment.length}) </span>
+                            </h4>
                             {/* Equipment Dropdown Section */}
-                            <div className={`col-md-6 ${styles.sectionContentPadding}`}>
+                            <div className={`col-md-6 pt-0 ${styles.sectionContentPadding} ${styles.equipmentScrollBar}`}>
                                 {data.lab_equipment.map((doc, index) => {
                                     return (
                                         <div onClick={() => {
@@ -123,6 +138,9 @@ export default function View({ query }) {
                                             }, 1500);
                                         }} className={styles.equipmentItem}>
                                             <strong style={{fontSize: 18}}>{doc.name}</strong>
+                                            {equipmentShowing == doc ? 
+                                            <div style={{ position: 'relative' }}><i className={`bi bi-chevron-up`} style={{ position: 'absolute', top: -25, right: 0 }}></i></div> : 
+                                            <div style={{ position: 'relative' }}><i className={`bi bi-chevron-down`} style={{ position: 'absolute', top: -25, right: 0 }}></i></div>}
                                             {equipmentShowing == doc ? <p style={{marginTop: 10}}>{doc.description}</p> : ""}
                                         </div>
                                     )
@@ -130,6 +148,7 @@ export default function View({ query }) {
                             </div>
 
                             {/* Right Side Corresponding Image */}
+
                             <div style={{
                                 display: "flex",
                                 flex: 1,

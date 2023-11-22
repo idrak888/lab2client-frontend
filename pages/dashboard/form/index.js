@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from '/styles/Auth.module.css';
 import Head from 'next/head';
 import axios from 'axios';
+import Loader from '/components/Layout/Loader'
 
 export default function index() {
     let [user, setUser] = useState(null);
@@ -10,6 +11,8 @@ export default function index() {
     let [equipmentDescription, setEquipmentDescription] = useState("");
     let [equipments, setEquipments] = useState([]);
     let [loading, setLoading] = useState(false);
+    const [loadingImage, setLoadingImage] = useState(false);
+    const [labImage, setLabImage] = useState(null);
 
     useEffect(() => {
         const user = localStorage.getItem("user");
@@ -83,7 +86,7 @@ export default function index() {
             website: "",
             Additional_information: "",
             Social_media_platforms: "",
-            LOGOS: picture
+            LOGOS: labImage
         }).then(doc => {
             console.log(doc);
             setLoading(false);
@@ -93,6 +96,36 @@ export default function index() {
             setLoading(false);
         });
     }
+
+    const handleImageUpload = (e, type) => {
+        e.preventDefault();
+        setLoadingImage(true);
+
+        if (!e.target.files[0]) {
+            alert('Please select a file.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('image', e.target.files[0]);
+
+        axios.post("https://lab2client.herokuapp.com/upload_picture", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(doc => {
+            if (type == "main") {
+                setLabImage(doc.data.url);
+            } else if (type == "equipment") {
+                setEquipmentImage(doc.data.url);
+            }
+            setLoadingImage(false);
+        }).catch(e => {
+            console.log(e);
+            setLoadingImage(false);
+        });
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -106,10 +139,6 @@ export default function index() {
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div className={styles.inner}>
                         <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 20 }}>Lab Information</h2>
-                        {/* <div className={styles.formGroup}>
-                            <label for="picture">Upload Picture:</label>
-                            <input type="file" id="picture" name="picture" accept="image/*" />
-                        </div> */}
                         <div className={styles.formGroup}>
                             <label for="institution_name">Institution Name</label>
                             <input type="text" id="institution_name" name="institution_name" required />
@@ -121,8 +150,18 @@ export default function index() {
                         </div>
 
                         <div className={styles.formGroup}>
-                            <label for="picture">Link to Picture</label>
-                            <input type="url" id="picture" name="picture" required />
+                            <label for="picture">Lab Image or Logo</label>
+                            {
+                                !loadingImage ?
+                                    <div style={{ paddingTop: 20, paddingBottom: 20, width: "100%", maxWidth: 400, display: "block", margin: "auto" }}>
+                                        <div style={{ display: "flex", flexDirection: "row" }}>
+                                            <input id="picture" name="picture" accept="image/*" type="file" onChange={e => handleImageUpload(e, "main")} />
+                                        </div>
+                                        <br />
+                                        {labImage ? <img style={{ width: "100%", margin: 10, borderRadius: 12 }} src={labImage} /> : ""}
+                                    </div>
+                                    : <Loader />
+                            }
                         </div>
 
                         <div className={styles.formGroup}>
@@ -189,9 +228,20 @@ export default function index() {
                             <h3 style={{ fontWeight: "bold", fontSize: 18 }}>Add new equipment</h3>
 
                             <input value={equipmentName} onChange={e => setEquipmentName(e.target.value)} style={{ marginTop: 5 }} type="text" placeholder='Equipment Name' />
-                            <input value={equipmentImage} onChange={e => setEquipmentImage(e.target.value)} style={{ marginTop: 5 }} type="url" placeholder='Link to image' />
+                            {
+                                !loadingImage ?
+                                    <div style={{ paddingTop: 20, paddingBottom: 20, width: "100%", display: "block", margin: "auto" }}>
+                                        <div>
+                                            <input accept="image/*" type="file" onChange={e => handleImageUpload(e, "equipment")} />
+                                            <br />
+                                            {equipmentImage ? <img style={{ width: "100%", maxWidth: 300, margin: 5 }} src={equipmentImage} /> : ""}
+                                        </div>
+                                        <br />
+                                    </div>
+                                    : <Loader />
+                            }
                             <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{ marginTop: 5 }} placeholder='Description and specifications'></textarea>
-                            <button onClick={e => {
+                            <button disabled={loadingImage} onClick={e => {
                                 e.preventDefault();
                                 if (equipmentName !== "" && equipmentDescription !== "") {
                                     const newEquipment = {
