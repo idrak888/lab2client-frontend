@@ -52,7 +52,7 @@ export default function View({ query }) {
             {
                 !data ? <Loader /> :
                     <div className='container' style={{maxWidth: 1200}}>
-                        <div className={`row`}>
+                        <div className={`row`} id='overview'>
                             <div className='col-md-12 p-0'>
                                 <div style={{ backgroundColor: "transparent" }} className={`${styles.labdetails}`}>
 
@@ -63,7 +63,7 @@ export default function View({ query }) {
 
                                     {/* Lab Name and Location Information */}
                                     <h6 className={`${styles.locationinfo}`}>
-                                        <i className="bi bi-mortarboard"></i> {data.identification.research_facillity} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
+                                        <i className="bi bi-mortarboard"></i> {data.identification.institution_name} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
                                     </h6>
 
                                     {/* Large Lab Image */}
@@ -100,7 +100,7 @@ export default function View({ query }) {
                         <hr />
 
                         {/* About and Fields of Research */}
-                        <div className={`row ${styles.sectionMargins}`}>
+                        <div className={`row ${styles.sectionMargins}`} id='about'>
 
                             {/* About */}
                             <div className={`col-md-6 ${styles.sectionContentPadding}`}>
@@ -122,7 +122,7 @@ export default function View({ query }) {
 
 
                         {/* Available Equipment */}
-                        <div className={`row ${styles.sectionMargins}`}>
+                        <div className={`row ${styles.sectionMargins}`} id='equipment'>
                             <h4 className={`m-0 fw-bold pb-3 ${styles.sectionContentPadding}`}> Available Equipment 
                                 <span className={`${styles.availableEquipmentVariable}`}> ({data.lab_equipment.length}) </span>
                             </h4>
