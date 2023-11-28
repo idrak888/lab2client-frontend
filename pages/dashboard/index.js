@@ -54,6 +54,15 @@ export default function index() {
 		}
 	}, []);
 
+	const handleSignOut = () => {
+		firebase.auth().signOut().then(() => {
+			localStorage.removeItem("user");
+			window.location = "/";
+		}).catch(e => {
+			console.log(e.message);
+		});
+	}
+
 	return (
 		<div className={`${styles.container}`}>
 			<Head>
@@ -125,14 +134,7 @@ export default function index() {
 						}}>
 							<h3 style={{ fontSize: 20, fontWeight: "bold" }}>{userInfo.user_name}</h3>
 							<p>{user.email}</p>
-							<button onClick={() => {
-								firebase.auth().signOut().then(() => {
-									localStorage.removeItem("user");
-									window.location = "/";
-								}).catch(e => {
-									console.log(e.message);
-								});
-							}} className='btn btn-danger'>Log out</button>
+							<button onClick={handleSignOut} className='btn btn-danger'>Log out</button>
 						</div>
 						<br/>
 						<strong>Payments</strong>

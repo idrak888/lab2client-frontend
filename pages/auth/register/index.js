@@ -69,32 +69,32 @@ class Signup extends Component {
 					</Head>
 					<div className={styles.form}>
 						<h3>Create your account</h3>
-						<br />
+						<br/>
 
 						<label>First name</label>
 						<input type="text" className="firstname" />
-						<br />
+						<br/>
 
 						<label>Last name</label>
 						<input type="text" className="lastname" />
-						<br />
+						<br/>
 
 						<label>Email Address</label>
 						<input type="text" className="email" />
-						<br />
+						<br/>
 
 						<label>Password</label>
 						<input type="password" className="password" />
-						<br />
+						<br/>
 						<label>Confirm Password</label>
 						<input type="password" className="confirm-password" />
-						<br />
+						<br/>
 
-						<br />
+						<br/>
 						<p className="text-muted">By signing up, you are accepting the <a href="/privacypolicy">Privacy Policy</a> and the Terms of Service</p>
 						{this.state.error === "" ? <span></span> : <span className="alert alert-danger error">{this.state.error}</span>}
 						<button onClick={this.handleSignup} disabled={this.state.loading} className={`${styles.btn} ${styles.btnSignup} btn`}>{this.state.loading ? <i className={`${styles.arrow} bi bi-arrow-repeat`}></i> : "Sign up"}</button>
-						<br />
+						<br/>
 						<p>Have an account? <Link href="/auth/login">Log in now</Link></p>
 					</div>
 				</div>

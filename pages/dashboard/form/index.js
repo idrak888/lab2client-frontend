@@ -13,6 +13,7 @@ export default function index() {
     let [loading, setLoading] = useState(false);
     const [loadingImage, setLoadingImage] = useState(false);
     const [labImage, setLabImage] = useState(null);
+    const [errorMsg, setErrorMsg] = useState("");
 
     useEffect(() => {
         const user = localStorage.getItem("user");
@@ -43,58 +44,72 @@ export default function index() {
         const research_infrastructure = document.getElementById("research_infrastructure").value;
         const fields = document.getElementById("fields").value.split(",");
 
-        axios.post(`https://lab2client.herokuapp.com/create`, {
-            user_unique_id: uid,
-            email_identification: email1,
-            institution_name,
-            research_facillity,
-            street_address: address,
-            building_name: "",
-            city,
-            province,
-            postal_code,
+        if (equipments.length > 0) {
+            axios.post(`https://lab2client.herokuapp.com/create`, {
+                user_unique_id: uid,
+                email_identification: email1,
+                institution_name,
+                research_facillity,
+                street_address: address,
+                building_name: "",
+                city,
+                province,
+                postal_code,
 
-            first_name: name,
-            last_name: "",
-            title,
-            office: "",
-            email: contact_email,
-            telephone: telephone,
-            language: "English",
-            first_name2: "",
-            last_name2: "",
-            title2: "",
-            office2: "",
-            email2: "",
-            telephone2: "",
-            language2: "",
+                first_name: name,
+                last_name: "",
+                title,
+                office: "",
+                email: contact_email,
+                telephone: telephone,
+                language: "English",
+                first_name2: "",
+                last_name2: "",
+                title2: "",
+                office2: "",
+                email2: "",
+                telephone2: "",
+                language2: "",
 
-            CFI_project_number: "",
-            Project_leader_first_name: "",
-            Project_leader_last_name: "",
-            Project_leader_email: "",
+                CFI_project_number: "",
+                Project_leader_first_name: "",
+                Project_leader_last_name: "",
+                Project_leader_email: "",
 
-            fields,
-            applications: [],
-            lab_equipment: equipments,
+                fields,
+                applications: [],
+                lab_equipment: equipments,
 
-            DESCRIPTION_OF_YOUR_FACILITY: description,
-            areas_of_expertise: "",
-            Research_services: "",
-            DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE: research_infrastructure,
-            PRIVATE_AND_PUBLIC_SECTOR_RESEARCH_PARTNERS: "",
-            website: "",
-            Additional_information: "",
-            Social_media_platforms: "",
-            LOGOS: labImage
-        }).then(doc => {
-            console.log(doc);
+                DESCRIPTION_OF_YOUR_FACILITY: description,
+                areas_of_expertise: "",
+                Research_services: "",
+                DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE: research_infrastructure,
+                PRIVATE_AND_PUBLIC_SECTOR_RESEARCH_PARTNERS: "",
+                website: "",
+                Additional_information: "",
+                Social_media_platforms: "",
+                LOGOS: labImage
+            }).then(doc => {
+                console.log(doc);
+                setLoading(false);
+                window.location = "/dashboard";
+            }).catch(e => {
+                console.log(e);
+                setLoading(false);
+            });
+        } else if (email1.trim() == "" || name.trim() == "" || telephone.trim() == "" || title.trim() == "") {
+            setErrorMsg("Please fill in all contact details.");
+            setTimeout(() => {
+                setErrorMsg("");
+            }, 2500);
             setLoading(false);
-            window.location = "/dashboard";
-        }).catch(e => {
-            console.log(e);
+        } else {
+            setErrorMsg("Please provide at least one equipment.");
+            setTimeout(() => {
+                setErrorMsg("");
+            }, 2500);
             setLoading(false);
-        });
+        }
     }
 
     const handleImageUpload = (e, type) => {
@@ -308,8 +323,9 @@ export default function index() {
                             <label for="telephone">Telephone</label>
                             <input type="tel" id="telephone" name="telephone" required />
                         </div>
-
+                        
                         <button disabled={loading} onClick={e => submit(e)} className={styles.btn} type="submit">{loading ? "loading..." : "Submit"}</button>
+                        <p className='text-danger'>{errorMsg}</p>
                     </div>
                 </form>
             </div>
