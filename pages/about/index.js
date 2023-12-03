@@ -8,7 +8,8 @@ export default function TeamPage() {
 	return (
 		<div style={{
 			width: "100%",
-			backgroundColor: "rgb(240, 240, 240)"
+			backgroundColor: "rgb(240, 240, 240)",
+			marginTop: 80
 		}}>
 			<Head>
 				<title>Meet the Team | Lab2Client</title>

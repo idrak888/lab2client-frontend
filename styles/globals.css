@@ -2,60 +2,84 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .navbar {
     background-color: #102D5D;
 }
+
 .navbar .container-fluid {
     max-width: 1200px;
     padding: 10px;
 }
+
+.navbar .navbar-brand {
+    margin-top: -2px;
+}
+
 @media only screen and (max-width: 1200px) {
     .navbar .container-fluid {
         max-width: 1000px;
     }
 }
+
 @media only screen and (max-width: 1000px) {
     .navbar .container-fluid {
         max-width: 800px;
         padding: 0 20px;
     }
 }
+
 .navbar .nav-link {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 }
+
+.navbar .btn {
+    font-size: 16px;
+}
+
 .FooterWrapper {
     width: 100%;
 }
+
 .footer {
     background-color: #071429;
     max-width: 100vw;
 }
+
 .footer-content {
     color: #eeeeee;
 }
+
 .footer-links a {
     color: #eeeeee;
     text-decoration: none;
     transition: color 0.3s;
 }
+
 .footer-links a:hover {
     text-decoration: underline;
 }
-.footer-content, .footer-links, .footer-social {
+
+.footer-content,
+.footer-links,
+.footer-social {
     padding: 30px 10px;
 }
+
 .footer-social a {
     color: #eeeeee;
     text-decoration: none;
     margin: 0 10px;
     font-size: 20px;
 }
+
 .loader {
     width: 3.25em;
     transform-origin: center;
     animation: rotate4 2s linear infinite;
 }
+
 .loader circle {
     fill: none;
     stroke: hsl(214, 97%, 59%);
@@ -71,18 +95,18 @@ body {
         transform: rotate(360deg);
     }
 }
-   
+
 @keyframes dash4 {
     0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
     }
-   
+
     50% {
         stroke-dasharray: 90, 200;
         stroke-dashoffset: -35px;
     }
-   
+
     100% {
         stroke-dashoffset: -125px;
     }

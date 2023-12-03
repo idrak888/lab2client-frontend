@@ -6,6 +6,7 @@
     align-items: center;
     flex-direction: column;
     background-color: rgb(240, 240, 240);
+    margin-top: 70px;
 }
 
 .greyComponent {

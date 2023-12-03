@@ -7,7 +7,7 @@ import Loader from '/components/Layout/Loader'
 export default function index() {
     let [user, setUser] = useState(null);
     let [equipmentName, setEquipmentName] = useState("");
-    let [equipmentImage, setEquipmentImage] = useState("");
+    let [equipmentImage, setEquipmentImage] = useState(null);
     let [equipmentDescription, setEquipmentDescription] = useState("");
     let [equipments, setEquipments] = useState([]);
     let [loading, setLoading] = useState(false);
@@ -30,7 +30,6 @@ export default function index() {
         const uid = user.uid;
         const institution_name = document.getElementById("institution_name").value;
         const research_facillity = document.getElementById("research_facility").value;
-        const picture = document.getElementById("picture").value;
         const email1 = user.email;
         const address = document.getElementById("address").value;
         const city = document.getElementById("city").value;
@@ -130,8 +129,14 @@ export default function index() {
             }
         }).then(doc => {
             if (type == "main") {
+                if (labImage) {
+                    // delete picture from db
+                }
                 setLabImage(doc.data.url);
             } else if (type == "equipment") {
+                if (equipmentImage) {
+                    // delete picture from db
+                }
                 setEquipmentImage(doc.data.url);
             }
             setLoadingImage(false);
@@ -290,6 +295,7 @@ export default function index() {
                                             setEquipments(val => {
                                                 return val.filter(doc => doc.name !== equipment.name);
                                             });
+                                            // delete picture from db
                                         }} className='btn btn-danger'>Remove</button>
                                     </div>
                                     <img src={equipment.image} width={200} />

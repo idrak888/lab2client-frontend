@@ -4,9 +4,9 @@ import React from 'react'
 
 export default function Navbar({ user }) {
 	return (
-		<nav className="navbar navbar-expand-lg navbar-dark">
+		<nav className="navbar navbar-expand-lg navbar-dark fixed-top">
 			<div className="container-fluid">
-				<a className="navbar-brand" href="/"><img src='/lab2client-white.svg' width={150} /></a>
+				<a className="navbar-brand" href="/"><img src='/lab2client-white.svg' width={120} /></a>
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<i style={{ color: "white" }} className="bi bi-list"></i>
 				</button>
