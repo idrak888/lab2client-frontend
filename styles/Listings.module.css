@@ -6,7 +6,13 @@
     align-items: center;
     flex-direction: column;
     background-color: rgb(240, 240, 240);
-    margin-top: 70px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.viewWrapper {
+    padding-top: 140px;
+    padding-bottom: 50px;
 }
 
 .greyComponent {
@@ -75,8 +81,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 70px;
 }
 
+.header {
+    border-top: 1px solid #294B80;
+}
+
+@media only screen and (max-width: 800px) {  
+    .header {
+        margin-top: 50px;
+    }
+}
 
 .searchWrapper {
     width: 58.5%;
@@ -197,6 +213,7 @@
     .labdetailsleft {
         margin-top: 1.5%;
         margin-left: -2.5%;
+        flex-direction: column;
     }
 
 }

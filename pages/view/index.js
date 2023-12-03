@@ -37,7 +37,7 @@ export default function View({ query }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <nav style={{ width: "100%" }} className={`${styles.header} navbar navbar-expand-lg navbar-dark`}>
+            <nav style={{ width: "100%" }} className={`${styles.header} navbar navbar-expand-lg navbar-dark fixed-top`}>
                 <div className="container">
                     <div id="navbarNav">
                         <ul className="navbar-nav">
@@ -51,7 +51,7 @@ export default function View({ query }) {
 
             {
                 !data ? <Loader /> :
-                    <div className='container' style={{maxWidth: 1200}}>
+                    <div className='container' style={{maxWidth: 1200, padding: 20}}>
                         <div className={`row`} id='overview'>
                             <div className='col-md-12 p-0'>
                                 <div style={{ backgroundColor: "transparent" }} className={`${styles.labdetails}`}>
