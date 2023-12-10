@@ -6,7 +6,7 @@ export default function GetStarted() {
     let [view, setView] = useState(0);
 
     return (
-        <section className={`bg-light py-5 ${styles.getStarted}`}>
+        <section className={`py-5 ${styles.getStarted}`}>
             <div className={styles.inner}>
                 <h3>How to use our platform</h3>
                 {/* Navigation to switch between Researchers and Facilities views */}
