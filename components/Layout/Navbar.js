@@ -23,12 +23,12 @@ export default function Navbar({ user }) {
 						</li>
 					</ul>
 					<div className="d-flex" style={{display: "flex", alignItems: "center"}}>
-						<a href='/auth/register' style={{color: "white", textDecoration: "none", marginRight: 10, fontSize: 15}}>Offer your Lab</a>
+						<a href='/auth/register' className='nav-link' style={{color: "#bed6fb", textDecoration: "none", marginRight: 15, fontSize: 14}}>Offer your Lab</a>
 						{
 							user ?
 							<a href='/dashboard'><button className="btn btn-outline-light">Go to Dashboard</button></a>
 							:
-							<a href='/auth/register'><button className="btn btn-outline-light">Get Started</button></a>
+							<a href='/auth/login'><button className="btn btn-outline-light">Sign In</button></a>
 						}
           			</div>
 				</div>

@@ -81,17 +81,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 55px;
+    margin-top: 54px;
 }
 
 .header {
     border-top: 1px solid #294B80;
-}
-
-@media only screen and (max-width: 800px) {  
-    .header {
-        margin-top: 50px;
-    }
 }
 
 .searchWrapper {

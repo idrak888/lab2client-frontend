@@ -10,7 +10,7 @@ export default function View({ query }) {
     let [user, setUser] = useState(null);
     let [imageLoading, setImageLoading] = useState(false);
     let [equipmentShowing, setEquipmentShowing] = useState(null);
-
+    
     useEffect(() => {
         const userStr = localStorage.getItem("user");
         if (userStr) {
@@ -27,8 +27,6 @@ export default function View({ query }) {
             });
     }, []);
 
-
-
     return (
         <div className={styles.viewWrapper}>
             <Head>
@@ -42,7 +40,7 @@ export default function View({ query }) {
                     <div id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="javascript:history.back()"><i className='bi bi-arrow-left-short'></i> Back to Search</a>
+                                <a className="nav-link" href="/listings"><i className='bi bi-arrow-left-short'></i> Back to Search</a>
                             </li>
                         </ul>
                     </div>

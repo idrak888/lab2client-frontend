@@ -230,7 +230,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className={styles.contactRow}>
+            <div className={styles.contactRow} id='contact'>
                 <div style={{ flex: 1, padding: 40 }}>
                     <h2 style={{ fontWeight: "bold", fontSize: 40 }}>Have questions? We'd love to hear from you!</h2>
                     <p className='text-muted'>Sed ut perspiciatis unde iste natus error voluptatem accusantium</p>

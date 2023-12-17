@@ -43,10 +43,28 @@
     overflow: hidden;
     max-width: 480px;
     filter: drop-shadow(0 -6mm 4mm rgb(228, 228, 228));
+    cursor: pointer;
+}
+
+.cardBacking:hover {
+    filter: drop-shadow(0 0 0.5rem rgb(220, 220, 220));
 }
 
 .cardBacking p {
     font-size: 14px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.78);
+    color: white;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
 }
 
 .teamCardText {

@@ -29,13 +29,12 @@ body {
 }
 
 .navbar .nav-link {
-    font-size: 15px;
-    font-weight: bold;
-    margin: 0 5px;
+    font-size: 14px;
+    margin-left: 5px;
 }
 
 .navbar .btn {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .FooterWrapper {
