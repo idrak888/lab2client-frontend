@@ -12,23 +12,26 @@ export default function Hero() {
     return (
         <div className='Hero'>
             <div className={`${styles.outer}`}>
-                <div className={`${styles.container} container`}>
+                <div className={`${styles.container}`}>
                     <div className={`${styles.alignCenter} row`}>
                         <h1 className={`${styles.h1}`}>Find Research Equipment that suits your needs</h1>
-                        <p>Conntectin researchers and innovators with under-utilized research facilitites</p>
+                        <p>Connecting researchers and innovators with under-utilized research facilitites</p>
                         <form style={{display: "block", margin: "auto"}} onSubmit={e => {
                             e.preventDefault();
                             if (searchKeys.trim() != "") {
                                 window.location = `/listings?search=${searchKeys}`;
                             }
                         }}>
-                            <input
-                                type="text"
-                                value={searchKeys}
-                                onChange={handleChange}
-                                className={`${styles.input}`}
-                                placeholder="Find equipment and resources"
-                            />
+                            <div className={styles.searchBox}>
+                                <i className={`${styles.icon} bi bi-search`}></i>
+                                <input
+                                    type="text"
+                                    value={searchKeys}
+                                    onChange={handleChange}
+                                    className={`${styles.input}`}
+                                    placeholder="Find equipment and resources"
+                                />
+                            </div>
                         </form>
                     </div>
                 </div>

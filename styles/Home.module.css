@@ -1,30 +1,40 @@
 .outer {
-    background: rgb(20, 50, 130);
-    background: linear-gradient(0deg, rgba(20, 50, 130, 1) 5%, rgba(20, 50, 130, 1) 12%, rgba(16, 45, 93, 1) 45%);
+    width: 100vw;
+    background: rgb(14, 42, 86);
+    background-image: url("/banner.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     color: white;
-    padding: 0 20px;
     overflow-x: hidden;
+}
+
+.outer .container {
+    width: 100vw;
+    padding: 0 20px;
     padding-top: 140px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background: linear-gradient(rgba(14, 42, 86, 0.7), rgb(14, 42, 86));
 }
 
 @media only screen and (max-width: 600px) {
     .outer {
+        background-size: cover;
+    }
+
+    .outer .container {
         padding-top: 150px;
         padding-bottom: 100px;
+        padding: 0;
     }
 }
 
-.outer .container {
-    padding: 0 10px;
-    max-width: 1200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .h1 {
-    font-size: 52px;
+    font-size: 55px;
     font-weight: bold;
 }
 
@@ -38,26 +48,31 @@
     padding: 50px 20px;
 }
 
-.input {
-    border-radius: 20px;
+.searchBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    font-size: 18px;
-    padding: 10px 16px;
-    border: 0;
+    flex: 1;
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
     margin: 40px 0;
+    padding: 10px 18px;
 }
 
-@media only screen and (max-width: 600px) {
-    .alignCenter {
-        padding: 10px;
-    }
-    .input {
-        border-radius: 10px;
-        margin: 20px 0;
-    }
-    .partners {
-        display: none;
-    }
+.icon {
+    font-size: 24px;
+    padding-right: 20px;
+    color: black;
+}
+
+.input {
+    flex: 1;
+    font-size: 18px;
+    border: 0;
+    outline: none;
 }
 
 .btn {
@@ -100,36 +115,35 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
-    .illustration {
-        display: none;
-    }
-}
-
-.partners .upper {
-    background-color: #041640;
-    width: 100%;
-    padding: 20px;
-    text-align: left;
-    padding-left: 100px;
-}
-
-@media only screen and (max-width: 600px) {
-    .partners .upper {
-        text-align: left;
-        padding-left: 30px;
-    }
-}
-
 .partners .lower {
     width: 100%;
     padding: 30px;
     text-align: center;
+    margin-top: 10px;
 }
 
 .partners .img {
     width: 150px;
     padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .alignCenter {
+        padding: 10px;
+    }
+
+    .input {
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+
+    .partners {
+        background-color: rgb(14, 42, 86);
+    }
+
+    .partners .lower {
+        margin-top: 0;
+    }
 }
 
 .card {
@@ -265,5 +279,83 @@
 
     .demo {
         display: none;
+    }
+}
+
+.reviewRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.reviewCard {
+    background-color: white;
+    padding: 34px;
+    border-radius: 6px;
+    border: 1px solid black;
+    max-width: 350px;
+    margin: 10px;
+    height: auto;
+}
+
+.reviewCard i {
+    margin-left: 3px;
+}
+
+.contactRow {
+    padding: 80px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.formWrapper {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    filter: drop-shadow(0 0 0.5rem rgb(234, 234, 234));
+    border-radius: 8px;
+}
+
+.formWrapper textarea {
+    resize: none;
+}
+
+.btn {
+    display: flex;
+    background-color: rgb(33, 60, 132);
+    border-radius: 6px;
+    outline: none;
+    border: 0;
+    padding: 12px 16px;
+    min-width: 150px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: rgb(23, 41, 92);
+    color: white;
+}
+
+.heading {
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .heading {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .contactRow {
+        flex-direction: column;
     }
 }

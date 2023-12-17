@@ -13,10 +13,7 @@ export default function Navbar({ user }) {
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 						<li className="nav-item">
-							<a className="nav-link" aria-current="page" href="/">Home</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="/listings">Browse</a>
+							<a className="nav-link" href="/listings">Find Labs</a>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link" href="/about">About</a>
@@ -25,7 +22,8 @@ export default function Navbar({ user }) {
 							<a className="nav-link" href="/#contact">Contact</a>
 						</li>
 					</ul>
-					<div className="d-flex">
+					<div className="d-flex" style={{display: "flex", alignItems: "center"}}>
+						<a href='/auth/register' style={{color: "white", textDecoration: "none", marginRight: 10, fontSize: 15}}>Offer your Lab</a>
 						{
 							user ?
 							<a href='/dashboard'><button className="btn btn-outline-light">Go to Dashboard</button></a>

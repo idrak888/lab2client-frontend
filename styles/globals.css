@@ -9,7 +9,6 @@ body {
 
 .navbar .container-fluid {
     max-width: 1200px;
-    padding: 10px;
 }
 
 .navbar .navbar-brand {
@@ -30,8 +29,9 @@ body {
 }
 
 .navbar .nav-link {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
+    margin: 0 5px;
 }
 
 .navbar .btn {
