@@ -154,7 +154,7 @@ export default function index() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div>
+            <div style={{ marginTop: 20 }}>
                 <h1 style={{ fontWeight: "bold", fontSize: 30, textAlign: "center" }}>Lab Registration Form</h1>
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div className={styles.inner}>
@@ -329,7 +329,7 @@ export default function index() {
                             <label for="telephone">Telephone</label>
                             <input type="tel" id="telephone" name="telephone" required />
                         </div>
-                        
+
                         <button disabled={loading} onClick={e => submit(e)} className={styles.btn} type="submit">{loading ? "loading..." : "Submit"}</button>
                         <p className='text-danger'>{errorMsg}</p>
                     </div>
