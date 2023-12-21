@@ -90,7 +90,7 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                     }) : ""}
                     {
                         type == "received" ?
-                            <p>From: {information.requester_email}</p>
+                            <p><span style={{fontSize: 12}}>From:</span> {information.requester_email}</p>
                             : type == "sent" ?
                                 <p>Sent to: {information.receiver}</p>
                                 : ""
@@ -110,14 +110,16 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                 }
 
             </div>
-            <hr />
             <div style={{
                 display: "flex",
                 flex: 1,
-                justifyContent: "space-between"
+                justifyContent: "space-between",
+                backgroundColor: "#f6f6f6",
+                padding: 10,
+                paddingTop: 15
             }}>
-                <p>{status}</p>
-                <span className='text-muted'>{date}</span>
+                <p style={{fontSize: 14, color: "grey"}}><span style={{fontSize: 12}}>Status:</span> {status}</p>
+                <p style={{fontSize: 14, color: "grey"}}><span style={{fontSize: 12}}>Date:</span> {date}</p>
             </div>
         </div>
     )

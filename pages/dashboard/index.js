@@ -10,7 +10,7 @@ import OrderWrapper from '/components/Dashboard/OrderWrapper';
 import Loader from '/components/Layout/Loader';
 
 export default function index() {
-    let [view, setView] = useState(1);
+	let [view, setView] = useState(1);
 	let [orderView, setOrderView] = useState(0);
 	let [labs, setLabs] = useState([]);
 	let [ordersReceieved, setOrdersReceived] = useState([]);
@@ -21,7 +21,7 @@ export default function index() {
 
 	useEffect(() => {
 		const userStr = localStorage.getItem("user");
-        if (userStr) {
+		if (userStr) {
 			setLoading(true);
 			const parsed = JSON.parse(userStr);
 			const uid = parsed.uid;
@@ -72,87 +72,95 @@ export default function index() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className={`${styles.inner}`}>
-				<h3>Dashboard</h3>
-				<nav className="nav nav-pills nav-fill" style={{backgroundColor: "white", cursor: "pointer"}}>
+				<nav className="nav nav-pills nav-fill" style={{ backgroundColor: "white", cursor: "pointer" }}>
 					<div className={`nav-link ${view == 0 ? "active" : ""}`} onClick={() => setView(0)}>Orders</div>
 					<div className={`nav-link ${view == 1 ? "active" : ""}`} onClick={() => setView(1)}>Labs</div>
-					<div className={`nav-link ${view == 2 ? "active" : ""}`} onClick={() => setView(2)}>Profile and Payments</div>
+					<div className={`nav-link ${view == 2 ? "active" : ""}`} onClick={() => setView(2)}>Settings</div>
 				</nav>
 				{
-					!loading ? 
-					user ? 
-					view == 0 ?
-					<div style={{
-						paddingTop: 20
-					}}>
-						<strong>Your orders</strong>
-						<ul className="nav nav-tabs" style={{marginTop: 20}}>
-							<li className="nav-item">
-								<a className={`nav-link ${orderView == 0 ? "active" : ""}`} onClick={() => setOrderView(0)} aria-current="page" href="#">Received ({ordersReceieved.length})</a>
-							</li>
-							<li className="nav-item">
-								<a className={`nav-link ${orderView == 1 ? "active" : ""}`} onClick={() => setOrderView(1)} href="#">Requested ({ordersSent.length})</a>
-							</li>
-						</ul>
-						{
-							orderView == 0 ?
-							ordersReceieved.map(order => {
-								return <OrderWrapper type={"received"} user={user} information={order.information} date={order.date} status={order.status}/>
-							}) : orderView == 1 ?
-							ordersSent.map(order => {
-								return <OrderWrapper type={"sent"} user={user} information={order.information} date={order.date} status={order.status}/>
-							}) : ""
-						}
-					</div>
-					: view == 1 ?
-					<div style={{
-						paddingTop: 20
-					}}>
-						<strong>Your labs</strong>
-						{
-							labs.length == 0 ? 
-							<div>
-								<p>You don't have any active listings at the moment</p>
-								<Link href="/dashboard/form">Register Lab</Link>
-							</div>
+					!loading ?
+						user ?
+							view == 0 ?
+								<div style={{
+									paddingTop: 20
+								}}>
+									<strong>Your orders</strong>
+									<ul className="nav nav-tabs" style={{ marginTop: 20 }}>
+										<li className="nav-item">
+											<a className={`nav-link ${orderView == 0 ? "active" : ""}`} onClick={() => setOrderView(0)} aria-current="page" href="#">Received ({ordersReceieved.length})</a>
+										</li>
+										<li className="nav-item">
+											<a className={`nav-link ${orderView == 1 ? "active" : ""}`} onClick={() => setOrderView(1)} href="#">Requested ({ordersSent.length})</a>
+										</li>
+									</ul>
+									<div className={styles.orderContainer}>
+										{
+											orderView == 0 ?
+												ordersReceieved.map(order => {
+													return <OrderWrapper type={"received"} user={user} information={order.information} date={order.date} status={order.status} />
+												}) : orderView == 1 ?
+													ordersSent.map(order => {
+														return <OrderWrapper type={"sent"} user={user} information={order.information} date={order.date} status={order.status} />
+													}) : ""
+										}
+									</div>
+								</div>
+								: view == 1 ?
+									<div style={{
+										paddingTop: 20
+									}}>
+										<div style={{
+											display: "flex",
+											flexDirection: "row",
+											justifyContent: "space-between",
+											alignItems: "flex-end"
+										}}>
+											<strong>Your Labs</strong>
+											<Link className='btn btn-dark' href="/dashboard/form">Add new +</Link>
+										</div>
+										{
+											labs.length == 0 ?
+												<div>
+													<p>You don't have any active listings at the moment</p>
+													<Link href="/dashboard/form">Register Lab</Link>
+												</div>
+												:
+												<div style={{ height: "100vh", overflowY: "scroll" }}>
+													<ListingsWrapper edit={true} data={labs} />
+												</div>
+										}
+									</div>
+									: view == 2 ?
+										<div style={{
+											paddingTop: 20
+										}}>
+											<strong>Your profile</strong>
+											<div style={{
+												backgroundColor: "white",
+												padding: 20,
+												marginTop: 20
+											}}>
+												<h3 style={{ fontSize: 20, fontWeight: "bold" }}>{userInfo.user_name}</h3>
+												<p>{user.email}</p>
+												<button onClick={handleSignOut} className='btn btn-danger'>Log out</button>
+											</div>
+											<br />
+											<strong>Payments</strong>
+											<div style={{
+												backgroundColor: "white",
+												padding: 20,
+												marginTop: 20
+											}}>
+												<h3 style={{ fontSize: 20, fontWeight: "bold" }}>How you get paid</h3>
+												<a href='/dashboard/add_account'>Add an Account</a>
+											</div>
+										</div>
+										:
+										null
 							:
-							<div>
-								<Link href="/dashboard/form">Add new</Link>
-								<ListingsWrapper edit={true} data={labs}/>
-							</div>
-						}
-					</div>
-					: view == 2 ?
-					<div style={{
-						paddingTop: 20
-					}}>
-						<strong>Your profile</strong>
-						<div style={{
-							backgroundColor: "white",
-							padding: 20,
-							marginTop: 20
-						}}>
-							<h3 style={{ fontSize: 20, fontWeight: "bold" }}>{userInfo.user_name}</h3>
-							<p>{user.email}</p>
-							<button onClick={handleSignOut} className='btn btn-danger'>Log out</button>
-						</div>
-						<br/>
-						<strong>Payments</strong>
-						<div style={{
-							backgroundColor: "white",
-							padding: 20,
-							marginTop: 20
-						}}>
-							<h3 style={{ fontSize: 20, fontWeight: "bold" }}>How you get paid</h3>
-							<a href='/dashboard/add_account'>Add an Account</a>
-						</div>
-					</div>
-					:
-					null
-					:
-					<strong>Not logged in</strong>
-					:
-					<div style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center", height: 400}}><Loader/></div>
+							<strong>Not logged in</strong>
+						:
+						<div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", height: 400 }}><Loader /></div>
 				}
 			</div>
 		</div>
