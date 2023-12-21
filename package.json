@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@popperjs/core": "^2.11.8",
     "@stripe/stripe-js": "^1.54.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
