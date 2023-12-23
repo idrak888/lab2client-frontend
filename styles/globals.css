@@ -57,8 +57,7 @@ body {
 .footer-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Updated alignment to flex-start */
-    margin-left: 10%; /* Added margin for left alignment */
+    align-items: flex-start; 
 }
 
 .footer-content h1 {
@@ -71,7 +70,8 @@ body {
 
 .footer-content p {
     color: #D4D4D4;
-    margin: 0; /* Remove default margin */
+    font-size: 0.75em;
+    margin-top: 2%;
 }
 
 .footer-links {
@@ -79,13 +79,53 @@ body {
     justify-content: flex-end;
 }
 
+.custom-spacing {
+    margin-right: 10px; /* Adjust this value based on your desired spacing */
+}
+
 .footer-links a {
-    color: #D4D4D4;
+    color: #fafafa;
     text-decoration: none;
-    margin-left: 10px;
-    font-size: 16px;
+    margin-left: 2rem;
+    font-size: 14px;
 }
 
 .footer-links a:hover {
     text-decoration: underline;
+}
+
+.icons {
+    display: flex;
+    gap: 20px; 
+    font-size: 27px; 
+    color: #D4D4D4;
+    margin-top: 5vw;
+}
+
+.justify {
+    justify-content: end;
+}
+
+@media screen and (max-width: 757px){
+    .footer-links {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .footer-links a {
+        color: #D4D4D4;
+        text-decoration: none;
+        margin-left: 0rem;
+        font-size: 14px;
+    }
+
+    .justify {
+        justify-content: start;
+    }
+
+    .footer {
+        padding: 0vh 3vw;
+        height: 45vh;
+    }
+
 }
