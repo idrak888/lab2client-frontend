@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '/styles/Home.module.css';
+import Partners from './Partners';
 
 // this is the Hero section on the homepage
 
@@ -11,32 +12,30 @@ export default function Hero() {
     return (
         <div className='Hero'>
             <div className={`${styles.outer}`}>
-                <div className={`${styles.container} container`}>
+                <div className={`${styles.container}`}>
                     <div className={`${styles.alignCenter} row`}>
-                        <div className={`col-md-7`}>
-                            <h1 className={`${styles.h1}`}>Bridging the Gap between Researchers and Essential Lab Resources</h1>
-                            <p>Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities.</p>
-                            <form onSubmit={e => {
-                                e.preventDefault();
-                                if (searchKeys.trim() != "") {
-                                    window.location = `/listings?search=${searchKeys}`;
-                                }
-                            }} className="d-flex">
-                                <input 
+                        <h1 className={`${styles.h1}`}>Find Research Equipment that suits your needs</h1>
+                        <p>Connecting researchers and innovators with under-utilized research facilitites</p>
+                        <form style={{display: "block", margin: "auto"}} onSubmit={e => {
+                            e.preventDefault();
+                            if (searchKeys.trim() != "") {
+                                window.location = `/listings?search=${searchKeys}`;
+                            }
+                        }}>
+                            <div className={styles.searchBox}>
+                                <i className={`${styles.icon} bi bi-search`}></i>
+                                <input
                                     type="text"
                                     value={searchKeys}
-                                    onChange={handleChange} 
-                                    className={`${styles.input} form-control me-2`} 
+                                    onChange={handleChange}
+                                    className={`${styles.input}`}
                                     placeholder="Find equipment and resources"
                                 />
-                                <a className={`${styles.btn} btn`} href={searchKeys.trim() != "" ? `/listings?search=${searchKeys}` : "#"}><span className={styles.text}>Find Labs</span> <i className="bi bi-arrow-right" style={{marginLeft: 3, marginRight: 3}}></i></a>
-                            </form>
-                        </div>
-                        <div className={`col-md-5`}>
-                            <img src="/illustration.png" alt="Illustration" className={`${styles.illustration} img-fluid`}/>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
+                <Partners/>
             </div>
         </div>
     )

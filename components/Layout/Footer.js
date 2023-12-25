@@ -1,41 +1,54 @@
-import React from 'react'
-
-// this is main the footer on the bottom of the page
+import React, {useState, useEffect} from 'react';
 
 export default function Footer() {
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 756);
+        };
+
+        // Initial check on mount
+        handleResize();
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <div className='FooterWrapper'>
-            <footer className="footer text-light py-5">
+            <footer className="footer">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6 footer-content">
-                            <h5>About Lab2Client</h5>
-                            <p>Lab2Client is an innovative web platform that connects the broader research and innovation
-                                community with under-utilized experimental research facilities and expertise.</p>
+                        <div className="col-lg-4 col-md-4 footer-content">
+                            <img src='/lab2client-white.svg' width={230} />     
+                            <p>&copy; 2023 Lab2Client. All rights reserved.</p>
                         </div>
-                        <div className="col-lg-3 footer-links">
-                            <h5>Quick Links</h5>
-                            <ul className="list-unstyled">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/about">About</a></li>
-                                <li><a href="/">Services</a></li>
-                                <li><a href="/#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div className="col-lg-3 footer-social">
-                            <h5>Follow Us</h5>
-                            <a href="/" target="_blank"><i className="bi bi-facebook"></i></a>
-                            <a href="/" target="_blank"><i className="bi bi-twitter"></i></a>
-                            <a href="/" target="_blank"><i className="bi bi-instagram"></i></a>
+                        <div className="col-lg-8 col-md-8 col-xs-12 footer-links">
+                            <div className="row">
+                                <div className={`col-lg-12 d-flex justify ${isSmallScreen ? 'flex-column align-items-start' : 'custom-spacing justify-content-space-around'}`}>
+                                    <a href="/" className="mb-lg-0 mb-2">Find Labs</a>
+                                    <a href="/" className="mb-lg-0 mb-2">About</a>
+                                    <a href="/" className="mb-lg-0 mb-2">Contact</a>
+                                    <a href="/" className="mb-lg-0 mb-2">Offer your Lab</a>
+                                </div>
+                                <div className="col-lg-12 d-flex justify">
+                                    <div className="icons">
+                                        <i className="bi bi-facebook"></i>
+                                        <i className="bi bi-twitter"></i>
+                                        <i className="bi bi-instagram"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </footer>
-            <div style={{width: "100%", backgroundColor: "#0B131C", padding: 20, color: "rgba(255, 255, 255, 0.7)"}}>
-                <div className="col-lg-12 text-center mt-4">
-                    <p>&copy; 2023 Lab2Client. All rights reserved.</p>
-                </div>
-            </div>
         </div>
-    )
+    );
 }

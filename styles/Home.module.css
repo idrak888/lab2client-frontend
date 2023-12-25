@@ -1,19 +1,40 @@
 .outer {
-    background: rgb(20, 50, 130);
-    background: linear-gradient(0deg, rgba(20, 50, 130, 1) 5%, rgba(20, 50, 130, 1) 12%, rgba(16, 45, 93, 1) 45%);
+    width: 100vw;
+    background: rgb(14, 42, 86);
+    background-image: url("/banner.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     color: white;
-    padding: 90px 20px;
     overflow-x: hidden;
-    margin-top: 50px;
 }
 
 .outer .container {
-    padding: 0 10px;
-    max-width: 1200px;
+    width: 100vw;
+    padding: 0 20px;
+    padding-top: 140px;
+    padding-bottom: 0px;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background: linear-gradient(rgba(14, 42, 86, 0.7), rgb(14, 42, 86));
+}
+
+@media only screen and (max-width: 600px) {
+    .outer {
+        background-size: cover;
+    }
+
+    .outer .container {
+        padding-top: 150px;
+        padding-bottom: 100px;
+        padding: 0;
+    }
 }
 
 .h1 {
-    font-size: 52px;
+    font-size: 55px;
     font-weight: bold;
 }
 
@@ -21,13 +42,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 50px 20px;
+}
+
+.searchBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 40px 0;
+    padding: 10px 18px;
+}
+
+.icon {
+    font-size: 24px;
+    padding-right: 20px;
+    color: black;
 }
 
 .input {
-    border-radius: 8px;
-    max-width: 500px;
+    flex: 1;
     font-size: 18px;
-    padding: 10px 16px;
+    border: 0;
+    outline: none;
 }
 
 .btn {
@@ -51,13 +96,6 @@
     .h1 {
         font-size: 30px;
     }
-
-    .input,
-    .btn {
-        padding: 6px 12px;
-        border-radius: 5px;
-        font-size: 16px;
-    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -77,49 +115,81 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
-    .illustration {
-        display: none;
-    }
-}
-
-.partners .upper {
-    background-color: #041640;
-    width: 100%;
-    padding: 20px;
-    text-align: left;
-    padding-left: 100px;
-}
-
-@media only screen and (max-width: 600px) {
-    .partners .upper {
-        text-align: left;
-        padding-left: 30px;
-    }
-}
-
 .partners .lower {
-    background-color: white;
     width: 100%;
     padding: 30px;
     text-align: center;
+    margin-top: 10px;
 }
 
 .partners .img {
-    width: 200px;
+    width: 150px;
     padding: 30px;
 }
 
+@media only screen and (max-width: 600px) {
+    .alignCenter {
+        padding: 10px;
+    }
+
+    .input {
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+
+    .partners {
+        background-color: rgb(14, 42, 86);
+    }
+
+    .partners .lower {
+        margin-top: 0;
+    }
+}
+
 .card {
-    height: 300px;
-    width: 100%;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    border-radius: 12px;
-    box-shadow: 0 0 18px 8px #e6e6e6;
-    overflow: hidden;
-    cursor: pointer;
-    margin-top: 20px;
+    display: block;
+    padding: 20px;
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.card h3 {
+    font-size: 24px;
+}
+
+.greyComponent {
+    color: grey;
+    /* Set the default text color to grey */
+}
+
+.card:hover .componentWrapper {
+    color: #0052d7;
+    /* Add any additional hover styles */
+}
+
+/* media query that removes the bar if on a mobile device */
+@media only screen and (max-width: 575px) {
+    .separationBar::before {
+        display: none;
+    }
+
+    .responsiveCard {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
 }
 
 .cardImage {
@@ -159,21 +229,6 @@
     transform: translateY(100%);
 }
 
-.getStarted {
-    width: 100%;
-    background-color: #f5f5f5;
-    justify-content: center;
-    align-items: center;
-}
-
-.getStarted .inner {
-    max-width: 700px;
-    width: 100%;
-    text-align: center;
-    display: block;
-    margin: 30px auto;
-}
-
 .inner .navlink {
     color: black;
     border-radius: 0;
@@ -184,35 +239,123 @@
     color: white;
 }
 
-.getStarted .content {
-    max-width: 700px;
-    width: 100%;
-    display: block;
-    margin: 30px auto;
-    padding: 30px;
-    font-size: 20px;
+.listingRow {
+    display: flex;
+    flex-direction: row;
 }
 
-.getStarted .content .number {
-    color: white;
-    margin-right: 10px;
-    width: 35px;
-    height: 35px;
-    display: inline-flex;
-    align-items: center;
+.demo h1 {
+    font-size: 35px;
+    font-weight: normal;
+    text-align: right;
+    color: rgba(20, 50, 130, 1);
+}
+
+.player {
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    filter: drop-shadow(0 0 0.5rem rgb(234, 234, 234));
+}
+
+.player:hover {
+    outline: 2px solid rgb(20, 50, 130);
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 90%;
+        display: block;
+        margin: 5px auto;
+    }
+
+    .listingRow {
+        flex-direction: column;
+    }
+
+    .row2 {
+        display: none;
+    }
+
+    .demo {
+        display: none;
+    }
+}
+
+.reviewRow {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    font-weight: bold;
-    background-color: rgb(20, 50, 130);
-    border-radius: 50%;
-    color: #fff;
-    padding: 20px;
-    filter: drop-shadow(0 0 0.25rem rgb(172, 175, 212));
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 40px;
 }
 
-.getStarted .content .line {
-    height: 25px;
-    background-color: rgb(220, 220, 220);
-    width: 2px;
-    display: block;
-    margin-left: 20px;
+.reviewCard {
+    background-color: white;
+    padding: 34px;
+    border-radius: 6px;
+    border: 1px solid black;
+    max-width: 350px;
+    margin: 10px;
+    height: auto;
+}
+
+.reviewCard i {
+    margin-left: 3px;
+}
+
+.contactRow {
+    padding: 80px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.formWrapper {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    filter: drop-shadow(0 0 0.5rem rgb(234, 234, 234));
+    border-radius: 8px;
+}
+
+.formWrapper textarea {
+    resize: none;
+}
+
+.btn {
+    display: flex;
+    background-color: rgb(33, 60, 132);
+    border-radius: 6px;
+    outline: none;
+    border: 0;
+    padding: 12px 16px;
+    min-width: 150px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: rgb(23, 41, 92);
+    color: white;
+}
+
+.heading {
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .heading {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .contactRow {
+        flex-direction: column;
+    }
 }

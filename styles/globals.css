@@ -9,7 +9,6 @@ body {
 
 .navbar .container-fluid {
     max-width: 1200px;
-    padding: 10px;
 }
 
 .navbar .navbar-brand {
@@ -30,12 +29,12 @@ body {
 }
 
 .navbar .nav-link {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 14px;
+    margin-left: 5px;
 }
 
 .navbar .btn {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .FooterWrapper {
@@ -43,71 +42,90 @@ body {
 }
 
 .footer {
-    background-color: #071429;
+    background-color: #112E5E;
     max-width: 100vw;
+    padding: 3vh 3vw;
+    color: #eeeeee;
+    height: 35vh;
+}
+
+.container {
+    height: 27vh;
+    padding: 30px 0px;
 }
 
 .footer-content {
-    color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.footer-content h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; /* Remove default margin */
+}
+
+.footer-content p {
+    color: #D4D4D4;
+    font-size: 0.75em;
+    margin-top: 2%;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.custom-spacing {
+    margin-right: 10px; /* Adjust this value based on your desired spacing */
 }
 
 .footer-links a {
-    color: #eeeeee;
+    color: #fafafa;
     text-decoration: none;
-    transition: color 0.3s;
+    margin-left: 2rem;
+    font-size: 14px;
 }
 
 .footer-links a:hover {
     text-decoration: underline;
 }
 
-.footer-content,
-.footer-links,
-.footer-social {
-    padding: 30px 10px;
+.icons {
+    display: flex;
+    gap: 20px; 
+    font-size: 27px; 
+    color: #D4D4D4;
+    margin-top: 5vw;
 }
 
-.footer-social a {
-    color: #eeeeee;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 20px;
+.justify {
+    justify-content: end;
 }
 
-.loader {
-    width: 3.25em;
-    transform-origin: center;
-    animation: rotate4 2s linear infinite;
-}
-
-.loader circle {
-    fill: none;
-    stroke: hsl(214, 97%, 59%);
-    stroke-width: 2;
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-    stroke-linecap: round;
-    animation: dash4 1.5s ease-in-out infinite;
-}
-
-@keyframes rotate4 {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes dash4 {
-    0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
+@media screen and (max-width: 757px){
+    .footer-links {
+        display: flex;
+        justify-content: flex-start;
     }
 
-    50% {
-        stroke-dasharray: 90, 200;
-        stroke-dashoffset: -35px;
+    .footer-links a {
+        color: #D4D4D4;
+        text-decoration: none;
+        margin-left: 0rem;
+        font-size: 14px;
     }
 
-    100% {
-        stroke-dashoffset: -125px;
+    .justify {
+        justify-content: start;
     }
+
+    .footer {
+        padding: 0vh 3vw;
+        height: 45vh;
+    }
+
 }
