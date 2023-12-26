@@ -43,7 +43,6 @@ export default function Home() {
                 <title>Connecting Researchers with Lab Space and Expertise | Lab2Client</title>
                 <meta name="description" content="Lab2Client is an innovative web platform that connects the broader research and innovation community with under-utilized experimental research facilities." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             {/* hero section */}
