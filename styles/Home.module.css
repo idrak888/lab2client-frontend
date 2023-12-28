@@ -359,3 +359,7 @@
         flex-direction: column;
     }
 }
+
+.dropDownMenuIconPadding i {
+    padding-right: 10px;
+}
