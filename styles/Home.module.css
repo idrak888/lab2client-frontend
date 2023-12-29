@@ -75,6 +75,12 @@
     outline: none;
 }
 
+@media only screen and (max-width: 600px) {
+    .searchBox {
+        padding: 0px 18px;
+    }
+}
+
 .btn {
     display: flex;
     background-color: #3D898B;
@@ -358,4 +364,12 @@
     .contactRow {
         flex-direction: column;
     }
+
+    .links {
+        display: none;
+    }
+}
+
+.dropDownMenuIconPadding i {
+    padding-right: 10px;
 }
