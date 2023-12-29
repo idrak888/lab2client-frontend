@@ -9,7 +9,7 @@ export default function Navbar({ user }) {
 		<nav className="navbar navbar-expand-lg navbar-dark fixed-top">
 			<div className="container-fluid">
 				<a className="navbar-brand" href="/"><img src='/lab2client-white.svg' width={120} /></a>
-				<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+				<ul className={`${styles.links} navbar-nav me-auto mb-2 mb-lg-0`}>
 					<li className="nav-item">
 						<a className="nav-link" href="/listings">Find Labs</a>
 					</li>
@@ -20,55 +20,55 @@ export default function Navbar({ user }) {
 						<a className="nav-link" href="/#contact">Contact</a>
 					</li>
 				</ul>
-				<div className="d-flex">
-					<a href='/auth/register' className='nav-link' style={{color: "#bed6fb", textDecoration: "none", marginRight: 20, fontSize: 14}}>Offer your Lab</a>
-						<div className="dropdown d-flex align-items-center" style={{ borderRadius: "20px", backgroundColor: "white", padding: "0px 5px" }}>
-							<i
-								className="bi bi-list"
-								style={{ paddingRight: "5px", color: "black" }}
-								type="button"
-								id="dropdownMenuButton"
-								data-bs-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false"
-							/>
-							<div className="dropdown-menu p-0" aria-labelledby="dropdownMenuButton" style={{overflow: "hidden"}}>
-								{
-									user ?
-										(
-											<div className={`${styles.dropDownMenuIconPadding}`}>
-												<a className="dropdown-item" href="/dashboard"><i className="bi bi-grid-1x2"></i> Dashboard </a>
-												<a className="dropdown-item" href="/"><i className="bi bi-gear"></i> Settings </a>
-												<a className="dropdown-item" href="/"><i className="bi bi-envelope"></i> Contact </a>
-												<a className="dropdown-item" onClick={handleSignOut}><i className="bi bi-box-arrow-right"></i> Log Out </a>
-											</div>
-										)
-										:
-										(
-											<div className={`${styles.dropDownMenuIconPadding}`}>
-												<a className="dropdown-item" href="/auth/register"><i className="bi bi-person-circle"></i> Sign Up </a>
-												<a className="dropdown-item" href="/auth/login"><i className="bi bi-box-arrow-in-right"></i> Log In </a>
-											</div>
-										)
-								}
-							</div>
-							<div className="pb-1">
-								{
-									user ?
-										(
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#7CFC00" class="bi bi-circle-fill" viewBox="0 0 16 16">
-												<circle cx="8" cy="8" r="8" />
-											</svg>
-										)
-										:
-										(
-											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-circle-fill" viewBox="0 0 16 16">
-												<circle cx="8" cy="8" r="8" />
-											</svg>
-										)
-								}
-							</div>
+				<div className="d-flex items-center justify-center">
+					<a href='/auth/register' className='nav-link' style={{ color: "#bed6fb", textDecoration: "none", marginRight: 20, fontSize: 14, alignSelf: "center" }}>Offer your Lab</a>
+					<div className="dropdown d-flex align-items-center" style={{ borderRadius: "20px", backgroundColor: "white", padding: "0px 5px" }}>
+						<i
+							className="bi bi-list"
+							style={{ paddingRight: "5px", color: "black" }}
+							type="button"
+							id="dropdownMenuButton"
+							data-bs-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						/>
+						<div className="dropdown-menu p-0" aria-labelledby="dropdownMenuButton" style={{ marginLeft: -110 }}>
+							{
+								user ?
+									(
+										<div className={`${styles.dropDownMenuIconPadding}`}>
+											<a className="dropdown-item" href="/dashboard"><i className="bi bi-grid-1x2"></i> Dashboard </a>
+											<a className="dropdown-item" href="/"><i className="bi bi-gear"></i> Settings </a>
+											<a className="dropdown-item" href="/"><i className="bi bi-envelope"></i> Contact </a>
+											<a className="dropdown-item" onClick={handleSignOut} style={{ cursor: "pointer" }}><i className="bi bi-box-arrow-right"></i> Log Out </a>
+										</div>
+									)
+									:
+									(
+										<div className={`${styles.dropDownMenuIconPadding}`}>
+											<a className="dropdown-item" href="/auth/register"><i className="bi bi-person-circle"></i> Sign Up </a>
+											<a className="dropdown-item" href="/auth/login"><i className="bi bi-box-arrow-in-right"></i> Log In </a>
+										</div>
+									)
+							}
 						</div>
+						<div className="pb-1">
+							{
+								user ?
+									(
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#27AE60" class="bi bi-circle-fill" viewBox="0 0 16 16">
+											<circle cx="8" cy="8" r="8" />
+										</svg>
+									)
+									:
+									(
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#E74C3C" class="bi bi-circle-fill" viewBox="0 0 16 16">
+											<circle cx="8" cy="8" r="8" />
+										</svg>
+									)
+							}
+						</div>
+					</div>
 
 				</div>
 
