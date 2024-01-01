@@ -27,7 +27,7 @@ export default function Footer() {
                     <div className="row">
                         <div className="col-lg-4 col-md-4 footer-content">
                             <img src='/lab2client-white.svg' width={230} />     
-                            <p>&copy; 2023 Lab2Client. All rights reserved.</p>
+                            <p>&copy; {(new Date().getFullYear())} Lab2Client. All rights reserved.</p>
                         </div>
                         <div className="col-lg-8 col-md-8 col-xs-12 footer-links">
                             <div className="row">
