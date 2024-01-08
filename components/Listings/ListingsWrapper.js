@@ -5,10 +5,6 @@ import styles from '/styles/Listings.module.css';
 import Link from 'next/link';
 
 export default function ListingsWrapper({ data, edit }) {
-	console.log(data);
-
-	const items = ["Autocollimators", "Scanning Electron Microscope (SEM)", "Microscope", "Another Component", "Yet Another Component", "More Components"];
-
 	return (
 		<div className={`${styles.listings} ${styles.highlighted}`}>
 			{/* Check if there is data to display */}

@@ -32,14 +32,14 @@ export default function Navbar({ user }) {
 							aria-haspopup="true"
 							aria-expanded="false"
 						/>
-						<div className="dropdown-menu p-0" aria-labelledby="dropdownMenuButton" style={{ marginLeft: -110 }}>
+						<div className="dropdown-menu p-0 z-50" aria-labelledby="dropdownMenuButton" style={{ marginLeft: -110 }}>
 							{
 								user ?
 									(
 										<div className={`${styles.dropDownMenuIconPadding}`}>
 											<a className="dropdown-item" href="/dashboard"><i className="bi bi-grid-1x2"></i> Dashboard </a>
-											<a className="dropdown-item" href="/"><i className="bi bi-gear"></i> Settings </a>
-											<a className="dropdown-item" href="/"><i className="bi bi-envelope"></i> Contact </a>
+											<a className="dropdown-item" href="/dashboard#settings"><i className="bi bi-gear"></i> Settings </a>
+											<a className="dropdown-item" href="/#contact"><i className="bi bi-envelope"></i> Contact </a>
 											<a className="dropdown-item" onClick={handleSignOut} style={{ cursor: "pointer" }}><i className="bi bi-box-arrow-right"></i> Log Out </a>
 										</div>
 									)

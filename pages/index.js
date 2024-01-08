@@ -234,8 +234,8 @@ export default function Home() {
                     <h2 style={{ fontWeight: "bold", fontSize: 40 }}>Have questions? We'd love to hear from you!</h2>
                     <p className='text-muted'>Sed ut perspiciatis unde iste natus error voluptatem accusantium</p>
                 </div>
-                <div className={styles.formWrapper} id='contact'>
-                    <form onSubmit={e => handleSubmit(e)}>
+                <div className={styles.formWrapper}>
+                    <form onSubmit={e => handleSubmit(e)} id='contact'>
                         <div style={{display: "flex", flexDirection: "row"}}>
                             <div style={{flex: 1, marginRight: 10}}>
                                 <label for="name" className="form-label">Name</label>
