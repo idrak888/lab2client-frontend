@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '/styles/Home.module.css';
-import firebase from '/utils/firebase';
+import firebase from '../../utils/firebase';
 
 // this is the main navbar that appears in all of the pages
 

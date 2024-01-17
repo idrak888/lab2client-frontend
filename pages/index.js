@@ -1,10 +1,11 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import Hero from '/components/Home/Hero';
+import { use, useEffect, useState } from 'react';
+import Hero from '../components/Home/Hero';
 import emailjs from '@emailjs/browser';
 import ReactPlayer from 'react-player'
 import Link from 'next/link';
 import styles from '/styles/Home.module.css';
+import axios from 'axios';
 
 export default function Home() {
     let [btnText, setBtnText] = useState("Send Message");
@@ -12,11 +13,11 @@ export default function Home() {
     let [videoPlaying, setVideoPlaying] = useState(false);
 
     useEffect(() => {
-        fetch(`https://lab2client.herokuapp.com/getall`)
-            .then((response) => response.json())
-            .then((data) => {
-                setData(data);
-            });
+        axios.get(`https://lab2client.herokuapp.com/getall`).then(doc => {
+            setData(doc.data);
+        }).catch(e => {
+            console.log(e);
+        });
     }, []);
 
     const handleSubmit = e => {
@@ -236,23 +237,23 @@ export default function Home() {
                 </div>
                 <div className={styles.formWrapper}>
                     <form onSubmit={e => handleSubmit(e)} id='contact'>
-                        <div style={{display: "flex", flexDirection: "row"}}>
-                            <div style={{flex: 1, marginRight: 10}}>
-                                <label for="name" className="form-label">Name</label>
+                        <div style={{ display: "flex", flexDirection: "row" }}>
+                            <div style={{ flex: 1, marginRight: 10 }}>
+                                <label htmlFor="name" className="form-label">Name</label>
                                 <input style={{ fontSize: 14 }} type="text" name='name' className="form-control" id="name" placeholder="John Doe" />
                             </div>
-                            <div style={{flex: 1}}>
+                            <div style={{ flex: 1 }}>
                                 <label name="email" className="form-label">Email</label>
                                 <input style={{ fontSize: 14 }} type="email" name='email' className="form-control" id="email"
                                     placeholder="example@gmail.com" />
                             </div>
                         </div>
-                        <div style={{marginTop: 20, marginBottom: 20}}>
-                            <label for="message" className="form-label">Message</label>
+                        <div style={{ marginTop: 20, marginBottom: 20 }}>
+                            <label htmlFor="message" className="form-label">Message</label>
                             <textarea style={{ fontSize: 14 }} name='message' className="form-control" id="message" rows="4"
                                 placeholder="Enter your message"></textarea>
                         </div>
-                        <button style={{float: "right"}} type="submit" className={`${styles.btn}`}>{btnText}</button>
+                        <button style={{ float: "right" }} type="submit" className={`${styles.btn}`}>{btnText}</button>
                     </form>
                 </div>
             </div>
