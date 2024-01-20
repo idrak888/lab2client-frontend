@@ -56,13 +56,13 @@ export default function Navbar({ user }) {
 							{
 								user ?
 									(
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#27AE60" class="bi bi-circle-fill" viewBox="0 0 16 16">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#27AE60" className="bi bi-circle-fill" viewBox="0 0 16 16">
 											<circle cx="8" cy="8" r="8" />
 										</svg>
 									)
 									:
 									(
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#E74C3C" class="bi bi-circle-fill" viewBox="0 0 16 16">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#E74C3C" className="bi bi-circle-fill" viewBox="0 0 16 16">
 											<circle cx="8" cy="8" r="8" />
 										</svg>
 									)

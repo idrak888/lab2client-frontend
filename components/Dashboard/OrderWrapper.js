@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '/styles/Dashboard.module.css';
 import Link from 'next/link';
 import emailjs from '@emailjs/browser';
@@ -8,7 +8,6 @@ import { loadStripe } from "@stripe/stripe-js";
 
 export default function OrderWrapper({ type, information, date, status, user }) {
     let [btnText, setBtnText] = useState("Send Message");
-
 
     //Initialize Stripe promise and assigning the result of getStripe() function to it
     let stripePromise = null

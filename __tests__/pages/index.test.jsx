@@ -6,6 +6,12 @@ describe('Homepage', () => {
     it('renders welcome message', () => {
         render(<Home />);
         const linkElement = screen.getByText(/Find Research Equipment that suits your needs/i);
-        expect(linkElement)
+        expect(linkElement);
+    });
+
+    it('renders a demo video', () => {
+        render(<Home />);
+        const linkElement = screen.getByTestId("demo-video");
+        expect(linkElement);
     });
 });

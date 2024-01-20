@@ -177,7 +177,7 @@ export default function Home() {
                         <h1>Walkthrough</h1>
                         <img style={{ float: "right", marginTop: 10, opacity: 0.5 }} src="https://svgsilh.com/svg/29170.svg" width={50} />
                     </div>
-                    <div className='col-sm'>
+                    <div className='col-sm' data-testid="demo-video">
                         {data ? <div onClick={() => {
                             setVideoPlaying(!videoPlaying);
                         }}><ReactPlayer controls={true} light={<img width={"100%"} src='https://firebasestorage.googleapis.com/v0/b/lab2client.appspot.com/o/Screenshot%202023-12-14%20at%201.17.19%20PM.png?alt=media&token=4e354f45-a696-44fe-8904-16d328fb1254' />} className={styles.player} pip={true} url='https://firebasestorage.googleapis.com/v0/b/lab2client.appspot.com/o/demo.mp4?alt=media&token=0ae2e1b1-ec10-498b-8d37-670363d22753' /></div> : ""}

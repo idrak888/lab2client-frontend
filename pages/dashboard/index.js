@@ -107,10 +107,16 @@ export default function index() {
 										{
 											orderView == 0 ?
 												ordersReceieved.map(order => {
-													return <OrderWrapper type={"received"} user={user} information={order.information} date={order.date} status={order.status} />
+													const d = new Date(Date.parse(order.date));
+													return (
+														<OrderWrapper type={"received"} user={user} information={order.information} date={d.toDateString()} status={order.status} />
+													)
 												}) : orderView == 1 ?
 													ordersSent.map(order => {
-														return <OrderWrapper type={"sent"} user={user} information={order.information} date={order.date} status={order.status} />
+														const d = new Date(Date.parse(order.date));
+														return (
+															<OrderWrapper type={"sent"} user={user} information={order.information} date={d.toDateString()} status={order.status} />
+														)
 													}) : ""
 										}
 									</div>

@@ -16,7 +16,7 @@ export default function Hero() {
                     <div className={`${styles.alignCenter} row`}>
                         <h1 className={`${styles.h1}`}>Find Research Equipment that suits your needs</h1>
                         <p>Connecting researchers and innovators with under-utilized research facilitites</p>
-                        <form style={{ display: "block", margin: "auto" }} onSubmit={e => {
+                        <form role='form' style={{ display: "block", margin: "auto" }} onSubmit={e => {
                             e.preventDefault();
                             if (searchKeys.trim() != "") {
                                 window.location = `/listings?search=${searchKeys}`;
