@@ -43,7 +43,7 @@
 
 .btn {
     display: flex;
-    background-color: #3D898B;
+    background-color: rgb(33, 60, 132);
     border-radius: 8px;
     outline: none;
     border: 0;

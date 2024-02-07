@@ -35,7 +35,7 @@ export default function Footer() {
                                     <a href="/" className="mb-lg-0 mb-2">Find Labs</a>
                                     <a href="/" className="mb-lg-0 mb-2">About</a>
                                     <a href="/" className="mb-lg-0 mb-2">Contact</a>
-                                    <a href="/" className="mb-lg-0 mb-2">Offer your Lab</a>
+                                    <a href="/" className="mb-lg-0 mb-2">Register your Lab</a>
                                 </div>
                                 <div className="col-lg-12 d-flex justify">
                                     <div className="icons">

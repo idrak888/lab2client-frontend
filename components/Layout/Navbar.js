@@ -21,7 +21,7 @@ export default function Navbar({ user }) {
 					</li>
 				</ul>
 				<div className="d-flex items-center justify-center">
-					<a href='/auth/register' className='nav-link' style={{ color: "#bed6fb", textDecoration: "none", marginRight: 20, fontSize: 14, alignSelf: "center" }}>Offer your Lab</a>
+					<a href='/auth/register' className='nav-link' style={{ color: "#bed6fb", textDecoration: "none", marginRight: 20, fontSize: 14, alignSelf: "center" }}>Register Lab</a>
 					<div className="dropdown d-flex align-items-center" style={{ borderRadius: "20px", backgroundColor: "white", padding: "0px 5px" }}>
 						<i
 							className="bi bi-list"

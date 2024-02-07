@@ -16,15 +16,22 @@
 }
 
 .orderContainer {
-    height: 100vh;
-    overflow-y: scroll;
     padding: 20px 0;
 }
 
 .OrderWrapper {
     background-color: white;
+    padding: 15px;
     margin-top: 10px;
-    border: 1px solid grey;
+    border-radius: 15px;
+    color: black;
+}
+
+.navLink {
+    color: black;
+}
+
+.navLink:hover {
     color: black;
 }
 
@@ -57,10 +64,9 @@
 }
 
 .btnSuccess {
-    background-color: #1aaa32;
-    border-radius: 3px;
+    background-color: rgb(33, 60, 132);
+    border-radius: 6px;
     color: #fff;
-    font-weight: bold;
     font-size: 13px;
     text-align: center;
     border: 0;
@@ -69,4 +75,28 @@
     padding: 0.625em 2em;
     text-decoration: none;
     margin-top: 10px;
+}
+
+.btnSuccess:hover {
+    background-color: rgb(33, 60, 132);
+    color: white;
+}
+
+.btnPrimary {
+    display: flex;
+    background-color: rgb(33, 60, 132);
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+    padding: 12px 16px;
+    min-width: 150px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+.btnPrimary:hover, .btnPrimary:active {
+    color: white;
+    background-color: rgb(33, 60, 132);
 }

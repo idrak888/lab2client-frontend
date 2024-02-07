@@ -68,7 +68,7 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                                             }></textarea>
                                     </div>
                                     <div className="text-center">
-                                        <button type="submit" className="btn btn-primary">{btnText}</button>
+                                        <button type="submit" className={`${styles.btnPrimary} btn`}>{btnText}</button>
                                     </div>
                                 </form>
                             </div>
@@ -98,9 +98,9 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                 {
                     type == "received" ?
                         <div style={{ minWidth: 180 }}>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" style={{ textDecoration: "none", width: "100%" }} className={`${styles.btnSuccess} btn btn-success`}>Contact</button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" style={{ textDecoration: "none", width: "100%" }} className={`${styles.btnSuccess} btn`}>Contact</button>
                             <br />
-                            <Link href="/payment/invoice" style={{ textDecoration: "none", width: "100%", marginTop: 10 }} className={`${styles.btnSuccess} btn btn-success`}>Generate Invoice</Link>
+                            <Link href="/payment/invoice" style={{ textDecoration: "none", width: "100%", marginTop: 10 }} className={`${styles.btnSuccess} btn`}>Generate Invoice</Link>
                         </div>
                         :
                         <div style={{ minWidth: 180 }}>
@@ -113,7 +113,6 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                 display: "flex",
                 flex: 1,
                 justifyContent: "space-between",
-                backgroundColor: "#f6f6f6",
                 padding: 10,
                 paddingTop: 15
             }}>
