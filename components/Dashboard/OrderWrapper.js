@@ -16,15 +16,15 @@ export default function OrderWrapper({ type, information, date, status, user }) 
         -purpose: ensure that the Stripe library is loaded asynchronously when the component mounts. 
             This can help improve the performance by not blocking the initial render
             while waiting for the Stripe library to load. */
-	const getStripe = () => {
-		if(!stripePromise) {
-			stripePromise = loadStripe("pk_test_51NB2f5L5vejuzwJ3crZY5PSOpeBZBJRrrNbVSCy1z93K2fgotOer5V9dgRSUOxwMOK55dP0BUMho8P6LJCHN2cZi00XdlifDJq")
-		}
-		return stripePromise
-	}
+    const getStripe = () => {
+        if (!stripePromise) {
+            stripePromise = loadStripe("pk_test_51NB2f5L5vejuzwJ3crZY5PSOpeBZBJRrrNbVSCy1z93K2fgotOer5V9dgRSUOxwMOK55dP0BUMho8P6LJCHN2cZi00XdlifDJq")
+        }
+        return stripePromise
+    }
 
-	getStripe().then(stripe => {
-        
+    getStripe().then(stripe => {
+
     });
 
 
@@ -89,7 +89,7 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                     }) : ""}
                     {
                         type == "received" ?
-                            <p><span style={{fontSize: 12}}>From:</span> {information.requester_email}</p>
+                            <p><span style={{ fontSize: 12 }}>From:</span> {information.requester_email}</p>
                             : type == "sent" ?
                                 <p>Sent to: {information.receiver}</p>
                                 : ""
@@ -98,13 +98,21 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                 {
                     type == "received" ?
                         <div style={{ minWidth: 180 }}>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" style={{ textDecoration: "none", width: "100%" }} className={`${styles.btnSuccess} btn`}>Contact</button>
+                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" style={{ textDecoration: "none", width: "100%" }} className={`${styles.btnSuccess} btn`}>Accept</button>
+                                <button style={{ marginTop: 10, marginLeft: 5, backgroundColor: "#f2f2f2", fontSize: 14, width: "100%" }} className='btn'>Reject</button>
+                            </div>
                             <br />
-                            <Link href="/payment/invoice" style={{ textDecoration: "none", width: "100%", marginTop: 10 }} className={`${styles.btnSuccess} btn`}>Generate Invoice</Link>
+                            <Link href="/payment/invoice" style={{ backgroundColor: "#f2f2f2", fontSize: 14, width: "100%" }}  className={`btn`}>Generate Invoice</Link>
                         </div>
                         :
                         <div style={{ minWidth: 180 }}>
-
+                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#contactModal" style={{ textDecoration: "none", width: "100%" }} className={`${styles.btnSuccess} btn`}>Contact</button>
+                                <button style={{ marginTop: 10, marginLeft: 5, backgroundColor: "#f2f2f2", fontSize: 14 }} className='btn'>Cancel</button>
+                            </div>
+                            <br />
+                            <Link href="" style={{ backgroundColor: "#f2f2f2", fontSize: 14, width: "100%" }}  className={`btn`}>Make Payment</Link>
                         </div>
                 }
 
@@ -116,8 +124,8 @@ export default function OrderWrapper({ type, information, date, status, user }) 
                 padding: 10,
                 paddingTop: 15
             }}>
-                <p style={{fontSize: 14, color: "grey"}}><span style={{fontSize: 12}}>Status:</span> {status}</p>
-                <p style={{fontSize: 14, color: "grey"}}><span style={{fontSize: 12}}>Date:</span> {date}</p>
+                <p style={{ fontSize: 14, color: "grey" }}><span style={{ fontSize: 12 }}>Status:</span> {status}</p>
+                <p style={{ fontSize: 14, color: "grey" }}><span style={{ fontSize: 12 }}>Date:</span> {date}</p>
             </div>
         </div>
     )
