@@ -156,17 +156,17 @@ export default function Home() {
                     <div className='col-sm'>
                         <i style={{ fontSize: 30, color: "grey" }} className='bi bi-card-list'></i>
                         <h5 style={{ fontWeight: "bold", marginTop: 20 }}>List your Lab</h5>
-                        <p className='text-muted' style={{ fontSize: 14 }}>Sed ut perspiciatis unde iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                        <p className='text-muted' style={{ fontSize: 14 }}>For lab owners, listing your lab is simple and free. Showcase your lab's features, upload photos, and set your rental terms. Our platform handles the rest, matching you with interested renters and facilitating communication. </p>
                     </div>
                     <div className='col-sm'>
                         <i style={{ fontSize: 30, color: "grey" }} className='bi bi-chat-left'></i>
                         <h5 style={{ fontWeight: "bold", marginTop: 20 }}>Receive Requests</h5>
-                        <p className='text-muted' style={{ fontSize: 14 }}>Sed ut perspiciatis unde iste natus error voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                        <p className='text-muted' style={{ fontSize: 14 }}>Users can view detailed listings, including photos and rental terms, and easily connect with lab owners through our messaging system. Lab owners can manage their listings and respond to inquiries efficiently. </p>
                     </div>
                     <div className='col-sm'>
                         <i style={{ fontSize: 30, color: "grey" }} className='bi bi-cash'></i>
                         <h5 style={{ fontWeight: "bold", marginTop: 20 }}>Get Paid</h5>
-                        <p className='text-muted' style={{ fontSize: 14 }}>Sed ut perspiciatis unde iste natu sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                        <p className='text-muted' style={{ fontSize: 14 }}>Once you've agreed on rental terms, payment is processed securely through our platform. Lab owners provide access to the lab according to the agreed-upon schedule, and renters adhere to the lab's rules.</p>
                     </div>
                 </div>
                 <br />
@@ -188,42 +188,42 @@ export default function Home() {
             <div style={{ paddingTop: 80, paddingBottom: 80 }}>
                 <div className={styles.heading}>
                     <h2 style={{ fontWeight: "bold", fontSize: 40 }}>What our customers are saying</h2>
-                    <p className='text-muted'>Sed ut perspiciatis unde iste natus error voluptatem accusantium</p>
+                    <p className='text-muted'>Have a look at what our most trusted clients have to say about our platform</p>
                 </div>
                 <div className={styles.reviewRow}>
                     <div className={styles.reviewCard}>
                         <span><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i></span>
-                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Lorem totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo"</p>
+                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Working with LabConnect was a game-changer for our research project. The platform was easy to use, and we found the perfect lab in no time. Highly recommend!"</p>
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                             <img width={60} src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" />
                             <div style={{ padding: 10 }}>
-                                <strong style={{ fontSize: 14 }}>First Last</strong>
+                                <strong style={{ fontSize: 14 }}>Sarah Johnson</strong>
                                 <br />
-                                <span style={{ fontSize: 14 }} className='text-muted'>Position, Company</span>
+                                <span style={{ fontSize: 14 }} className='text-muted'>BioSci Research Labs</span>
                             </div>
                         </div>
                     </div>
                     <div className={styles.reviewCard}>
                         <span><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i></span>
-                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Sed ut perspiciatis unde iste natu sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."</p>
+                        <p style={{ marginTop: 20, marginBottom: 20 }}>"As a researcher, I often need access to specialized equipment. LabConnect made it easy to find labs with the equipment I needed, and the rental process was smooth. Will definitely use again"</p>
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                             <img width={60} src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" />
                             <div style={{ padding: 10 }}>
-                                <strong style={{ fontSize: 14 }}>First Last</strong>
+                                <strong style={{ fontSize: 14 }}>Emily Brown</strong>
                                 <br />
-                                <span style={{ fontSize: 14 }} className='text-muted'>Position, Company</span>
+                                <span style={{ fontSize: 14 }} className='text-muted'>GenoPharm Research</span>
                             </div>
                         </div>
                     </div>
                     <div className={styles.reviewCard}>
                         <span><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i></span>
-                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Lorem totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo"</p>
+                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Listing our lab on LabConnect was a breeze. We started receiving inquiries right away and have had a great experience renting out our space. Thanks, LabConnect!"</p>
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                             <img width={60} src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" />
                             <div style={{ padding: 10 }}>
-                                <strong style={{ fontSize: 14 }}>First Last</strong>
+                                <strong style={{ fontSize: 14 }}>David Smith</strong>
                                 <br />
-                                <span style={{ fontSize: 14 }} className='text-muted'>Position, Company</span>
+                                <span style={{ fontSize: 14 }} className='text-muted'>NanoTech Labs</span>
                             </div>
                         </div>
                     </div>
@@ -233,7 +233,7 @@ export default function Home() {
             <div className={styles.contactRow}>
                 <div style={{ flex: 1, padding: 40 }}>
                     <h2 style={{ fontWeight: "bold", fontSize: 40 }}>Have questions? We'd love to hear from you!</h2>
-                    <p className='text-muted'>Sed ut perspiciatis unde iste natus error voluptatem accusantium</p>
+                    <p className='text-muted'>If you have any inquiries, use the form to submit a question and we'll get back to you</p>
                 </div>
                 <div className={styles.formWrapper}>
                     <form onSubmit={e => handleSubmit(e)} id='contact'>
