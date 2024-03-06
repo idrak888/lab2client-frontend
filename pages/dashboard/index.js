@@ -8,7 +8,6 @@ import axios from 'axios';
 import ListingsWrapper from '/components/Listings/ListingsWrapper';
 import OrderWrapper from '/components/Dashboard/OrderWrapper';
 import Loader from '/components/Layout/Loader';
-import { useRouter } from 'next/router';
 
 export default function index() {
 	let [view, setView] = useState(1);
@@ -20,17 +19,8 @@ export default function index() {
 	let [userInfo, setUserInfo] = useState(null);
 	const [loading, setLoading] = useState(false);
 
-	const router = useRouter();
-
 	useEffect(() => {
 		const userStr = localStorage.getItem("user");
-		// const param = router.pathname.split("#");
-
-		// console.log(param);
-
-		// if (param && param == "settings") {
-		// 	setView(2);
-		// }
 
 		if (userStr) {
 			setLoading(true);

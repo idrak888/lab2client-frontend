@@ -193,7 +193,7 @@ export default function Home() {
                 <div className={styles.reviewRow}>
                     <div className={styles.reviewCard}>
                         <span><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i></span>
-                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Working with LabConnect was a game-changer for our research project. The platform was easy to use, and we found the perfect lab in no time. Highly recommend!"</p>
+                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Working with Lab2Client was a game-changer for our research project. The platform was easy to use, and we found the perfect lab in no time. Highly recommend!"</p>
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                             <img width={60} src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" />
                             <div style={{ padding: 10 }}>
@@ -205,7 +205,7 @@ export default function Home() {
                     </div>
                     <div className={styles.reviewCard}>
                         <span><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i></span>
-                        <p style={{ marginTop: 20, marginBottom: 20 }}>"As a researcher, I often need access to specialized equipment. LabConnect made it easy to find labs with the equipment I needed, and the rental process was smooth. Will definitely use again"</p>
+                        <p style={{ marginTop: 20, marginBottom: 20 }}>"As a researcher, I often need access to specialized equipment. Lab2Client made it easy to find labs with the equipment I needed, and the rental process was smooth. Will definitely use again"</p>
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                             <img width={60} src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" />
                             <div style={{ padding: 10 }}>
@@ -217,7 +217,7 @@ export default function Home() {
                     </div>
                     <div className={styles.reviewCard}>
                         <span><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i><i className='bi bi-star-fill'></i></span>
-                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Listing our lab on LabConnect was a breeze. We started receiving inquiries right away and have had a great experience renting out our space. Thanks, LabConnect!"</p>
+                        <p style={{ marginTop: 20, marginBottom: 20 }}>"Listing our lab on Lab2Client was a breeze. We started receiving inquiries right away and have had a great experience renting out our space. Thanks, Lab2Client!"</p>
                         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                             <img width={60} src="https://www.kurin.com/wp-content/uploads/placeholder-square.jpg" />
                             <div style={{ padding: 10 }}>
