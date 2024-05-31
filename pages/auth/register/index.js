@@ -32,7 +32,7 @@ class Signup extends Component {
 						doc.user.updateProfile({
 							displayName: `${firstname} ${lastname}`
 						});
-						axios.post('https://lab2client.herokuapp.com/create/info', {
+						axios.post('https://lab2client-7fd38de3875a.herokuapp.com/create/info', {
 							ucid: doc.user.uid,
 							first_name: firstname,
 							last_name: lastname,

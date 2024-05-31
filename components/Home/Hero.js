@@ -36,7 +36,6 @@ export default function Hero() {
                         </form>
                     </div>
                 </div>
-                <Partners />
             </div>
         </div>
     )

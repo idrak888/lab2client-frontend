@@ -13,7 +13,7 @@ export default function Home() {
     let [videoPlaying, setVideoPlaying] = useState(false);
 
     useEffect(() => {
-        axios.get(`https://lab2client.herokuapp.com/getall`).then(doc => {
+        axios.get(`https://lab2client-7fd38de3875a.herokuapp.com/getall`).then(doc => {
             setData(doc.data);
         }).catch(e => {
             console.log(e);

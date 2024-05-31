@@ -22,7 +22,7 @@ export default function index() {
         const uid = user.uid;
         const value = document.getElementById("institution_name").value;
 
-        // axios.post(`https://lab2client.herokuapp.com/create`, {
+        // axios.post(`https://lab2client-7fd38de3875a.herokuapp.com/create`, {
         //     user_unique_id: uid,
         //     value
         // }).then(doc => {

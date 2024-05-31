@@ -2,7 +2,7 @@
     width: 100vw;
     background: rgb(14, 42, 86);
     background-image: url("/banner.png");
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     color: white;
     overflow-x: hidden;
@@ -13,7 +13,7 @@
     padding: 0 20px;
     padding-top: 140px;
     padding-bottom: 0px;
-    height: 80vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;

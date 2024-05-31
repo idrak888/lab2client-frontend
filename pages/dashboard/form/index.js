@@ -44,7 +44,7 @@ export default function index() {
         const fields = document.getElementById("fields").value.split(",");
 
         if (equipments.length > 0) {
-            axios.post(`https://lab2client.herokuapp.com/create`, {
+            axios.post(`https://lab2client-7fd38de3875a.herokuapp.com/create`, {
                 user_unique_id: uid,
                 email_identification: email1,
                 institution_name,
@@ -123,7 +123,7 @@ export default function index() {
         const formData = new FormData();
         formData.append('image', e.target.files[0]);
 
-        axios.post("https://lab2client.herokuapp.com/upload_picture", formData, {
+        axios.post("https://lab2client-7fd38de3875a.herokuapp.com/upload_picture", formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

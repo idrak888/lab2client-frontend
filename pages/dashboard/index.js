@@ -28,22 +28,22 @@ export default function index() {
 			const uid = parsed.uid;
 			setUser(parsed);
 
-			axios.get(`https://lab2client.herokuapp.com/dashboard/${uid}`).then(doc => {
+			axios.get(`https://lab2client-7fd38de3875a.herokuapp.com/dashboard/${uid}`).then(doc => {
 				setLabs(doc.data);
-				axios.get(`https://lab2client.herokuapp.com/userinfo/${uid}`).then(doc => {
+				axios.get(`https://lab2client-7fd38de3875a.herokuapp.com/userinfo/${uid}`).then(doc => {
 					setUserInfo(doc.data[0]);
 					setLoading(false);
 				}).catch(e => {
 					console.log(e);
 				});
 
-				axios.get(`https://lab2client.herokuapp.com/orders/sent/${uid}`).then(doc => {
+				axios.get(`https://lab2client-7fd38de3875a.herokuapp.com/orders/sent/${uid}`).then(doc => {
 					setOrdersSent(doc.data);
 				}).catch(e => {
 					console.log(e);
 				});
 
-				axios.get(`https://lab2client.herokuapp.com/orders/received/${uid}`).then(doc => {
+				axios.get(`https://lab2client-7fd38de3875a.herokuapp.com/orders/received/${uid}`).then(doc => {
 					setOrdersReceived(doc.data);
 				}).catch(e => {
 					console.log(e);

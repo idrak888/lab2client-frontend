@@ -17,7 +17,7 @@ export default function View({ query }) {
             const parsed = JSON.parse(userStr);
             setUser(parsed);
         }
-        fetch(`https://lab2client.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
+        fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
             .then(data => {
                 setData(data);
                 if (data.lab_equipment.length > 0) {

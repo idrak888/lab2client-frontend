@@ -18,7 +18,7 @@ export default function EditListing({ query }) {
             const parsed = JSON.parse(user);
             setUser(parsed);
         }
-        fetch(`https://lab2client.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
+        fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
             .then(data => {
                 document.getElementById("institution_name").value = data.identification.institution_name;
                 document.getElementById("research_facility").value = data.identification.research_facillity;
@@ -59,7 +59,7 @@ export default function EditListing({ query }) {
         const research_infrastructure = document.getElementById("research_infrastructure").value;
         const fields = document.getElementById("fields").value.split(",");
 
-        axios.put(`https://lab2client.herokuapp.com/updatelab/${labId}`, {
+        axios.put(`https://lab2client-7fd38de3875a.herokuapp.com/updatelab/${labId}`, {
             "Fields_of_research": {
                 "fields": fields
             },
@@ -122,7 +122,7 @@ export default function EditListing({ query }) {
     const deleteListing = e => {
         e.preventDefault();
 
-        axios.delete(`https://lab2client.herokuapp.com/delete/${labId}`).then(doc => {
+        axios.delete(`https://lab2client-7fd38de3875a.herokuapp.com/delete/${labId}`).then(doc => {
             window.location = "/dashboard";
         }).catch(e => {
             console.log(e);

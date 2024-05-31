@@ -32,7 +32,7 @@ const FixedBottom = ({ data, user }) => {
 		if (user) {
 			if (equipment.length > 0 && description != "") {
 				// Make a POST request to create a new order
-				axios.post(`https://lab2client.herokuapp.com/create/order`, {
+				axios.post(`https://lab2client-7fd38de3875a.herokuapp.com/create/order`, {
 					ucid_sent: user.uid,
 					ucid_recieved: data.user_unique_id,
 					information: {

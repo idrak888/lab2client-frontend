@@ -33,14 +33,14 @@ export default function Listings({ query }) {
 
 	useEffect(() => {
 		if (query.search) {
-			fetch(`https://lab2client.herokuapp.com/search_word/${query.search}`)
+			fetch(`https://lab2client-7fd38de3875a.herokuapp.com/search_word/${query.search}`)
 				.then((response) => response.json())
 				.then((data) => {
 					setData(data);
 					setSearchKeys(query.search);
 				});
 		} else {
-			fetch(`https://lab2client.herokuapp.com/getall`)
+			fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getall`)
 				.then((response) => response.json())
 				.then((data) => {
 					setData(data.reverse());
