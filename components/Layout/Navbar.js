@@ -14,6 +14,9 @@ export default function Navbar({ user }) {
 						<a className="nav-link" href="/listings">Find Labs</a>
 					</li>
 					<li className="nav-item">
+						<a className="nav-link" href="/listings_smartto"><strong>SmartTO</strong></a>
+					</li>
+					<li className="nav-item">
 						<a className="nav-link" href="/about">About</a>
 					</li>
 					<li className="nav-item">
@@ -21,7 +24,7 @@ export default function Navbar({ user }) {
 					</li>
 				</ul>
 				<div className="d-flex items-center justify-center">
-					<a href='/auth/register' className='nav-link' style={{ color: "#bed6fb", textDecoration: "none", marginRight: 20, fontSize: 14, alignSelf: "center" }}>Register Lab</a>
+					<a href='/auth/register' className='nav-link' style={{ color: "#bed6fb", textDecoration: "none", marginRight: 20, fontSize: 14, alignSelf: "center" }}>Get Started</a>
 					<div className="dropdown d-flex align-items-center" style={{ borderRadius: "20px", backgroundColor: "white", padding: "0px 5px" }}>
 						<i
 							className="bi bi-list"

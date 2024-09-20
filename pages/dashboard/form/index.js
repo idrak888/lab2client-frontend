@@ -42,6 +42,7 @@ export default function index() {
         const description = document.getElementById("description").value;
         const research_infrastructure = document.getElementById("research_infrastructure").value;
         const fields = document.getElementById("fields").value.split(",");
+        const association = document.getElementById("association").value;
 
         if (equipments.length > 0) {
             axios.post(`https://lab2client-7fd38de3875a.herokuapp.com/create`, {
@@ -87,7 +88,9 @@ export default function index() {
                 website: "",
                 Additional_information: "",
                 Social_media_platforms: "",
-                LOGOS: labImage
+                LOGOS: labImage,
+
+                association
             }).then(doc => {
                 console.log(doc);
                 setLoading(false);
@@ -305,6 +308,19 @@ export default function index() {
                                 </div>
                             )
                         })}
+                    </div>
+
+                    <div className={styles.inner}>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 30 }}>Lab Association (optional)</h2>
+                        <div className={styles.formGroup}>
+                                <label>Select Association</label>
+                                <div>
+                                    <select id='association' name="association" required>
+                                        <option value="None">None</option>
+                                        <option value="SmartTO">SmartTO</option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
 
                     <div className={styles.inner}>

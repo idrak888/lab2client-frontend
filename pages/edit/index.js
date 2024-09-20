@@ -34,6 +34,7 @@ export default function EditListing({ query }) {
                 document.getElementById("description").value = data.research.DESCRIPTION_OF_YOUR_FACILITY;
                 document.getElementById("research_infrastructure").value = data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE;
                 document.getElementById("fields").value = data.Fields_of_research.fields.join(",");
+                document.getElementById("association").value = data.association;
 
                 setEquipments(data.lab_equipment);
                 setLabId(data.id);
@@ -270,6 +271,19 @@ export default function EditListing({ query }) {
                                 </div>
                             )
                         })}
+                    </div>
+                    
+                    <div className={styles.inner}>
+                        <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 30 }}>Lab Association (optional)</h2>
+                        <div className={styles.formGroup}>
+                                <label>Select Association</label>
+                                <div>
+                                    <select id='association' name="association" required>
+                                        <option value="None">None</option>
+                                        <option value="SmartTO">SmartTO</option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
 
                     <div className={styles.inner}>
