@@ -1,3 +1,53 @@
+.outer {
+    width: 100vw;
+    background: rgb(14, 42, 86);
+    background-image: url("https://www.yorku.ca/research/project/smartto/wp-content/uploads/sites/861/2024/04/New-SmartTO-Website-Banner-2-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    overflow-x: hidden;
+    margin-top: -50px;
+}
+
+.outer .container {
+    width: 100vw;
+    padding: 0 20px;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background: linear-gradient(rgba(14, 42, 86, 0.8), rgb(14, 42, 86));
+    text-align: right;
+}
+
+.outer .container p {
+    font-size: 24px;
+}
+
+.h1 {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+    .outer {
+        background-size: cover;
+    }
+
+    .outer .container {
+        padding: 10px;
+    }
+
+    .h1 {
+        font-size: 30px;
+    }
+
+    .outer .container p {
+        font-size: 18px;
+    }
+}
+
 .container,
 .viewWrapper {
     display: flex;

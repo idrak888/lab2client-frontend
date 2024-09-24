@@ -32,23 +32,23 @@ export default function ListingsSmartTO({ query }) {
 	};
 
 	useEffect(() => {
-        if (query.search) {
-            fetch(`https://lab2client-7fd38de3875a.herokuapp.com/search_word/${query.search}`)
-                .then((response) => response.json())
-                .then((data) => {
-                    const filteredData = data.filter(item => item.association === "SmartTO");
-                    setData(filteredData);
-                    setSearchKeys(query.search);
-                });
-        } else {
-            fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getall`)
-                .then((response) => response.json())
-                .then((data) => {
-                    const filteredData = data.filter(item => item.association === "SmartTO");
-                    setData(filteredData.reverse());
-                    setSearchKeys("");
-                });
-        }
+		if (query.search) {
+			fetch(`https://lab2client-7fd38de3875a.herokuapp.com/search_word/${query.search}`)
+				.then((response) => response.json())
+				.then((data) => {
+					const filteredData = data.filter(item => item.association === "SmartTO");
+					setData(filteredData);
+					setSearchKeys(query.search);
+				});
+		} else {
+			fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getall`)
+				.then((response) => response.json())
+				.then((data) => {
+					const filteredData = data.filter(item => item.association === "SmartTO");
+					setData(filteredData.reverse());
+					setSearchKeys("");
+				});
+		}
 	}, []);
 
 	const handleClearClick = () => {
@@ -75,11 +75,17 @@ export default function ListingsSmartTO({ query }) {
 				{
 					!data ? <Loader /> :
 						<>
+							<div className={styles.outer}>
+								<div className={styles.container}>
+									<div style={{maxWidth: 800}}>
+										<h1 className={styles.h1}>Welcome to SmartTO Labs</h1>
+										<p>Smart Mobility Applied Research and Testing-Toronto (SmartTO) is one of seven regional technology development sites that are a part of the Ontario Vehicle Innovation Network (OVIN)</p>
+										<br/>
+										learn more at <strong><a href='https://www.yorku.ca/research/project/smartto/' target="_blank" rel="noopener noreferrer">SmartTO</a></strong>
+									</div>
+								</div>
+							</div>
 							<div className={`${styles.searchWrapper}`}>
-								<h1 className={styles.pageTitle}>
-									Find research equipment that suits your needs.
-								</h1>
-                                powered by <strong><a href='https://www.yorku.ca/research/project/smartto/' target="_blank" rel="noopener noreferrer">SmartTO</a></strong>
 								<div style={{ position: 'relative', width: '100%', marginTop: '30px' }}>
 									<div
 										style={{
