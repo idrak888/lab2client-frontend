@@ -13,6 +13,7 @@ export default function index() {
     let [loading, setLoading] = useState(false);
     const [loadingImage, setLoadingImage] = useState(false);
     const [labImage, setLabImage] = useState(null);
+    const [labVideo, setLabVideo] = useState(null);
     const [errorMsg, setErrorMsg] = useState("");
 
     useEffect(() => {
@@ -149,6 +150,36 @@ export default function index() {
         });
     }
 
+    const handleVideoUpload = (e) => {
+        e.preventDefault();
+        setLoadingImage(true);
+
+        if (!e.target.files[0]) {
+            alert('Please select a file.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('video', e.target.files[0]);
+
+        axios.post("https://lab2client-7fd38de3875a.herokuapp.com/upload-video", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(doc => {
+            if (type == "main") {
+                if (labVideo) {
+                    // delete picture from db
+                }
+                setLabVideo(doc.data.url);
+            } 
+            setLoadingImage(false);
+        }).catch(e => {
+            console.log(e);
+            setLoadingImage(false);
+        });
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -179,6 +210,21 @@ export default function index() {
                                     <div style={{ paddingTop: 20, paddingBottom: 20, width: "100%", maxWidth: 400, display: "block", margin: "auto" }}>
                                         <div style={{ display: "flex", flexDirection: "row" }}>
                                             <input id="picture" name="picture" accept="image/*" type="file" onChange={e => handleImageUpload(e, "main")} />
+                                        </div>
+                                        <br />
+                                        {labImage ? <img style={{ width: "100%", margin: 10, borderRadius: 12 }} src={labImage} /> : ""}
+                                    </div>
+                                    : <Loader />
+                            }
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label for="video">Add Videos</label>
+                            {
+                                !loadingImage ?
+                                    <div style={{ paddingTop: 20, paddingBottom: 20, width: "100%", maxWidth: 400, display: "block", margin: "auto" }}>
+                                        <div style={{ display: "flex", flexDirection: "row" }}>
+                                            <input id="video" name="video" accept="video/*" type="file" onChange={e => handleVideoUpload(e, "main")} />
                                         </div>
                                         <br />
                                         {labImage ? <img style={{ width: "100%", margin: 10, borderRadius: 12 }} src={labImage} /> : ""}

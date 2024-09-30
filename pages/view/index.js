@@ -40,7 +40,7 @@ export default function View({ query }) {
                     <div id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="/listings"><i className='bi bi-arrow-left-short'></i> Back to Search</a>
+                                <a className="nav-link" href="/listings_smartto"><i className='bi bi-arrow-left-short'></i> Back to Search</a>
                             </li>
                         </ul>
                     </div>

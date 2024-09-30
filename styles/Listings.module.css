@@ -6,7 +6,7 @@
     background-repeat: no-repeat;
     color: white;
     overflow-x: hidden;
-    margin-top: -50px;
+    margin-top: -20px;
 }
 
 .outer .container {
@@ -17,7 +17,7 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    background: linear-gradient(rgba(14, 42, 86, 0.8), rgb(14, 42, 86));
+    background: linear-gradient(rgba(14, 42, 86, 0.75), rgb(14, 42, 86));
     text-align: right;
 }
 
@@ -66,14 +66,15 @@
 }
 
 .greyComponent {
-    color: grey; /* Set the default text color to grey */
+    color: grey;
+    /* Set the default text color to grey */
 }
 
 .card:hover .componentWrapper {
-    color:#0052d7;
+    color: #0052d7;
     /* Add any additional hover styles */
-  }
-  
+}
+
 
 .profileImageContainer {
     width: 70px;
@@ -215,13 +216,13 @@
 }
 
 .title {
-    font-size: 20px; 
+    font-size: 20px;
     font-weight: bold;
     margin-top: 4%;
 }
 
 .subtitle {
-    font-size: 10px; 
+    font-size: 10px;
     font-weight: light;
 }
 
@@ -234,7 +235,7 @@
     .searchWrapper {
         padding: 10px;
         width: 100%;
-        margin-bottom:-2rem;
+        margin-bottom: -2rem;
     }
 
     .listings {
@@ -453,9 +454,9 @@
     .responsiveCard {
         display: flex;
         flex-direction: row;
-        justify-content: center; 
-        align-items: center; 
-        text-align: center; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 }
 
@@ -473,12 +474,13 @@
     align-items: center;
     margin-bottom: 8px;
     margin-right: 8px;
-  }
+}
 
 .mobileCenter {
     @media only screen and (max-width: 575px) {
-      justify-content: center;
-      text-align: center; /* Optionally center text inside elements */
+        justify-content: center;
+        text-align: center;
+        /* Optionally center text inside elements */
     }
 }
 
@@ -539,4 +541,118 @@
     flex-direction: row;
     width: 10rem;
     color: rgb(78, 246, 78)
+}
+
+.SmartTO .card {
+    display: block;
+    padding: 20px;
+    margin: 10px 0;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.SmartTO .card h3 {
+    font-size: 24px;
+}
+
+.greyComponent {
+    color: grey;
+    /* Set the default text color to grey */
+}
+
+.SmartTO .card:hover .componentWrapper {
+    color: #0052d7;
+    /* Add any additional hover styles */
+}
+
+/* media query that removes the bar if on a mobile device */
+@media only screen and (max-width: 575px) {
+    .SmartTO .separationBar::before {
+        display: none;
+    }
+
+    .SmartTO .responsiveCard {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .SmartTO .card h3 {
+        font-size: 18px;
+    }
+}
+
+.SmartTO .cardImage {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background: #0a3394;
+    background: linear-gradient(to top, #0a3394, #4286f4);
+}
+
+.SmartTO .cardDescription {
+    display: flex;
+    position: absolute;
+    gap: .25em;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    color: #212121;
+    height: 50%;
+    bottom: 0;
+    border-radius: 12px;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    padding: 1rem;
+}
+
+.SmartTO .textTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.SmartTO .textBody {
+    font-size: 1rem;
+    line-height: 130%;
+}
+
+.SmartTO .card:hover .cardDescription {
+    transform: translateY(100%);
+}
+
+.SmartTO .inner .navlink {
+    color: black;
+    border-radius: 0;
+}
+
+.SmartTO .inner .active {
+    background-color: rgb(20, 50, 130);
+    color: white;
+}
+
+.SmartTO .listingRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomText {
+    max-width: 900px;
+    padding: 40px 5px;
+}
+
+.bottomText h1 {
+    font-size: 30px;
+}
+
+.bottomText h1 span {
+    background-color: #2478d186;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: #18396c;
 }

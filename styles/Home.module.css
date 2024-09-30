@@ -121,15 +121,19 @@
     }
 }
 
+.partners {
+    background-color: rgb(9, 27, 56);
+}
+
 .partners .lower {
     width: 100%;
     padding: 30px;
     text-align: center;
-    margin-top: 10px;
 }
 
 .partners .img {
-    width: 150px;
+    /* width: 150px; */
+    width: 225px;
     padding: 30px;
 }
 
