@@ -89,7 +89,7 @@ const FixedBottom = ({ data, user }) => {
 									setDescription(e.target.value);
 								}} value={description} className={styles.description} placeholder='Example: I need access to the XPS microscope for one week'></textarea>
 							</form>
-							{orderSuccess ? <p style={{fontWeight: "bold", textAlign: "center"}}>Order placed successfully. View order status in <a href="/dashboard">dashboard</a></p> : <button onClick={submitOrder} className={`${styles.btn} btn btn-primary`}>{loading ? <i className={`${styles.arrow} bi bi-arrow-repeat`}></i> : "Get in Touch"}</button> }
+							{orderSuccess ? <p style={{fontWeight: "bold", textAlign: "center"}}>Order placed successfully. View order status in <a href="/dashboard">dashboard</a></p> : <button onClick={submitOrder} className={`${styles.btn} btn btn-primary`}>{loading ? <i className={`${styles.arrow} bi bi-arrow-repeat`}></i> : "Get in touch"}</button> }
 						</div>
 					</div>
 					: null
@@ -105,7 +105,7 @@ const FixedBottom = ({ data, user }) => {
 						options.push({ value: item.name, label: item.name });
 					});
 					setShowModal(true);
-				}} className={`${styles.btn} btn`}><span className={styles.text}>Get in Touch</span></button>
+				}} className={`${styles.btn} btn`}><span className={styles.text}>Get in touch</span></button>
 			</div>
 
 		</footer>

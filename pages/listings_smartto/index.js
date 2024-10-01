@@ -81,7 +81,7 @@ export default function ListingsSmartTO({ query }) {
 							<div className={styles.outer}>
 								<div className={styles.container}>
 									<div style={{ maxWidth: 800 }}>
-										<h1 className={styles.h1}>Welcome to SmartTO Labs</h1>
+										<h1 className={styles.h1}>Welcome to <span>SmartTO</span> Labs</h1>
 										<p>Smart Mobility Applied Research and Testing-Toronto (SmartTO) is one of seven regional technology development sites that are a part of the Ontario Vehicle Innovation Network (OVIN)</p>
 										<br />
 										learn more at <strong><a href='https://www.yorku.ca/research/project/smartto/' target="_blank" rel="noopener noreferrer">SmartTO</a></strong>
@@ -90,7 +90,7 @@ export default function ListingsSmartTO({ query }) {
 								<Partners />
 							</div>
 							<div style={{ display: "block", margin: "auto", maxWidth: 1000, paddingTop: 100, paddingBottom: 100 }}>
-								<h4 style={{ margin: 10 }}>SmartTO research facilities</h4>
+								<h4 style={{ margin: 10 }}><img style={{marginRight: 10}} width={100} src="https://www.yorku.ca/yspace/wp-content/uploads/sites/231/2024/06/YorkU_SmartTO_Logo-5.png"/> Research Facilities</h4>
 								<div className={styles.listingRow}>
 									{data ? data.slice(0, 3).map(listing => {
 										return (
@@ -185,7 +185,7 @@ export default function ListingsSmartTO({ query }) {
 								</div>
 							</div>
 							<br />
-							<div style={{ paddingTop: 20, paddingBottom: 80 }}>
+							<div style={{ paddingTop: 5, paddingBottom: 80 }}>
 								<div className='text-center'>
 									<h2 style={{ fontWeight: "bold", fontSize: 40 }}>What we offer <img style={{ marginBottom: -25 }} width={50} src="https://www.svgrepo.com/show/364142/arrow-bend-right-down-fill.svg" /></h2>
 								</div>

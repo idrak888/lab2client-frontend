@@ -129,11 +129,18 @@
     width: 100%;
     padding: 30px;
     text-align: center;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.3);
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+    border-bottom: px s5olid;
+    border-image: linear-gradient(to right, rgb(219, 219, 219) 25%, rgba(255, 255, 255, 0.4) 50%);
+    border-image-slice: 1;
 }
 
 .partners .img {
     /* width: 150px; */
-    width: 225px;
+    width: 220px;
     padding: 30px;
 }
 
