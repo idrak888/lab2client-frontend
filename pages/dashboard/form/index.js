@@ -12,6 +12,7 @@ export default function index() {
     let [equipments, setEquipments] = useState([]);
     let [loading, setLoading] = useState(false);
     const [loadingImage, setLoadingImage] = useState(false);
+    const [loadingVideo, setLoadingVideo] = useState(false);
     const [labImage, setLabImage] = useState(null);
     const [labVideo, setLabVideo] = useState(null);
     const [errorMsg, setErrorMsg] = useState("");
@@ -90,6 +91,7 @@ export default function index() {
                 Additional_information: "",
                 Social_media_platforms: "",
                 LOGOS: labImage,
+                lab_video: labVideo,
 
                 association
             }).then(doc => {
@@ -150,9 +152,9 @@ export default function index() {
         });
     }
 
-    const handleVideoUpload = (e) => {
+    const handleVideoUpload = (e, type) => {
         e.preventDefault();
-        setLoadingImage(true);
+        setLoadingVideo(true);
 
         if (!e.target.files[0]) {
             alert('Please select a file.');
@@ -173,10 +175,10 @@ export default function index() {
                 }
                 setLabVideo(doc.data.url);
             } 
-            setLoadingImage(false);
+            setLoadingVideo(false);
         }).catch(e => {
             console.log(e);
-            setLoadingImage(false);
+            setLoadingVideo(false);
         });
     }
 
@@ -221,12 +223,13 @@ export default function index() {
                         <div className={styles.formGroup}>
                             <label for="video">Add Videos</label>
                             {
-                                !loadingImage ?
+                                !loadingVideo ?
                                     <div style={{ paddingTop: 20, paddingBottom: 20, width: "100%", maxWidth: 400, display: "block", margin: "auto" }}>
                                         <div style={{ display: "flex", flexDirection: "row" }}>
-                                            <input id="video" name="video" accept="video/*" type="file" onChange={e => handleVideoUpload(e, "main")} />
+                                            <input id="video" name="video" accept="video/mp4" type="file" onChange={e => handleVideoUpload(e, "main")} />
                                         </div>
                                         <br />
+                                        *mp4 only
                                         {labImage ? <img style={{ width: "100%", margin: 10, borderRadius: 12 }} src={labImage} /> : ""}
                                     </div>
                                     : <Loader />

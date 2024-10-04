@@ -73,7 +73,7 @@ export default function View({ query }) {
                                         />
                                         <video
                                             // src={data.research.VIDEO_URL}
-                                            src="https://cdn.pixabay.com/video/2021/07/12/81241-576082910_large.mp4"
+                                            src={data.research.lab_video}
                                             className={`${styles.labvideo}`}
                                             controls
                                             autoPlay="true"
@@ -163,8 +163,9 @@ export default function View({ query }) {
                             }} className={`col-md-6 ${styles.sectionContentPadding}`}>
                                 {equipmentShowing != null ? 
                                     !imageLoading ? 
-                                    <div>
+                                    <div className={styles.equipmentImageContainer}>
                                         <img width={"100%"} src={equipmentShowing.image}/>
+                                        <span href="#">Click to view details</span>
                                     </div> : <Loader />
                                 : "No Equipments"}
                             </div>
