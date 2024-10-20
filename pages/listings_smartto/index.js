@@ -90,7 +90,9 @@ export default function ListingsSmartTO({ query }) {
 								<Partners />
 							</div>
 							<div style={{ display: "block", margin: "auto", maxWidth: 1000, paddingTop: 100, paddingBottom: 100 }}>
-								<h4 style={{ margin: 10 }}><img style={{marginRight: 10}} width={100} src="https://www.yorku.ca/yspace/wp-content/uploads/sites/231/2024/06/YorkU_SmartTO_Logo-5.png"/> Research Facilities</h4>
+								<h4 style={{ margin: 10 }}>
+									<><img style={{marginRight: 10}} width={100} src="https://www.yorku.ca/yspace/wp-content/uploads/sites/231/2024/06/YorkU_SmartTO_Logo-5.png"/> Research Facilities</>
+								</h4>
 								<div className={styles.listingRow}>
 									{data ? data.slice(0, 3).map(listing => {
 										return (

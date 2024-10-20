@@ -7,6 +7,7 @@ import ListingsWrapper from '/components/Listings/ListingsWrapper';
 export default function Listings({ query }) {
 	let [data, setData] = useState(null);
 	const [searchKeys, setSearchKeys] = useState("");
+	const [viewMode, setViewMode] = useState(0);
 	const inputRef = useRef(null);
 
 	function capitalizeFirstLetter(string) {
@@ -32,19 +33,78 @@ export default function Listings({ query }) {
 	};
 
 	useEffect(() => {
+		const data = {};
+		const fakeEquipment = [
+		{
+			name: "Transmission Electron Microscope (TEM)",
+			image: "https://www.uochb.cz/upload/files/56/9f/569fd58f39320c292310860ccdeb5cb01bbc8e25.jpg",
+			description: "This advanced microscope allows researchers to examine the internal structure of materials at a high resolution, providing insights into crystal structure, defects, and interfaces",
+			location: "Toronto, ON",
+			institution: "University of Toronto",
+			id: 1
+		}	
+		,{
+			name: "Scanning Electron Microscope (SEM)",
+			image: "https://www.jeol.com/assets/img/products/science/sem/JSM-IT800HL.jpg",
+			description: "This advanced microscope allows researchers to examine the microstructure of materials at a high resolution, providing insights into surface morphology, grain structure, and defects",
+			location: "Toronto, ON",
+			institution: "University of Toronto",
+			id: 2
+		}, {
+			name: "Digital Torsion Testing Machine",
+			image: "https://sunlabtech.com/wp-content/uploads/2018/08/Digital-Torsion-Testing-Machine-1.jpg",
+			description: "Suitable for Torsion and twist tests on various metal rods and flats. Torque measurement by torque cell. One range with a high resolution throughout the range. Geared motor to apply the torque to specimen through gear box. Measurement of Angle of Twist by Rotary Encoder. • Display of Torque and Angle of twist on LCD display provided on Data Acquisition System. • Facility for connecting the DAS Panel to PC • Accuracy of torque measurement ± 1% in the range from 4% to 100% of machine capacity.",
+			location: "Toronto, ON",
+			institution: "University of Toronto",
+			id: 3
+		}, {
+			name: "Universal Testing Machine",
+			image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Universal_testing_machine.jpg/220px-Universal_testing_machine.jpg",
+			description: "A machine used to perform tension, compression, bending, and other mechanical tests on materials to determine their mechanical properties such as strength, elasticity, and toughness",
+			location: "Toronto, ON",
+			institution: "University of Toronto",
+			id: 4
+		},{
+			name: "X-Ray Diffractometer (XRD)",
+			image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCK-Y2y5UdOdiDCDJFde9IBLNo44ZMZ4pjSw&s",
+			description: "This instrument is used to determine the crystallographic structure of materials, providing information on the arrangement of atoms in a material",
+			location: "Toronto, ON",
+			institution: "University of Toronto",
+			id: 5
+		}, {
+			name: "Atomic Force Microscope (AFM)",
+			image: "https://www.royce.ac.uk/content/uploads/2017/08/Atomic-Force-Microscopy-1000x740.jpg",
+			description: "This microscope provides high-resolution images of surfaces at the atomic scale, allowing researchers to study surface roughness, topography, and other properties",
+			location: "Toronto, ON",
+			institution: "University of Toronto",
+			id: 6
+		}];
+
 		if (query.search) {
 			fetch(`https://lab2client-7fd38de3875a.herokuapp.com/search_word/${query.search}`)
 				.then((response) => response.json())
-				.then((data) => {
-					setData(data);
+				.then(doc => {
+					data.labs = doc;
 					setSearchKeys(query.search);
+
+					fetch(`https://lab2client-7fd38de3875a.herokuapp.com/search_equipment/${query.search}`)
+					.then((response) => response.json())
+					.then(doc => {
+						data.equipment = fakeEquipment;
+						setData(data);
+					});
 				});
 		} else {
 			fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getall`)
 				.then((response) => response.json())
-				.then((data) => {
-					setData(data.reverse());
+				.then(doc => {
+					data.labs = doc;
 					setSearchKeys("");
+
+					// fetch all equipment
+					data.equipment = fakeEquipment;
+
+					setData(data);
 				});
 		}
 	}, []);
@@ -71,12 +131,21 @@ export default function Listings({ query }) {
 			</Head>
 			<div className={styles.container}>
 				{
-					!data ? <Loader /> :
+					!data || !data.labs || !data.equipment ? <Loader /> :
 						<>
 							<div className={`${styles.searchWrapper}`}>
-								<h1 className={styles.pageTitle}>
-									Find research equipment that suits your needs.
-								</h1>
+								<div className={styles.titleWrapper}>
+									<h1 className={styles.pageTitle}>
+										Find research equipment that suits your needs.
+									</h1>
+									{/* <button className='btn btn-outline-dark' ></button> */}
+									<div className="form-check form-switch">
+										<input className="form-check-input" checked={viewMode == 1} type="checkbox" role="switch" onChange={() => {
+											setViewMode(viewMode == 0 ? 1 : 0);
+										}} id="flexSwitchCheckDefault" />
+										<label className="form-check-label" for="flexSwitchCheckDefault">{viewMode == 0 ? "Showing labs" : "Showing equipment"}</label>
+									</div>
+								</div>
 								<div style={{ position: 'relative', width: '100%', marginTop: '30px' }}>
 									<div
 										style={{
@@ -103,6 +172,7 @@ export default function Listings({ query }) {
 										}}
 										onKeyDown={handleKeyDown}
 										onChange={handleChange}
+										value={searchKeys}
 									/>
 									{searchKeys && (
 										<div
@@ -120,8 +190,8 @@ export default function Listings({ query }) {
 									)}
 								</div>
 							</div>
-							<h5 className={`${styles.showingResults}`}>Showing {data.length} results</h5>
-							<ListingsWrapper data={data} />
+							<h5 className={`${styles.showingResults}`}>Showing {viewMode == 0 ? data.labs.length : data.equipment.length} results</h5>
+							<ListingsWrapper data={data} mode={viewMode} />
 						</>
 				}
 			</div>

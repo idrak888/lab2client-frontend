@@ -152,6 +152,11 @@
     margin-top: 10px;
 }
 
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .pageTitle {
     font-size: 24px;
     font-weight: bold;
