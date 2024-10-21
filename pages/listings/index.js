@@ -22,6 +22,8 @@ export default function Listings({ query }) {
 		const trimmedSearchKeys = searchKeys.trim();
 		if (trimmedSearchKeys !== '') {
 			window.location.href = `/listings?search=${trimmedSearchKeys}`;
+		} else {
+			window.location.href = `/listings`;
 		}
 	};
 
@@ -80,6 +82,11 @@ export default function Listings({ query }) {
 			id: 6
 		}];
 
+		const storedViewMode = sessionStorage.getItem('viewMode');
+		if (storedViewMode !== null) {
+			setViewMode(parseInt(storedViewMode, 10));
+		}
+
 		if (query.search) {
 			fetch(`https://lab2client-7fd38de3875a.herokuapp.com/search_word/${query.search}`)
 				.then((response) => response.json())
@@ -112,6 +119,7 @@ export default function Listings({ query }) {
 	const handleClearClick = () => {
 		// Clear the input field
 		inputRef.current.value = '';
+		setSearchKeys("");
 	};
 
 	useEffect(() => {
@@ -139,11 +147,20 @@ export default function Listings({ query }) {
 										Find research equipment that suits your needs.
 									</h1>
 									{/* <button className='btn btn-outline-dark' ></button> */}
-									<div className="form-check form-switch">
-										<input className="form-check-input" checked={viewMode == 1} type="checkbox" role="switch" onChange={() => {
-											setViewMode(viewMode == 0 ? 1 : 0);
-										}} id="flexSwitchCheckDefault" />
-										<label className="form-check-label" for="flexSwitchCheckDefault">{viewMode == 0 ? "Showing labs" : "Showing equipment"}</label>
+									<div style={{
+										display: 'flex',
+										flexDirection: 'row'
+									}}>
+										<span className='text-muted' style={{
+											marginRight: 8
+										}}>view labs</span>
+										<div className="form-check form-switch">
+											<input className="form-check-input" checked={viewMode == 1} type="checkbox" role="switch" onChange={() => {
+												setViewMode(viewMode == 0 ? 1 : 0);
+												sessionStorage.setItem('viewMode', viewMode == 0 ? '1' : '0');
+											}} id="flexSwitchCheckDefault" />
+										</div>
+										<span className='text-muted'>view equipment</span>
 									</div>
 								</div>
 								<div style={{ position: 'relative', width: '100%', marginTop: '30px' }}>

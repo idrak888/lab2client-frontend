@@ -24,12 +24,15 @@ export default function index() {
 
 		if (userStr) {
 			setLoading(true);
+			const data = {};
 			const parsed = JSON.parse(userStr);
 			const uid = parsed.uid;
 			setUser(parsed);
 
 			axios.get(`https://lab2client-7fd38de3875a.herokuapp.com/dashboard/${uid}`).then(doc => {
-				setLabs(doc.data);
+				data.labs = doc.data;
+				setLabs(data);
+				console.log(data);
 				axios.get(`https://lab2client-7fd38de3875a.herokuapp.com/userinfo/${uid}`).then(doc => {
 					setUserInfo(doc.data[0]);
 					setLoading(false);
@@ -125,14 +128,14 @@ export default function index() {
 											<Link className='btn btn-dark' href="/dashboard/form">Add new +</Link>
 										</div>
 										{
-											labs.length == 0 ?
+											labs.labs.length == 0 ?
 												<div>
 													<p>You don't have any active listings at the moment</p>
 													<Link href="/dashboard/form">Register Lab</Link>
 												</div>
 												:
 												<div style={{ height: "100vh", overflowY: "scroll" }}>
-													<ListingsWrapper edit={true} data={labs} />
+													<ListingsWrapper edit={true} mode={0} data={labs} />
 												</div>
 										}
 									</div>

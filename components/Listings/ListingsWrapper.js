@@ -79,7 +79,7 @@ export default function ListingsWrapper({ data, edit, mode }) {
 						)
 					}) : null)
 					:
-					(data.equipment.length > 0 ? data.equipment.map(listing => {
+					(data.equipment && data.equipment.length > 0 ? data.equipment.map(listing => {
 						return (
 							<Link
 								href={{
