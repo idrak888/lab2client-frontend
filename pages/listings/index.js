@@ -49,6 +49,7 @@ export default function Listings({ query }) {
 			data.labs = doc;
 
 			for (let lab of data.labs) {
+				const parentId = lab.user_unique_id;
 				const institution = lab.identification.institution_name;
 				const location = lab.identification.city + ', ' + lab.identification.province;
 				const equipment = lab.lab_equipment;
@@ -61,6 +62,7 @@ export default function Listings({ query }) {
 						description: item.description,
 						location: location,
 						institution: institution,
+						parentId: parentId,
 						id: lab.id + i
 					};
 

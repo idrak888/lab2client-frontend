@@ -11,7 +11,7 @@ export default function View({ query }) {
     let [user, setUser] = useState(null);
     let [imageLoading, setImageLoading] = useState(false);
     let [equipmentShowing, setEquipmentShowing] = useState(null);
-    let [equipmentList, setEquipmentList] = useState(null);
+    let [equipmentList, setEquipmentList] = useState([]);
     let [equipmentIndex, setEquipmentIndex] = useState(0);
     
     useEffect(() => {
@@ -20,10 +20,12 @@ export default function View({ query }) {
         if (userStr) {
             const parsed = JSON.parse(userStr);
             setUser(parsed);
-        }
-        if (equipmentList) {
-            const parsed = JSON.parse(equipmentList);
-            setEquipmentList(parsed);
+
+            if (equipmentList) {
+                const parsed2 = JSON.parse(equipmentList);
+                const filteredEquipment = parsed2.filter(equipment => equipment.parentId === parsed.uid);
+                setEquipmentList(filteredEquipment);
+            }
         }
         fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
             .then(data => {
@@ -156,7 +158,7 @@ export default function View({ query }) {
 
                             {/* Right Side Corresponding Image */}
 
-                            <div style={{
+                            { equipmentList.length > 0 ? <div style={{
                                 display: "flex",
                                 flex: 1,
                                 justifyContent: "center",
@@ -174,7 +176,7 @@ export default function View({ query }) {
                                         </Link>
                                     </div> : <Loader />
                                 : "No Equipments"}
-                            </div>
+                            </div> : <></>}
                         </div>
                     </div>
             }
