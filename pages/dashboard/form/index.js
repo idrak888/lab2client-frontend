@@ -234,7 +234,7 @@ export default function index() {
                                         </div>
                                         <br />
                                         *mp4 only
-                                        {labImage ? <img style={{ width: "100%", margin: 10, borderRadius: 12 }} src={labImage} /> : ""}
+                                        {labVideo ? <video style={{ width: "100%", margin: 10, borderRadius: 12 }} controls src={labVideo} /> : ""}
                                     </div>
                                     : <Loader />
                             }

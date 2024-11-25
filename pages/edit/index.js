@@ -7,10 +7,16 @@ export default function EditListing({ query }) {
     let [user, setUser] = useState(null);
     let [labId, setLabId] = useState(null);
     let [equipmentName, setEquipmentName] = useState("");
-    let [equipmentImage, setEquipmentImage] = useState("");
+    let [equipmentImage, setEquipmentImage] = useState(null);
     let [equipmentDescription, setEquipmentDescription] = useState("");
+    let [equipmentApplication, setEquipmentApplication] = useState("");
+    let [equipmentSpecs, setEquipmentSpecs] = useState("");
+    let [equipmentLink, setEquipmentLink] = useState("");
+    let [equipmentPublications, setEquipmentPublications] = useState("");
     let [equipments, setEquipments] = useState([]);
     let [loading, setLoading] = useState(false);
+    const [loadingImage, setLoadingImage] = useState(false);
+    const [loadingVideo, setLoadingVideo] = useState(false);
 
     useEffect(() => {
         const user = localStorage.getItem("user");
@@ -224,22 +230,47 @@ export default function EditListing({ query }) {
                         <h2 style={{ fontWeight: "bold", fontSize: 24, marginTop: 20 }}>Equipment</h2>
                         <div className={styles.formGroup} style={{ padding: 20, border: "1px dashed rgb(215, 215, 215)", borderRadius: 6 }}>
                             <h3 style={{ fontWeight: "bold", fontSize: 18 }}>Add new equipment</h3>
-
-                            <input value={equipmentName} onChange={e => setEquipmentName(e.target.value)} style={{ marginTop: 5 }} type="text" placeholder='Equipment Name' />
-                            <input value={equipmentImage} onChange={e => setEquipmentImage(e.target.value)} style={{ marginTop: 5 }} type="url" placeholder='Link to image' />
-                            <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{ marginTop: 5 }} placeholder='Description and specifications'></textarea>
-                            <button onClick={e => {
+                            
+                            <input value={equipmentName} onChange={e => setEquipmentName(e.target.value)} style={{ marginTop: 5 }} type="text" placeholder='Title' />
+                            <br/><br/> 
+                            Upload Images:
+                            {
+                                !loadingImage ?
+                                    <div style={{ paddingTop: 20, paddingBottom: 20, width: "100%", display: "block", margin: "auto" }}>
+                                        <div>
+                                            <input accept="image/*" type="file" onChange={e => handleImageUpload(e, "equipment")} />
+                                            <br />
+                                            {equipmentImage ? <img style={{ width: "100%", maxWidth: 300, margin: 5 }} src={equipmentImage} /> : ""}
+                                        </div>
+                                        <br />
+                                    </div>
+                                    : <Loader />
+                            }
+                            <textarea value={equipmentDescription} onChange={e => setEquipmentDescription(e.target.value)} style={{ marginTop: 5 }} placeholder='Description'></textarea>
+                            <textarea value={equipmentApplication} onChange={e => setEquipmentApplication(e.target.value)} style={{ marginTop: 5 }} placeholder='Application in Automotive'></textarea>
+                            <textarea value={equipmentSpecs} onChange={e => setEquipmentSpecs(e.target.value)} style={{ marginTop: 5 }} placeholder='Specifications'></textarea>
+                            <input value={equipmentLink} onChange={e => setEquipmentLink(e.target.value)} style={{ marginTop: 5 }} type="text" placeholder='Link to Website' />
+                            <input value={equipmentPublications} onChange={e => setEquipmentPublications(e.target.value)} style={{ marginTop: 5 }} type="text" placeholder='Sample publications' />
+                            
+                            <br/>
+                            <br/>
+                            <button disabled={loadingImage} onClick={e => {
                                 e.preventDefault();
                                 if (equipmentName !== "" && equipmentDescription !== "") {
+                                    const combinedDescription = `${equipmentDescription}***${equipmentApplication}***${equipmentSpecs}***${equipmentLink}***${equipmentPublications}`;
                                     const newEquipment = {
                                         name: equipmentName,
                                         image: equipmentImage,
-                                        description: equipmentDescription
+                                        description: combinedDescription
                                     }
 
                                     setEquipmentName("");
                                     setEquipmentImage("");
                                     setEquipmentDescription("");
+                                    setEquipmentApplication("");
+                                    setEquipmentSpecs("");
+                                    setEquipmentLink("");
+                                    setEquipmentPublications("");
                                     setEquipments(arr => [...arr, newEquipment]);
                                 }
                             }} style={{ width: 100 }} className='btn btn-primary'>Add</button>
@@ -250,9 +281,14 @@ export default function EditListing({ query }) {
                                     <div style={{ display: "flex", flexDirection: "row" }}>
                                         <button onClick={e => {
                                             e.preventDefault();
+                                            const [desc, app, specs, link, pubs] = equipment.description.split('***');
                                             setEquipmentName(equipment.name);
                                             setEquipmentImage(equipment.image);
-                                            setEquipmentDescription(equipment.description);
+                                            setEquipmentDescription(desc);
+                                            setEquipmentApplication(app);
+                                            setEquipmentSpecs(specs);
+                                            setEquipmentLink(link);
+                                            setEquipmentPublications(pubs);
                                             setEquipments(val => {
                                                 return val.filter(doc => doc.name !== equipment.name);
                                             });
@@ -262,6 +298,7 @@ export default function EditListing({ query }) {
                                             setEquipments(val => {
                                                 return val.filter(doc => doc.name !== equipment.name);
                                             });
+                                            // delete picture from db
                                         }} className='btn btn-danger'>Remove</button>
                                     </div>
                                     <img src={equipment.image} width={200} />
