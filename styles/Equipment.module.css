@@ -106,3 +106,26 @@
         font-size: 14px;
     }
 }
+
+.FixedBottom {
+    background-color: #102D5D;
+}
+
+.btn {
+    display: flex;
+    background-color: #3D898B;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+    padding: 12px 16px;
+    min-width: 150px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #1a6a6c;
+    color: white;
+}

@@ -26,7 +26,7 @@ export default function ListingsWrapper({ data, edit, mode }) {
 											style={{
 												width: "100%",
 												height: "200px", // Set your desired fixed height here
-												objectFit: "cover", // Crop the image to fit the specified dimensions
+												objectFit: "contain", // Crop the image to fit the specified dimensions
 												borderRadius: "25px",
 											}}
 											src={listing.research["LOGOS"]}

@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import Loader from '/components/Layout/Loader';
 import styles from '/styles/Listings.module.css';
+import Link from 'next/link';
 import Head from 'next/head';
 import FixedBottom from '/components/Orders/FixedBottom';
 
@@ -10,12 +11,19 @@ export default function View({ query }) {
     let [user, setUser] = useState(null);
     let [imageLoading, setImageLoading] = useState(false);
     let [equipmentShowing, setEquipmentShowing] = useState(null);
+    let [equipmentList, setEquipmentList] = useState(null);
+    let [equipmentIndex, setEquipmentIndex] = useState(0);
     
     useEffect(() => {
         const userStr = localStorage.getItem("user");
+        const equipmentList = localStorage.getItem("equipmentList");
         if (userStr) {
             const parsed = JSON.parse(userStr);
             setUser(parsed);
+        }
+        if (equipmentList) {
+            const parsed = JSON.parse(equipmentList);
+            setEquipmentList(parsed);
         }
         fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
             .then(data => {
@@ -83,19 +91,11 @@ export default function View({ query }) {
 
                                     {/* Lab Owner PFP and Info */}
                                     <div className={`${styles.labownerinfo}`}>
-                                        <div className={styles.profileImageContainer}>
-                                            <img
-                                                src="https://as1.ftcdn.net/v2/jpg/05/16/27/58/1000_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg" 
-                                                alt=""
-                                                className={styles.profileImage}
-                                            />
-                                        </div>
                                         <div className={`${styles.labdetailsleft}`}>
                                             <div>
                                                 <h4 className={`${styles.labhosttitle}`}>Lab Hosted by {data.contact.first_name} {data.contact.last_name}</h4>
                                                 <h6 className={`${styles.labhostsubtitle}`}>{data.contact.title} @ {data.identification.research_facillity}</h6>
                                             </div>
-                                            <span className={`${styles.contactInfoDisclaimerText}`}> *Contact information will be provided once a lab order is placed. </span>
                                         </div>
                                     </div>
 
@@ -138,6 +138,7 @@ export default function View({ query }) {
                                     return (
                                         <div onClick={() => {
                                             setEquipmentShowing(doc)
+                                            setEquipmentIndex(index);
                                             setImageLoading(true);
                                             setTimeout(() => {
                                                 setImageLoading(false);
@@ -163,9 +164,14 @@ export default function View({ query }) {
                             }} className={`col-md-6 ${styles.sectionContentPadding}`}>
                                 {equipmentShowing != null ? 
                                     !imageLoading ? 
-                                    <div className={styles.equipmentImageContainer}>
-                                        <img width={"100%"} src={equipmentShowing.image}/>
-                                        <span href="#">Click to view details</span>
+                                    <div>
+                                        <Link href={{
+                                            pathname: '/view/equipment',
+                                            query: { id: equipmentList[equipmentIndex].id }
+                                        }} className={styles.equipmentImageContainer}>
+                                            <img width={"100%"} src={equipmentShowing.image}/>
+                                            <span>Click to view details</span>
+                                        </Link>
                                     </div> : <Loader />
                                 : "No Equipments"}
                             </div>

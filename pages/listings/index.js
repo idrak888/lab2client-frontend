@@ -86,7 +86,7 @@ export default function Listings({ query }) {
 			}
 
 			setData(data);
-			sessionStorage.setItem('equipmentList', JSON.stringify(equipmentList));
+			localStorage.setItem('equipmentList', JSON.stringify(equipmentList));
 		};
 
 		if (query.search) {
