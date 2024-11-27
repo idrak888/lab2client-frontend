@@ -114,7 +114,7 @@ export default function ListingsWrapper({ data, edit, mode }) {
 											</span>
 										</div>
 										<p>
-											{listing.description.split(" ").slice(0, 20).join(" ")}...
+											{(listing.description.split(" ").slice(0, 20).join(" ")).split("***").join(" ")}...
 										</p>
 									</div>
 								</div>

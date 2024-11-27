@@ -53,11 +53,16 @@ export default function Equipment({ query }) {
                         </div>
                         <div className={styles.details}>
                             <h2>{data.name}</h2>
-                            <p>{data.description}</p>
                             <p><b>Offered by:</b> {data.institution}</p>
                             <p><b>Location:</b> {data.location}</p>
+                            {data.description.split("***").map((item, index) => (
+                                <div>
+                                    {index == 0 ? <h4>Description</h4> : index == 1 ? <h4>Applications in Automobile</h4> : index == 2 ? <h4>Specifications</h4> : index == 3 ? <h4>Link to website</h4> : <h4>Publications</h4>}
+                                    <p key={index}>{item}</p>
+                                </div>
+                            ))}
 
-                            <div className={styles.additionalInfo}>
+                            {/* <div className={styles.additionalInfo}>
                                 <h4>Specifications</h4>
                                 <ul>
                                     <li><b>Resolution:</b> 0.1 nm</li>
@@ -70,7 +75,7 @@ export default function Equipment({ query }) {
                                     <li><a href="https://www.example.com/specs" target="_blank" rel="noopener noreferrer">Technical Specifications</a></li>
                                     <li><a href="https://www.example.com/tutorial" target="_blank" rel="noopener noreferrer">Tutorial Videos</a></li>
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
 
                         <footer className={`${styles.FixedBottom} navbar navbar-dark fixed-bottom`}>

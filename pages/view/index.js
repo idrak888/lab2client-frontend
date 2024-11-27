@@ -20,18 +20,19 @@ export default function View({ query }) {
         if (userStr) {
             const parsed = JSON.parse(userStr);
             setUser(parsed);
-
-            if (equipmentList) {
-                const parsed2 = JSON.parse(equipmentList);
-                const filteredEquipment = parsed2.filter(equipment => equipment.parentId === parsed.uid);
-                setEquipmentList(filteredEquipment);
-            }
         }
         fetch(`https://lab2client-7fd38de3875a.herokuapp.com/getspecific/${query.id}`).then(response => response.json())
             .then(data => {
                 setData(data);
                 if (data.lab_equipment.length > 0) {
                     setEquipmentShowing(data.lab_equipment[0]);
+                }
+
+                if (equipmentList) {
+                    const parsedEquipmentList = JSON.parse(equipmentList);
+                    const filteredEquipment = parsedEquipmentList.filter(equipment => equipment.parentId === data.user_unique_id);
+                    setEquipmentList(filteredEquipment);
+                    console.log(filteredEquipment);
                 }
                 console.log(data);
             });
@@ -141,6 +142,7 @@ export default function View({ query }) {
                                         <div onClick={() => {
                                             setEquipmentShowing(doc)
                                             setEquipmentIndex(index);
+                                            console.log(index);
                                             setImageLoading(true);
                                             setTimeout(() => {
                                                 setImageLoading(false);
@@ -150,7 +152,14 @@ export default function View({ query }) {
                                             {equipmentShowing == doc ? 
                                             <div style={{ position: 'relative' }}><i className={`bi bi-chevron-up`} style={{ position: 'absolute', top: -25, right: 0 }}></i></div> : 
                                             <div style={{ position: 'relative' }}><i className={`bi bi-chevron-down`} style={{ position: 'absolute', top: -25, right: 0 }}></i></div>}
-                                            {equipmentShowing == doc ? <p style={{marginTop: 10}}>{doc.description}</p> : ""}
+                                            {equipmentShowing == doc ? <p style={{marginTop: 10}}>
+                                                {doc.description.split("***").map((item, index) => (
+                                                    <div>
+                                                        {index == 0 ? <h4>Description</h4> : index == 1 ? <h4>Applications in Automobile</h4> : index == 2 ? <h4>Specifications</h4> : index == 3 ? <h4>Link to website</h4> : <h4>Publications</h4>}
+                                                        <p key={index}>{item}</p>
+                                                    </div>
+                                                ))}
+                                            </p> : ""}
                                         </div>
                                     )
                                 })}
