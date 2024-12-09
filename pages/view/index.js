@@ -30,7 +30,7 @@ export default function View({ query }) {
 
                 if (equipmentList) {
                     const parsedEquipmentList = JSON.parse(equipmentList);
-                    const filteredEquipment = parsedEquipmentList.filter(equipment => equipment.parentId === data.user_unique_id);
+                    const filteredEquipment = parsedEquipmentList.filter(equipment => equipment.parentId === data.id);
                     setEquipmentList(filteredEquipment);
                     console.log(filteredEquipment);
                 }

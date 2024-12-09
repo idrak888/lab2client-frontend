@@ -144,6 +144,7 @@
 
 .header {
     border-top: 1px solid #294B80;
+    z-index: 2;
 }
 
 .searchWrapper {
@@ -540,7 +541,7 @@
 .equipmentImageContainer span {
     position: absolute;
     color: white;
-    z-index: 2; /* Ensure the link appears above the overlay */
+    z-index: 1;
     font-size: 24px;
     display: none;
 }
@@ -559,7 +560,6 @@
     height: 100%;
     background-color: rgba(16, 37, 67, 0.6);
     opacity: 0;
-    z-index: 1; /* Ensure the overlay appears below the link */
 }
 
 .equipmentImageContainer:hover::after {

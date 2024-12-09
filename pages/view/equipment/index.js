@@ -7,6 +7,7 @@ import Head from 'next/head';
 export default function Equipment({ query }) {
     let [data, setData] = useState(null);
     let [user, setUser] = useState(null);
+    let [parentId, setParentId] = useState(null);
     let [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -22,6 +23,7 @@ export default function Equipment({ query }) {
             const id = query.id;
             const equipment = equipmentList.find(e => e.id == id);
             setData(equipment);
+            setParentId(equipment.parentId);
             setLoading(false);
         }
     }, []);
@@ -61,27 +63,14 @@ export default function Equipment({ query }) {
                                     <p key={index}>{item}</p>
                                 </div>
                             ))}
-
-                            {/* <div className={styles.additionalInfo}>
-                                <h4>Specifications</h4>
-                                <ul>
-                                    <li><b>Resolution:</b> 0.1 nm</li>
-                                    <li><b>Voltage:</b> 200 kV</li>
-                                    <li><b>Magnification:</b> 50x to 1,000,000x</li>
-                                </ul>
-                                <h4>Useful Links</h4>
-                                <ul>
-                                    <li><a href="https://www.example.com/manual" target="_blank" rel="noopener noreferrer">User Manual</a></li>
-                                    <li><a href="https://www.example.com/specs" target="_blank" rel="noopener noreferrer">Technical Specifications</a></li>
-                                    <li><a href="https://www.example.com/tutorial" target="_blank" rel="noopener noreferrer">Tutorial Videos</a></li>
-                                </ul>
-                            </div> */}
                         </div>
 
                         <footer className={`${styles.FixedBottom} navbar navbar-dark fixed-bottom`}>
                             <div className="container">
                                 <p style={{color: "white"}}>Interested in this item?</p>
-                                <button onClick={() => {}} className={`${styles.btn} btn`}><span className={styles.text}>Get in touch</span></button>
+                                <button onClick={() => {
+                                    window.location = `/view/?id=${parentId}`;
+                                }} className={`${styles.btn} btn`}><span className={styles.text}>Get in touch</span></button>
                             </div>
                         </footer>
                     </div>
