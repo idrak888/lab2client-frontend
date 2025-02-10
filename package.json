@@ -15,10 +15,11 @@
     "@stripe/stripe-js": "^1.54.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
-    "firebase": "^8.0.1",
+    "firebase": "^8.10.1",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-modal": "^3.16.3",
     "react-player": "^2.13.0",
     "react-select": "^5.7.7",
     "stripe": "^12.6.0"

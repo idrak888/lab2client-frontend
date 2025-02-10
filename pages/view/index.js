@@ -5,6 +5,8 @@ import styles from '/styles/Listings.module.css';
 import Link from 'next/link';
 import Head from 'next/head';
 import FixedBottom from '/components/Orders/FixedBottom';
+import MyModal from "/components/EquipmentsModal/Modal"; // Import renamed custom modal component
+import ReactPlayer from 'react-player'
 
 export default function View({ query }) {
     let [data, setData] = useState(null);
@@ -13,6 +15,11 @@ export default function View({ query }) {
     let [equipmentShowing, setEquipmentShowing] = useState(null);
     let [equipmentList, setEquipmentList] = useState([]);
     let [equipmentIndex, setEquipmentIndex] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    let [videoPlaying, setVideoPlaying] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
     
     useEffect(() => {
         const userStr = localStorage.getItem("user");
@@ -65,17 +72,14 @@ export default function View({ query }) {
                             <div className='col-md-12 p-0'>
                                 <div style={{ backgroundColor: "transparent" }} className={`${styles.labdetails}`}>
 
-                                    {/* Institution Title */}
                                     <h2 className={`${styles.institutiontitle}`}>
                                         {data.identification.research_facillity}
                                     </h2>
 
-                                    {/* Lab Name and Location Information */}
                                     <h6 className={`${styles.locationinfo}`}>
                                         <i className="bi bi-mortarboard"></i> {data.identification.institution_name} <i className='bi bi-geo-alt' style={{ marginLeft: "2%" }}></i> {data.identification.city}, {data.identification.province}
                                     </h6>
 
-                                    {/* Large Lab Image */}
                                     <div className={styles.imageWrapper}>
                                         <img
                                             src={data.research.LOGOS}
@@ -92,7 +96,6 @@ export default function View({ query }) {
                                         />
                                     </div>
 
-                                    {/* Lab Owner PFP and Info */}
                                     <div className={`${styles.labownerinfo}`}>
                                         <div className={`${styles.labdetailsleft}`}>
                                             <div>
@@ -108,10 +111,8 @@ export default function View({ query }) {
 
                         <hr />
 
-                        {/* About and Fields of Research */}
                         <div className={`row ${styles.sectionMargins}`} id='about'>
 
-                            {/* About */}
                             <div className={`col-md-6 ${styles.sectionContentPadding}`}>
                                 <h4 style={{ fontWeight: "bold" }}>About</h4>
                                 <p>{data.research.DESCRIPTION_OF_RESEARCH_INFRASTRUCTURE}</p>
@@ -120,7 +121,6 @@ export default function View({ query }) {
                                 <p><a href={data.research.website}>{data.research.website}</a></p>
                             </div>
 
-                            {/* Research Fields */}
                             <div className={`col-md-6 ${styles.sectionContentPadding} ${styles.separationBar}`}>
                                 <h4 style={{ fontWeight: "bold" }}>Fields of Research</h4>
                                 <ul>
@@ -130,18 +130,17 @@ export default function View({ query }) {
                         </div>
 
 
-                        {/* Available Equipment */}
                         <div className={`row ${styles.sectionMargins}`} id='equipment'>
                             <h4 className={`m-0 fw-bold pb-3 ${styles.sectionContentPadding}`}> Available Equipment 
                                 <span className={`${styles.availableEquipmentVariable}`}> ({data.lab_equipment.length}) </span>
                             </h4>
-                            {/* Equipment Dropdown Section */}
                             <div className={`col-md-6 pt-0 ${styles.sectionContentPadding} ${styles.equipmentScrollBar}`}>
                                 {data.lab_equipment.map((doc, index) => {
                                     return (
                                         <div onClick={() => {
                                             setEquipmentShowing(doc)
                                             setEquipmentIndex(index);
+                                            openModal();
                                             console.log(index);
                                             setImageLoading(true);
                                             setTimeout(() => {
@@ -165,8 +164,6 @@ export default function View({ query }) {
                                 })}
                             </div>
 
-                            {/* Right Side Corresponding Image */}
-
                             { equipmentList.length > 0 ? <div style={{
                                 display: "flex",
                                 flex: 1,
@@ -187,6 +184,54 @@ export default function View({ query }) {
                                 : "No Equipments"}
                             </div> : <></>}
                         </div>
+                        <MyModal isOpen={isModalOpen} onRequestClose={closeModal}>
+                        <div
+                            style={{ overflowX: 'hidden', scrollbarWidth: 'none', width: "100%", display: "flex", minHeight: "45em", maxHeight: "150em",  }}
+                            className="modal-content d-flex flex-column flex-xxl-row w-120 justify-content-center align-items-center"
+                        >
+                            <div className="modal-body col-6 d-flex flex-column justify-content-center ">
+                                <h2>Equipment Details</h2>
+                                <p><strong>Name:</strong> {equipmentShowing?.name}</p>
+                                <p><strong>Description:</strong> {equipmentShowing?.description}</p>
+                            </div>
+                            <div className="col-6 d-flex justify-content-center align-items-center">
+                                <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
+                                    <div className="carousel-indicators">
+                                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    </div>
+                                    <div className="carousel-inner">
+                                        <div className="carousel-item active">
+                                            <div className="d-flex justify-content-center align-items-center">
+                                                <img
+                                                    src={equipmentShowing?.image}
+                                                    alt={equipmentShowing?.name}
+                                                    className="d-block w-50 h-auto object-fit-cover rounded-3"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="carousel-item">
+                                            <div className="d-flex justify-content-center align-items-center">
+                                                {data ? <div onClick={() => {
+                                                    setVideoPlaying(!videoPlaying);
+                                                }}>
+                                                    <ReactPlayer width="100%" height="auto" controls={true} light={<img width={"50%"} src='https://firebasestorage.googleapis.com/v0/b/lab2client.appspot.com/o/Screenshot%202023-12-14%20at%201.17.19%20PM.png?alt=media&token=4e354f45-a696-44fe-8904-16d328fb1254' />} pip={true} url='https://storage.googleapis.com/lab2client.appspot.com/1728068846820_4ebcbe24905194dbbaf3b8174f96b6ba_istockphoto-682775688-640_adpp_is.mp4' />
+                                                </div> : ""}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button className="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span className="visually-hidden">Previous</span>
+                                    </button>
+                                    <button className="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span className="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </MyModal>
                     </div>
             }
             {data ? <FixedBottom user={user} data={data} /> : ""}

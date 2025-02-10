@@ -49,14 +49,14 @@ export default function Equipment({ query }) {
             </nav>
             {
                 !loading ?
-                    <div className={styles.inner}>
-                        <div className={styles.imageWrapper}>
-                            <img src={data.image} alt={data.name} className={styles.image} />
-                        </div>
-                        <div className={styles.details}>
-                            <h2>{data.name}</h2>
+                    <div className={`${styles.inner} d-flex flex-column flex-xxl-row gap-4`}>
+                        <div className={`${styles.imageWrapper} d-flex flex-column align-items-start w-100 ms-5 ps-5 ps-xl-0 ms-xl-0`}>
+                            <h2 style={{ marginBottom: "5%", marginTop: "5%" }}>{data.name}</h2>
                             <p><b>Offered by:</b> {data.institution}</p>
                             <p><b>Location:</b> {data.location}</p>
+                            <img src={data.image} alt={data.name} className={`${styles.image} mt-3`} />
+                        </div>
+                        <div className={`${styles.details} w-100 justify-content-center align-self-xxl-start mt-5`}>
                             {data.description.split("***").map((item, index) => (
                                 <div>
                                     {index == 0 ? <h4>Description</h4> : index == 1 ? <h4>Applications in Automobile</h4> : index == 2 ? <h4>Specifications</h4> : index == 3 ? <h4>Link to website</h4> : <h4>Publications</h4>}
@@ -66,7 +66,7 @@ export default function Equipment({ query }) {
                         </div>
 
                         <footer className={`${styles.FixedBottom} navbar navbar-dark fixed-bottom`}>
-                            <div className="container">
+                            <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center">
                                 <p style={{color: "white"}}>Interested in this item?</p>
                                 <button onClick={() => {
                                     window.location = `/view/?id=${parentId}`;
