@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+.ReactModal__Overlay {
+    pointer-events: all; /* Should be all, not none */
+  }
+
 .navbar {
     background-color: #102D5D;
 }

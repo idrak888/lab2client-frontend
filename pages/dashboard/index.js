@@ -99,16 +99,17 @@ export default function index() {
 									<div className={styles.orderContainer}>
 										{
 											orderView == 0 ?
-												ordersReceieved.map(order => {
+												ordersReceieved.map((order, index) => {
 													const d = new Date(Date.parse(order.date));
+													console.log(order.information)
 													return (
-														<OrderWrapper type={"received"} user={user} information={order.information} date={d.toDateString()} status={order.status} />
+														<OrderWrapper key={index} type={"received"} user={user} information={order.information} date={d.toDateString()} status={order.status} />
 													)
 												}) : orderView == 1 ?
-													ordersSent.map(order => {
+													ordersSent.map((order, index) => {
 														const d = new Date(Date.parse(order.date));
 														return (
-															<OrderWrapper type={"sent"} user={user} information={order.information} date={d.toDateString()} status={order.status} />
+															<OrderWrapper key={index} type={"sent"} user={user} information={order.information} date={d.toDateString()} status={order.status} />
 														)
 													}) : ""
 										}

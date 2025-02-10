@@ -37,13 +37,14 @@
 
 .imageWrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     margin-bottom: 20px;
     padding: 20px;
+    margin-right: 18%;
 }
 
 .image {
-    width: 100%;
+    width: 35rem;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -52,7 +53,6 @@
 .details {
     text-align: left;
     max-width: 600px;
-    padding: 20px;
 }
 
 .details h2 {

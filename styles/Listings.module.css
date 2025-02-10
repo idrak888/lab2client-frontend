@@ -446,7 +446,19 @@
     padding-top: 50px;
 }
 
+.carousel-control-prev {
+    left: -110px;
+    border-bottom: 0;
+    font-size: 40px;
+    color: #444;
+}
 
+.carousel-control-next {
+    right: -110px;
+    border-bottom: 0;
+    font-size: 40px;
+    color: #444;
+}
 
 
 /* About & Fields of Research */
@@ -473,6 +485,7 @@
     bottom: 20px;
     border-left: 2px solid #dcdcdc;
 }
+
 
 /* media query that removes the bar if on a mobile device */
 @media only screen and (max-width: 575px) {
